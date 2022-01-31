@@ -1,0 +1,27 @@
+.wpcf7-form input.valid, 
+.wpcf7-form select.valid, 
+.wpcf7-form textarea.valid,
+.wpcf7-form input.error, 
+.wpcf7-form select.error, 
+.wpcf7-form textarea.error {
+    outline: none;
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position: 95%;
+    }
+
+.wpcf7-form input.valid, 
+.wpcf7-form select.valid, 
+.wpcf7-form textarea.valid {
+    border-color: green;
+    background-color: rgba(167, 216, 151, 0.3);
+    background-image: url(../images/valid.png);
+    }
+
+.wpcf7-form input.error, 
+.wpcf7-form select.error, 
+.wpcf7-form textarea.error {
+    border-color: #900;
+    background-color: rgba(236, 172, 167, 0.3);
+    background-image: url(../images/error.png);
+    }

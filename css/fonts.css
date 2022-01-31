@@ -1,0 +1,27 @@
+/* THIS FILE IS FOR USE WITH CURRENT RMS QUOTE DOCUMENTS */
+
+@font-face {
+  font-family: 'Nella Sue';
+  src: url('https://arabiantents.com/wp-content/themes/arabiantents/fonts/NellaSue/NellaSue.eot');
+  src: local('Nella Sue'), local('NellaSue'),
+    url('https://arabiantents.com/wp-content/themes/arabiantents/fonts/NellaSue/NellaSue.eot?#iefix') format('embedded-opentype'),
+    url('https://arabiantents.com/wp-content/themes/arabiantents/fonts/NellaSue/NellaSue.woff2') format('woff2'),
+    url('https://arabiantents.com/wp-content/themes/arabiantents/fonts/NellaSue/NellaSue.woff') format('woff'),
+    url('https://arabiantents.com/wp-content/themes/arabiantents/fonts/NellaSue/NellaSue.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Calibri';
+  src: url('https://arabiantents.com/wp-content/themes/arabiantents/fonts/Calibri-Light/Calibri-Light.eot');
+  src: local('Calibri Light'), local('Calibri-Light'),
+    url('https://arabiantents.com/wp-content/themes/arabiantents/fonts/Calibri-Light/Calibri-Light.eot?#iefix') format('embedded-opentype'),
+    url('https://arabiantents.com/wp-content/themes/arabiantents/fonts/Calibri-Light/Calibri-Light.woff2') format('woff2'),
+    url('https://arabiantents.com/wp-content/themes/arabiantents/fonts/Calibri-Light/Calibri-Light.woff') format('woff'),
+    url('https://arabiantents.com/wp-content/themes/arabiantents/fonts/Calibri-Light/Calibri-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}

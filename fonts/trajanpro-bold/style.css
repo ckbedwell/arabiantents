@@ -1,0 +1,8 @@
+
+@font-face {
+  font-family: 'TrajanPro-Bold';
+  src: url('TrajanPro-Bold.eot?#iefix') format('embedded-opentype'),  url('TrajanPro-Bold.otf')  format('opentype'),
+	     url('TrajanPro-Bold.woff') format('woff'), url('TrajanPro-Bold.ttf')  format('truetype'), url('TrajanPro-Bold.svg#TrajanPro-Bold') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}

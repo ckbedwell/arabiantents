@@ -1,0 +1,33 @@
+.midnightInner {
+    overflow: hidden !important;
+    }
+
+.midnightHeader {
+    transition: background-color 1s;
+    }
+
+.midnightHeader.black:hover {
+    background-color: rgba(0,0,0,0.25);
+    }
+
+.midnightHeader.default:hover {
+    background-color: rgba(255,255,255,1);
+    }
+
+.move-left .midnightHeader:hover {
+    background: none;
+    }
+
+.midnightHeader.default a {
+    border-color: rgba(0,0,0,1);
+    color: rgba(0,0,0,1);
+    }
+
+.midnightHeader.black .site-branding a, .move-left .midnightHeader.default .site-branding a {
+    text-shadow: 0 1px rgba(255,255,255,1);
+    }
+
+.midnightHeader.black a, .move-left .midnightHeader.default a {
+    color: rgba(255,255,255,1);
+    border-color: rgba(255,255,255,1);
+    }
