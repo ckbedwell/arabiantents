@@ -303,7 +303,7 @@ add_action('init', 'modify_jquery');
  */
 function digicrab_scripts() {
     wp_enqueue_style('video-style', get_template_directory_uri() . '/css/jquery.background-video.css', array(), '1.1.1');
-    wp_enqueue_style('digicrab-style', get_stylesheet_uri(), array(), '1.1.6');
+    wp_enqueue_style('minified-styles', get_template_directory_uri() . '/compiled/css/main.css', array(), '1.0.0');
     wp_enqueue_style('owl', get_template_directory_uri() . '/js/owl-carousel/assets/owl.carousel.css', array(), '1.1.1');
     wp_enqueue_style('custom', get_template_directory_uri() . '/css/custom.css', array(), '1.1.5');
 

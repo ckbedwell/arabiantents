@@ -1,8 +1,3 @@
-<style>
-    * {
-        box-sizing: border-box;
-    }
-</style>
 <? get_template_part('/partials/mega-nav/events-sub'); ?>
 <? get_template_part('/partials/mega-nav/tents-sub'); ?>
 <? get_template_part('/partials/mega-nav/furniture-sub'); ?>
