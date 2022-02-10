@@ -1,0 +1,7 @@
+.furniture-items .venue-dressings .just-one [class*="display-card"] {
+  height:  34.2rem;
+}
+
+.internal-blogs, .external-blogs {
+  border-top: 1px solid rgba(50,50,50,1);
+}

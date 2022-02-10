@@ -57,14 +57,6 @@ function pg_register_tent_meta_boxes($meta_boxes) {
 						'posts_per_page' => '-1',
 						),
 					),
-
-                 array (
-                     'name' => __('Interactive tour URL:', 'rwmb'),
-                     'id'   => 'tour-url',
-                     'type' => 'text',
-                    ),
-
-
 				),
 			);
 

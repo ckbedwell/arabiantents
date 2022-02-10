@@ -1,0 +1,231 @@
+.main-navigation {
+  margin-bottom: 0;
+  position: relative;
+
+  .width-contain-1000 {
+    width: 1070px;
+    max-width: 100vw;
+  }
+}
+
+[class*="submenu-"]:before {
+  content: "";
+  width: 50%;
+  height: 100%;
+  background-color: rgba(249, 249, 249, 1);
+  position: absolute;
+  top: 0;
+  left: 0;
+  }
+
+[class*="submenu-"] h3 {
+  position: relative;
+}
+
+.submenu-festivals {
+  background-image: url(../../images/event-festival-bg.png);
+}
+
+.submenu-corporate {
+  background-image: url(../../images/event-corporate-bg.png);
+}
+
+.submenu-resources {
+  background-image: url(../../images/resources-nav-bg.png);
+}
+
+.submenu-frame-tent-collection .display-card-extra-small {
+  height: 9rem;
+}
+
+.submenu-frame-tent-collection [class*="-margined"] {
+  margin-bottom: 1rem;
+  }
+
+.submenu-frame-tent-collection [class*="display-card"] {
+  height: 9rem;
+  }
+
+.submenu-stretch-tents {
+  background-image: url(../../images/stretch-tent-nav-bg.png);
+}
+
+.submenu-clearspan-marquees {
+  background-image: url(../../images/clearpsan-marquee-nav-bg.png);
+}
+
+.submenu-wedding-decor {
+  background-image: url(../../images/wedding-decor-bg.png);
+}
+
+.submenu-marquee-decoration {
+  background-image: url(../../images/marquee-decor-bg.png);
+}
+
+.submenu-barn-dressing {
+  background-image: url(../../images/barn-decor-bg.png);
+}
+
+.submenu-christmas {
+  background-image: url(../../images/christmas-decor-bg.png);
+}
+
+/**/
+
+.submenu-indoor {
+  background-image: url(../../images/indoor-furniture-bg.png);
+}
+
+.submenu-outdoor {
+  background-image: url(../../images/outdoor-furniture-bg.png);
+}
+
+.submenu-props {
+  background-image: url(../../images/props-decor-bg.png);
+}
+
+/**/
+
+.submenu-ideas-gallery {
+  background-image: url(../../images/ideas-gallery-nav-bg.png);
+}
+
+.submenu-image-gallery {
+  background-image: url(../../images/image-gallery-nav-bg.png);
+}
+
+.submenu-product-gallery {
+  background-image: url(../../images/product-gallery-nav-bg.png);
+}
+
+/**/
+
+.submenu-testimonials {
+  background-image: url(../../images/testimonials-bg.png);
+}
+
+.submenu-team {
+  background-image: url(../../images/team-bg.png);
+}
+
+.submenu-press {
+  background-image: url(../../images/press-bg.png);
+}
+
+.submenu-location {
+  background-image: url(../../images/location-nav.png);
+}
+
+.submenu-where-we-work {
+  background-image: url(../../images/where-we-work-nav-bg.png);
+}
+
+/**/
+
+.submenu-all-blogs {
+  background-image: url(../../images/blog-overview-nav-bg.png);
+}
+
+.submenu-blog {
+  padding: 3rem;
+  background-color: rgba(249, 249, 249, 1);
+  background-size: 55%;
+  background-position: right;
+  background-repeat: no-repeat;
+}
+
+.submenu-enquire a {
+  background-color: transparent;
+  left: -2rem;
+  font-size: 1.4rem;
+}
+
+.submenu-enquire a:hover {
+  text-decoration: none;
+}
+
+.submenu-enquire [class*="icon-"] {
+  display: table;
+  padding: 4rem;
+  margin: 0 auto 2rem;
+  border: 2px solid rgba(150,150,150,1);
+  border-radius: 8px;
+  font-size: 4rem;
+}
+
+.submenu-enquire .icon-arabian-tent {
+  padding: 3rem;
+  font-size: 6rem;
+}
+
+.submenu-enquire a:hover [class*="icon-"] {
+  background-color: rgba(230, 214, 177, 0.3);
+}
+
+.submenu-contact .telephone,
+.submenu-contact .email {
+  float: left;
+  clear: left;
+  background-color: transparent;
+  font-size: 1.8rem;
+}
+
+.submenu-find .get-directions {
+  margin-top: 1rem;
+  background-color: transparent;
+  font-weight: 700;
+}
+
+.dropdown-menu {
+  float: left;
+  width: 220px;
+}
+
+.additional-info p {
+  font-size: 1.4rem;
+  }
+
+.maintainHover {
+  display: block;
+  background-color: rgba(249, 249, 249, 1);
+  color: rgba(134, 102, 28, 1);
+  cursor: default;
+  }
+
+.dropdown-menu .icon-arrow-right {
+  text-align: right;
+  width: 400px;
+  position: absolute;
+  bottom: 5rem;
+  left: 0;
+  color: rgba(50,50,50,1);
+  font-size: 5rem;
+  opacity: 0;
+
+  transition: 0.3s;
+}
+
+.dropdown-menu a:hover .icon-arrow-right{
+  opacity: 1;
+  }
+
+[class*="additional-service"] {
+  background-size: cover;
+  background-position: center;
+  }
+
+.additional-service-photographers {
+  background-image: url(../../images/NatashaOliver-502.jpg);
+}
+
+.additional-service-venues {
+  background-image: url(../../images/static1.squarespace.jpg);
+}
+
+.additional-service-wine {
+  background-image: url(../../images/display95-Grande-Cigale-P3.jpg);
+}
+
+.additional-service-catering {
+  background-image: url(../../images/catering-1.jpg);
+}

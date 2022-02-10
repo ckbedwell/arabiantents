@@ -1,0 +1,27 @@
+.point-one-trans, .point-one-trans:before, .point-one-trans:after {
+  transition: 0.1s;
+}
+
+.point-two-trans, .point-two-trans:before, .point-two-trans:after {
+  transition: 0.2s;
+}
+
+.point-three-trans, .point-three-trans:before, .point-three-trans:after {
+  transition: 0.3s;
+}
+
+.point-four-trans, .point-four-trans:before, .point-four-trans:after {
+  transition: 0.4s;
+}
+
+.point-five-trans, .point-five-trans:before, .point-five-trans:after {
+  transition: 0.5s;
+}
+
+.point-eight-trans, .point-eight-trans:before, .point-eight-trans:after {
+  transition: 0.8s;
+}
+
+.one-trans {
+  transition: 1s;
+}

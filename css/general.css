@@ -1,0 +1,37 @@
+* {
+  box-sizing: border-box;
+  backface-visibility: hidden;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  margin: 0;
+  font-size: 1.6rem;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+main,
+section,
+header,
+footer {
+  display: block;
+}
+
+a {
+  position: relative;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}

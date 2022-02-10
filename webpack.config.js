@@ -1,5 +1,6 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
 const path = require('path')
 
 const prod = false
@@ -24,7 +25,12 @@ module.exports =  {
         test: /\.css$/i,
         use: [
           MiniCssExtractPlugin.loader,
-          `css-loader`,
+          {
+            loader: `css-loader`,
+            options: {
+              importLoaders: 1,
+            }
+          },
           `postcss-loader`,
         ],
       },
@@ -33,7 +39,10 @@ module.exports =  {
   plugins: [
     new MiniCssExtractPlugin({
       filename: `css/[name].css`,
-      ignoreOrder: true,
     }),
+    new BrowserSyncPlugin({
+      proxy: 'http://localhost/arabiantents',
+      port: 80,
+    })
   ]
 }

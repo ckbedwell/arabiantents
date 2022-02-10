@@ -1,0 +1,23 @@
+button {
+  font-family: inherit;
+  padding: 0;
+  background-color: transparent;
+}
+
+button:active,
+button:focus {
+  outline: none;
+}
+
+.action-button {
+  background-color: var(--goldLight);
+  color: white;
+  padding: 1rem;
+  border-radius: 2rem;
+  font-weight: 700;
+  transition: 0.3s;
+
+  &:hover {
+    background-color: var(--goldDark);
+  }
+}

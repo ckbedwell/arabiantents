@@ -1,4 +1,5 @@
 <?
+
 /**
  * The template for displaying search results pages.
  *
@@ -7,39 +8,39 @@
 
 get_header(); ?>
 
-    <section id="primary" class="content-area">
-        <main id="main" class="site-main" role="main">
+<section id="primary" class="content-area">
+  <main id="main" class="site-main" role="main">
 
-        <? if (have_posts()) : ?>
+    <? if (have_posts()) : ?>
 
-            <header class="page-header">
-                <h1 class="page-title"><? printf(__('Search Results for: %s', 'digicrab'), '<span>' . get_search_query() . '</span>'); ?></h1>
-            </header><!-- .page-header -->
+      <header class="page-header">
+        <h1 class="page-title"><? printf(__('Search Results for: %s', 'digicrab'), '<span>' . get_search_query() . '</span>'); ?></h1>
+      </header><!-- .page-header -->
 
-            <? /* Start the Loop */ ?>
-            <? while (have_posts()) : the_post(); ?>
+      <? /* Start the Loop */ ?>
+      <? while (have_posts()) : the_post(); ?>
 
-                <?
-                /**
-                 * Run the loop for the search to output the results.
-                 * If you want to overload this in a child theme then include a file
-                 * called content-search.php and that will be used instead.
-                 */
-                get_template_part('excerpt');
-                ?>
+        <?
+        /**
+         * Run the loop for the search to output the results.
+         * If you want to overload this in a child theme then include a file
+         * called content-search.php and that will be used instead.
+         */
+        get_template_part('excerpt');
+        ?>
 
-            <? endwhile; ?>
+      <? endwhile; ?>
 
-            <? the_posts_navigation(); ?>
+      <? the_posts_navigation(); ?>
 
-        <? else : ?>
+    <? else : ?>
 
-            <? get_template_part('content', 'none'); ?>
+      <? get_template_part('content', 'none'); ?>
 
-        <? endif; ?>
+    <? endif; ?>
 
-        </main><!-- #main -->
-    </section><!-- #primary -->
+  </main><!-- #main -->
+</section><!-- #primary -->
 
 <? get_sidebar(); ?>
 <? get_footer(); ?>

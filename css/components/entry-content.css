@@ -1,0 +1,28 @@
+
+.entry-content {
+  blockquote {
+    max-width: 600px;
+    padding-top: 3rem;
+    padding-bottom: 1rem;
+    margin: 8rem auto 6rem;
+    border-top: 2px solid rgba(134, 102, 28, 1);;
+    border-bottom: 2px solid rgba(134, 102, 28, 1);;
+    color: rgba(134, 102, 28, 1);
+
+    &:before {
+    top: 1.5rem;
+    }
+
+    &:after {
+      bottom: 1.5rem;
+
+    }
+  }
+
+  aside {
+    blockquote {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+}

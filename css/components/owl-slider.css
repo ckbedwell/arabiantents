@@ -1,0 +1,65 @@
+.owl-nav .owl-next {
+  position: absolute;
+  top: 78%;
+  right: 0;
+  width: 50px;
+  height: 145px;
+  z-index: 9999;
+  font-size: 90px !important;
+  color: rgba(255, 90, 95, 1) !important;
+}
+
+.owl-nav .owl-prev {
+  display: none;
+}
+
+.owl-carousel button.owl-dot {
+  font-size: 0;
+  line-height: 0;
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  cursor: pointer;
+  color: transparent;
+  border: 0;
+  outline: none;
+  background-color: #bbb !important;
+  margin: 4px;
+  padding: 0;
+  border-radius: 50%;
+}
+
+.owl-carousel button.owl-dot.active{
+  background: rgba(224, 0, 7, 1) !important;
+}
+
+.owl-carousel .owl-item img {
+  width: auto !important;
+  display: block !important;
+  margin: 5px auto;
+}
+
+/* .owl-animated-out - only for current item */
+/* This is very important class. Use z-index if you want move Out item above In item */
+.owl-animated-out {
+  z-index : 1
+}
+/* .owl-animated-in - only for upcoming item
+/* This is very important class. Use z-index if you want move In item above Out item */
+.owl-animated-in {
+  z-index : 0
+}
+/* .fadeOut is style taken from Animation.css and this is how it looks in owl.carousel.css:  */
+.fadeOut  {
+  animation-name: fadeOut;
+}
+
+@keyframes fadeOut  {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}

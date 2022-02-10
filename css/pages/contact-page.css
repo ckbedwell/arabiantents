@@ -1,0 +1,34 @@
+
+.contact-page .entry-header .vertical-align {
+  background-color: rgba(0,0,0,0.5);
+  color: rgba(255,255,255,1);
+  font-size: 2rem;
+  }
+
+.contact-page .entry-header .vertical-align .alignright .alignleft:first-line {
+  font-size: 2.5rem;
+  font-weight: 700;
+  }
+
+.contact-page .contact-details .telephone,
+.contact-page .contact-details .email {
+  font-size: 2rem;
+  color: rgba(0,0,0,1);
+  }
+
+.contact-page .contact-details,
+.contact-page .contact-details .social-icons  {
+  float: left;
+  clear: left;
+  padding-top: 4rem;
+  margin-top: 4rem;
+  border-top: 1px solid rgba(50,50,50,1);
+  }
+
+/***************** MAP *******************/
+
+.contact-page .rwmb-map-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  }

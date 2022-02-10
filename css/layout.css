@@ -1,0 +1,219 @@
+/* stylelint-disable rule-empty-line-before */
+/* stylelint-disable selector-type-no-unknown */
+
+:root {
+  --grid {
+    align-items: center;
+    display: grid;
+  }
+}
+
+.flex {
+  display: flex;
+
+  &.gap-1 > *:not(:last-child) {
+    margin-right: 1rem;
+  }
+}
+
+.grid-2 {
+  @apply --grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.gap-1 {
+  grid-gap: 1rem;
+}
+
+/* SLOWLY DEPRECATE THE BELOW */
+
+.full {
+  width: 100%;
+}
+
+[class*="half"],
+[class*="third"],
+[class*="two-thirds"],
+[class*="quarter"],
+[class*="three-quarters"],
+[class*="fifth"],
+[class*="two-fifths"],
+[class*="three-fifths"],
+[class*="four-fifths"],
+[class*="sixth"],
+[class*="five-sixths"] {
+  float: left;
+  padding: 1.5rem;
+  position: relative;
+}
+
+[class*="half"] {
+  width: 50%;
+}
+
+[class*="third"] {
+  width: 33.3333%;
+}
+
+[class*="two-thirds"] {
+  width: 66.6666667%;
+}
+
+[class*="quarter"] {
+  width: 25%;
+}
+
+[class*="three-quarters"] {
+  width: 75%;
+}
+
+[class*="fifth"] {
+  width: 20%;
+}
+
+[class*="two-fifths"] {
+  width: 40%;
+}
+
+[class*="three-fifths"] {
+  width: 60%;
+}
+
+[class*="four-fifths"] {
+  width: 80%;
+}
+
+[class*="sixth"] {
+  width: 16.6666667%;
+}
+
+[class*="five-sixths"] {
+  width: 83.3333333%
+}
+
+.half-margined:nth-of-type(2n),
+.third-margined:nth-of-type(3n),
+.third-margined:last-of-type,
+.two-thirds-margined:last-of-type,
+.quarter-margined:nth-of-type(4n),
+.quarter-margined:last-of-type,
+.three-quarters-margined:last-of-type,
+.fifth-margined:nth-of-type(5n) {
+  margin-right: 0;
+}
+
+[class*="-margined"]:first-of-type,
+.quarter-margined:nth-of-type(4n+1),
+.fifth-margined:nth-of-type(5n+1) {
+  clear: left;
+  margin-left: 0;
+}
+
+[class*="-margined"] {
+  padding: 1rem 2rem;
+  margin-right: 1.25%;
+  margin-bottom: 2rem;
+  margin-left: 1.25%;
+}
+
+.half-margined {
+  width: 48.5%;
+}
+
+.third-margined {
+  width: 31.25%;
+}
+
+.two-thirds-margined {
+  width: 65.83%;
+}
+
+.quarter-margined {
+  width: 23.125%;
+}
+
+.three-quarters-margined {
+  width: 69.375%;
+}
+
+.three-quarters-margined {
+  width: 74.375%;
+}
+
+.fifth-margined {
+  width: 18%;
+}
+
+.sixth-margined {
+  width: 14.37%;
+}
+
+[class^="half"]:nth-of-type(2n+1),
+[class^="third"]:nth-of-type(3n+1),
+[class^="quarter"]:nth-of-type(4n+1) {
+  clear: left;
+  margin-left: 0;
+}
+
+.padded {
+  padding: 2rem;
+}
+
+.parent-contain {
+  float: left;
+  width: 100%;
+  position: relative;
+}
+
+[class*="width-contain"] {
+  display: table;
+  width: 1280px;
+  max-width: 90vw;
+  margin-right: auto;
+  margin-left: auto;
+  position: relative;
+}
+
+.width-contain-1400 {
+  display: block;
+  width: 1400px;
+}
+
+.width-contain-1000 {
+  display: block;
+  width: 1000px;
+}
+
+.width-contain-900 {
+  display: block;
+  width: 900px;
+}
+
+.width-contain-800 {
+  display: block;
+  width: 800px;
+}
+
+.width-contain-750 {
+  display: block;
+  width: 750px;
+}
+
+.width-contain-700 {
+  display: block;
+  width: 700px;
+}
+
+.width-contain-600 {
+  display: block;
+  width: 600px;
+}
+
+.width-contain-320 {
+  display: block;
+  width: 320px;
+}
+
+.wrapper {
+  position: relative;
+}

@@ -1,0 +1,59 @@
+.align-center {
+  display: block !important;
+  margin: 10px auto !important;
+}
+
+.alignleft {
+  float: left;
+  left: 0;
+}
+
+.clearleft {
+  float: left;
+  clear: left;
+}
+
+.alignright {
+  float: right;
+  right: 0;
+}
+
+.clearright {
+  float: right;
+  clear: right;
+}
+
+.clearboth {
+  clear: both;
+}
+
+.alignbottom {
+  position: absolute;
+  bottom: 0;
+}
+
+.vertical-align {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.horizontal-align {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.vertical-align.horizontal-align {
+  transform: translate(-50%, -50%);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.aligncenter {
+  display: table;
+  margin-right: auto;
+  margin-left: auto;
+}

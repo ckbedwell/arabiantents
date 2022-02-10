@@ -244,19 +244,6 @@ jQuery(document).ready(function ($){
 // SUBMIT AND CONFIRM NAVIGATION
 
 
-//CONFIRM NAVIGATION
-
-    window.onbeforeunload = function() {
-
-        if($('.enquiry-reminders a').hasClass('active')) {
-            var activeOverlay ='.' + $('.enquiry-reminders a.active').attr('value');
-            console.log(activeOverlay);
-            open_overlay();
-            $(activeOverlay).removeClass('hide').addClass('active');
-            return "You haven't finished your enquiry yet. Are you sure you want to navigate away?";
-        }
-    }
-
 //SUBMIT
     jQuery('input[type=submit]').prop("disabled", false);
 
@@ -458,42 +445,6 @@ jQuery(document).ready(function ($){
 
     /*****************************************************/
 
-
-    //ENQUIRY REMINDERS
-    function enquiry_reminder() {
-        var form = $('.more-info-overlay.active').find('form');
-        if(form.length) {
-            var reminderButton = '#' + form.attr('reminder');
-            var icon = $.grep($(reminderButton).find('span').attr('class').split(" "), function(n) {
-                return (n.indexOf("icon-") >= 0)
-            });
-            var emptyInputs = 0;
-
-            form.find('input, textarea').each(function() {
-                if($(this).val().length != '' && $(this).hasClass('valid') && $(this).is(':visible')) {
-                    $(reminderButton).removeClass('hide');
-                    setTimeout(function() {
-                        $(reminderButton).addClass('active');
-                    }, 2300);
-                    if(!$(reminderButton).hasClass('active')) {
-                        $('.message-reminder').removeClass('hide').addClass('message-reminder-move');
-                        $('.message-reminder span').removeClass().addClass(icon[0]);
-                    }
-                    console.log('Empty Inputs Inside ' + emptyInputs);
-                    emptyInputs++;
-                    return false;
-                }
-            });
-
-            if(emptyInputs == 0) {
-                console.log('Empty Inputs Outside ' + emptyInputs);
-                $(reminderButton).removeClass('active').addClass('hide');
-            }
-        }
-    }
-
-
-
     //GIVE FORMS DIFFERENT IDS
     jQuery('form').each(function(index) {
         var id = 'form' + (parseInt(index) + 1);
@@ -529,18 +480,6 @@ jQuery(document).ready(function ($){
     $('.slider-nav').click(function() {
         $('html').addClass('nav-up');
     })
-
-    // SLIDER - HOME
-
-    $('.js-home-slider').slick({
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        arrows: false,
-        fade: true,
-        dots: true,
-        autoplay: true,
-        autoplaySpeed: 4000,
-    });
 
 // ********************************************* OVERLAYS ***************************************** //
 
@@ -586,7 +525,6 @@ jQuery(document).ready(function ($){
     });
 
     //FEEDBACK FORM
-    $('.feedback-link a').attr('value', 'feedback-form');
     $('.newsletter-link a').attr('value', 'newsletter-form');
 
     $(document).on('click', '.tent-selection .more-info', function() {
@@ -625,141 +563,11 @@ jQuery(document).ready(function ($){
         go_back();
     });
 
-
-    // MEGA MENU
-
-    /* $('.dropdown-menu li').click(function(event){
-      var This = $(this);
-      if(min816.matches) {
-        var link = $(This).find('a').attr('href');
-        console.log(link);
-        window.location = link;
-        }
-      });
-      */
-
-    $('.primary-menu li a').click(function(event) {
-        if (Modernizr.touchevents) {
-            if(min816.matches) {
-                var subMenuTarget = $(this).attr('rel');
-                if (subMenuTarget) {
-
-                    var subMenuTarget = '.' + subMenuTarget;
-                    var parentLi = $(this).parent('li');
-
-                    if (!$(parentLi).hasClass('active') || $(parentLi).hasClass('hover-active')) {
-                        event.preventDefault();
-                        $('section[class*="-sub"]').removeClass('active');
-                        $('.primary-menu li').removeClass('active hover-active');
-                        $('html').addClass('active-nav-overlay'); // DOESN'T USE FUNCTION, AS THIS CLASS SETS OVERLAY Z-INDEX NOT SO HIGH
-                        $('.overlay').removeClass('hide').addClass('active');
-                        $(subMenuTarget).addClass('active');
-                        $(parentLi).addClass('active');
-                        console.log('Outcome 2');
-                    }
-                    else {
-                        console.log('In else statement');
-                    }
-                }
-            }
-            else {
-                var parentLi = $(this).parent();
-                if($(parentLi).hasClass('menu-item-has-children')) {
-                    $(parentLi).children('.custom-sub').addClass('active');
-                    return false;
-                }
-            }
-        }
-    });
-
-    //MOBILE GO BACK BUTTON
-    $('.custom-sub button').click(function() {
-        $(this).closest('.custom-sub').removeClass('active');
-    });
-
-    //ON HOVER
-
-
-
-
-
-    $('.primary-menu a').hover(function() {
-        if(min1000.matches) {
-            var subMenuTarget = $(this).attr('rel');
-            if (subMenuTarget) {
-                var subMenuTarget = '.' + subMenuTarget;
-                var parentLi = $(this).parent('li');
-                $('section[class*="-sub"]').removeClass('active hover-active');
-                $('.primary-menu li').removeClass('active hover-active');
-                $('html').addClass('active-nav-overlay'); // DOESN'T USE FUNCTION, AS THIS CLASS SETS OVERLAY Z-INDEX NOT SO HIGH
-                $('.overlay').removeClass('hide').addClass('active');
-                $(subMenuTarget).addClass('active hover-active');
-                $(parentLi).addClass('active hover-active');
-            }
-        }
-    });
-
-    $('.overlay').hover(function() {
-        if($('.primary-menu li').hasClass('hover-active') && !$('.more-info-overlay').hasClass('active')) {
-            $('html').removeClass('active-nav-overlay');
-            $(this).removeClass('active').addClass('hide');
-            $('.primary-menu li').removeClass('active hover-active');
-            $('section[class*="-sub"]').removeClass('active hover-active');
-        }
-    });
-
-
-    $(document).on('click', '.targeter', function() {
-        $('.targeter').removeClass('maintainHover');
-        $(this).addClass('maintainHover');
-    });
-
-    var $menu = $(".dropdown-menu");
-
-    // jQuery-menu-aim: <meaningful part of the example>
-    // Hook up events to be fired on menu row activation.
-    $menu.menuAim({
-        activate: activateSubmenu,
-        deactivate: deactivateSubmenu
-    });
-    // jQuery-menu-aim: </meaningful part of the example>
-
-    // jQuery-menu-aim: the following JS is used to show and hide the submenu
-    // contents. Again, this can be done in any number of ways. jQuery-menu-aim
-    // doesn't care how you do this, it just fires the activate and deactivate
-    // events at the right times so you know when to show and hide your submenus.
-    function activateSubmenu(row) {
-        var $row = $(row),
-            submenuId = $row.data("submenuId"),
-            $submenu = $("." + submenuId),
-            height = $menu.outerHeight(),
-            width = $menu.outerWidth();
-
-        // Show the submenu
-        $submenu.css({
-            display: "block",
-        });
-
-        // Keep the currently activated row's highlighted look
-        $row.find(".targeter").addClass("maintainHover");
-    }
-
-    function deactivateSubmenu(row) {
-        var $row = $(row),
-            submenuId = $row.data("submenuId"),
-            $submenu = $("." + submenuId);
-
-        // Hide the submenu and remove the row's highlighted look
-        $submenu.css("display", "none");
-        $row.find(".targeter").removeClass("maintainHover");
-    }
-
     //Edit Link Button
     $('.edit-link a').addClass('black-button scale-five');
 
     //Image Link Class
 
-    $('img').parent('a').addClass('image-link');
     $('a.featured-image, a.lightbox-link').filter(function () { return $(this).css('backgroundImage') != "" }).addClass('image-link');
 
 
@@ -771,90 +579,6 @@ jQuery(document).ready(function ($){
         var $parent = $(this).parent().outerHeight();
         $(this).css('height', $parent)
     });
-
-    // Hide Header on on scroll down
-    var didScroll;
-    var lastScrollTop = 0;
-    var delta = 5;
-    var navbarHeight = 50 // $('.site-header').outerHeight(); set lower for tablets
-
-    $(window).scroll(function(event){
-        didScroll = true;
-    });
-
-    setInterval(function() {
-        if (didScroll) {
-            hasScrolled();
-            didScroll = false;
-        }
-    }, 150);
-
-    function hasScrolled() {
-        var st = $(this).scrollTop();
-        // Make sure they scroll more than delta
-        if(Math.abs(lastScrollTop - st) <= delta)
-            return;
-
-        // If they scrolled down and are past the navbar, add class .nav-up.
-        // This is necessary so you never see what is "behind" the navbar.
-        if (st > lastScrollTop && st > navbarHeight){
-            // Scroll Down
-            $('html').removeClass('nav-down').addClass('nav-up');
-        } else {
-            // Scroll Up
-            if(st + $(window).height() < $(document).height()) {
-                $('html').removeClass('nav-up').addClass('nav-down');
-            }
-        }
-
-        lastScrollTop = st;
-    }
-
-
-    /*************** INFO BAR STICKY *************/
-
-    // if (!!$('.sticky-info').offset()) { // CHECK FOR STICKY ELEMENT ON PAGE
-    //     var stickyElementHeight = $('.sticky-info').height(); // GET INFO BAR HEIGHT
-    //     var windowHeight = $(window).height(); // GET WINDOW HEIGHT
-    //     var stickyTop = $('.sticky-info').offset().top + stickyElementHeight - 41 // GETS POSITION OF TOP OF STICKY ELEMENT
-
-
-    //     $(window).scroll(function(){ // scroll event
-    //         if(min960.matches) {
-    //             var dropoffOffset = $('.drop-off').offset().top; // GET TOP LOCATION OF DROP-OFF CONTAINER
-    //             var dropoffHeight = $('.drop-off').height(); // GET HEIGHT OF DROP-OFF CONTAINER
-    //             var dropoffBottom = dropoffOffset + dropoffHeight; //GET BOTTOM LOCATION OF DROP-OFF CONTAINER
-    //             var windowTop = $(window).scrollTop(); // GET HOW FAR WINDOW HAS SCROLLED (MEASURES FROM TOP OF SCREEN)
-
-    //             if (stickyTop < windowTop) {
-    //                 $('button.lower-info').removeClass('hide');
-    //                 $('.sticky-info').addClass('stuck');
-    //                 if(!$('.sticky-info').hasClass('lowered')) {
-    //                     $('.sticky-info').addClass('move-up');
-    //                 }
-    //                 $('.info .height-filler').removeClass('hide');
-    //                 if(dropoffBottom < windowTop + windowHeight - stickyElementHeight) {
-    //                     $('.sticky-info').addClass('stuck-bottom');
-    //                 }
-    //                 else {
-    //                     $('.sticky-info').removeClass('stuck-bottom');
-    //                 }
-
-    //             }
-    //             else {
-    //                 $('.sticky-info').removeClass('stuck move-up');
-    //                 $('.info .height-filler').addClass('hide');
-    //             }
-    //         }
-    //     });
-    // }
-
-    // $('.lower-info').click(function() {
-    //     if($(this).parents('.sticky-info').hasClass('lowered')) {
-    //         $(this).parents('.sticky-info').addClass('move-up');
-    //     }
-    //     $(this).parents('.sticky-info').toggleClass('lowered');
-    // });
 
     /*************** SMOOTH SCROLLING ***************/
 
@@ -898,12 +622,6 @@ jQuery(document).ready(function ($){
         $('html').toggleClass('active-overlay');
         $('.main-navigation').toggleClass('active');
     });
-
-    /*
-    $(document).on('click', '.entry-header', function() {
-        $(".tiered-gallery a:first-of-type").click();
-        });
-      */
 }); //END READY
 
 /********************************* MAGNIFIC *******************************************/
@@ -1007,24 +725,7 @@ jQuery('.wp-caption-text').prepend('<span class="icon-camera"></span>');
 
 jQuery('.entry-content blockquote p:first-of-type').wrap('<span></span>');
 
-/*************************** SCROLL COVER FOR INTERACTIVE TOURS ON TENT PAGES **************/
-
-jQuery('.scroll-to-tour').click(function() {
-    jQuery('html,body').animate({scrollTop: jQuery('.scroll-cover').offset().top - 45}, 750);
-    jQuery('.scroll-cover').addClass('hide');
-    setTimeout(function() {
-        jQuery('html').addClass('nav-up');
-    }, 800);
-});
-
-
-jQuery(window).mousewheel(function() {
-    jQuery('.scroll-cover').removeClass('hide');
-});
-
-
 /*************************** YOUTUBE API **************/
-
 
 // https://developers.google.com/youtube/iframe_api_reference
 

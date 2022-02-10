@@ -1,0 +1,153 @@
+.more-info-overlay {
+  display: block;
+  min-height: 61.1rem;
+  max-height: 100%;
+  border: 0.5rem groove rgba(229, 213, 177, 1);
+  background-color: rgba(241, 236, 224, 1);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 15;
+  color: rgba(0,0,0,1);
+  transform: translate(-50%, -50%);
+  overflow: auto;
+}
+
+.more-info-overlay .close.icon-cross {
+  right: 2.5rem;
+}
+
+.more-info-overlay.tent-faqs {
+  overflow-y: hidden;
+}
+
+.more-info-overlay .third.side-info {
+  padding: 4rem;
+  background-color: rgba(255,255,255,1);
+}
+
+.more-info-overlay .third.questions {
+  padding: 0;
+}
+
+.more-info-overlay .call-to-action {
+  height: 100%;
+  padding: 4rem;
+  position: absolute;
+}
+
+.questions ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+.questions li a {
+  display: block;
+  padding: 2rem;
+  position: relative;
+  left: 1px;
+  z-index: 1;
+  color: rgba(0,0,0,1);
+  list-style-type: none;
+}
+
+.questions li.active {
+  border-top: 1px solid rgba(183, 183, 183, 1);
+  border-bottom: 1px solid rgba(183, 183, 183, 1);
+  border-left: none;
+  border-right: none;
+  background-color: rgba(241, 236, 224, 1);
+  box-shadow: 0 3px 10px rgb(156, 156, 156);
+}
+
+.questions li.active a {
+  background-color: rgba(241, 236, 224, 1);
+}
+
+.questions .ask {
+  margin: 2rem;
+  border-width: 3px;
+  border-style: solid;
+  border-color: rgba(255, 90, 95, 1);
+  border-bottom-color: rgba(224, 0, 7, 1);
+  background-color: rgba(255, 90, 95, 1);
+}
+
+.questions .ask a {
+  color: rgba(255,255,255,1);
+}
+
+.questions .ask.active a {
+  color: rgba(0,0,0,1);
+}
+
+.more-info-overlay .answers {
+  padding: 0 8rem;
+}
+
+.answer {
+  float: left;
+  width: 100%;
+}
+
+.answer:last-of-type {
+  min-height: 90vh;
+}
+
+.answer h4 {
+  font-size: 3rem;
+}
+
+.answer h5,
+.answer h6 {
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.answer h6 {
+  font-size: 1.8rem;
+}
+
+.answer h6 .small-font {
+  font-size: 1.2rem;
+}
+
+.price-example {
+  border-top: 1px solid rgba(192, 192, 192, 1);
+}
+
+.price-example ul {
+  padding-left: 2rem;
+}
+
+.more-info-overlay > .full {
+  padding: 2rem;
+}
+
+.quarter.enquiry-choices {
+  display: inline-block;
+  float: none;
+  margin-right: -3px;
+}
+
+.max-capacity-info td,
+.max-capacity-info th {
+  padding: 0.5rem 1rem;
+}
+
+.max-capacity-info tr:hover {
+  background-color: rgba(239, 224, 188, 1);
+}
+
+.max-capacity-info td:hover {
+  background-color: rgba(234, 213, 163, 1);
+}
+
+.more-info-overlay .social-icons a {
+  color: rgba(0,0,0,1);
+}
+
+.more-info-overlay .social-icons a:hover {
+  color: rgba(255, 90, 95, 1);
+}

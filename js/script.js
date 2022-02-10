@@ -13,20 +13,7 @@ $('.my-background-video').bgVideo(
 			}
 	);
 
-	$(".search-toggle").on("click", function(e) {
-			e.preventDefault();
-			$("body").addClass("enable-search");
-
-	});
-	$(".search-inner .search-toggle").on("click", function(e) {
-			e.preventDefault();
-			$("body").removeClass("enable-search");
-
-	});
-    
-    
-    
-	$('.main-slider').owlCarousel({
+  $('.main-slider').owlCarousel({
     mouseDrag: true,
 	animateOut: 'fadeOut',
 	nav: true,

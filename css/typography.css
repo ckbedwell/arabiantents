@@ -1,0 +1,45 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:300,400,700);
+@import url('https://fonts.googleapis.com/css?family=Vidaloka:300,400,700');
+@import url('https://fonts.googleapis.com/css2?family=Italianno&family=Tangerine:wght@400;700&display=swap');
+@import url(../fonts/arabian-icons2/style.css);
+
+@font-face {
+  font-family: 'Calibri-Light';
+  src: url('../fonts/Calibri-Light/Calibri-Light.eot');
+  src: local('Calibri Light'), local('Calibri-Light'),
+    url('../fonts/Calibri-Light/Calibri-Light.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/Calibri-Light/Calibri-Light.woff2') format('woff2'),
+    url('../fonts/Calibri-Light/Calibri-Light.woff') format('woff'),
+    url('../fonts/Calibri-Light/Calibri-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --fontPrimary: "Lato";
+  --fontHeaders: "Italianno";
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 0 2rem 0;
+  font-family: var(--fontHeaders);
+}
+
+body,
+button {
+  font-family: var(--fontPrimary);
+}
+
+p {
+  margin: 0 0 2rem 0;
+}
+
+.small-h3 {
+  font-size: 1.4rem;
+}
