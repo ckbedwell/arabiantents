@@ -19,6 +19,11 @@
 @import url('components/site-header.css');
 @import url('components/slick-slider.css');
 
+@import url('factory-components/cta-block.css');
+@import url('factory-components/display-card.css');
+@import url('factory-components/header-image.css');
+@import url('factory-components/image.css');
+
 @import url('pages/contact-page.css');
 @import url('pages/ideas-page.css');
 

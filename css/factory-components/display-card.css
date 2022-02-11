@@ -1,0 +1,7 @@
+.display-card {
+  border: 1px solid var(--goldLight);
+
+  img {
+    display: block;
+  }
+}

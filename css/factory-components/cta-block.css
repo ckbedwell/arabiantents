@@ -1,0 +1,48 @@
+.cta-block {
+  height: 400px;
+  background-color: var(--goldLight);
+  position: relative;
+  overflow: hidden;
+
+  .image {
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+  }
+
+  .cta_block__content {
+    background-color: rgba(0,0,0,0.18);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 100%;
+    padding: 4rem;
+    position: relative;
+    z-index: 1;
+
+    h3 {
+      font-size: 3rem;
+      color: var(--goldLight);
+      text-shadow: 1px 1px var(--goldDark);
+    }
+
+    .cta_block__desc {
+      /* font-size: 2rem; */
+    }
+
+    .action-button {
+      background-color: white;
+      color: var(--goldDark);
+      display: inline-flex;
+      padding-left: 3rem;
+      padding-right: 3rem;
+    }
+  }
+
+  &:nth-of-type(2n) {
+    background-color: var(--goldMedium);
+  }
+}
