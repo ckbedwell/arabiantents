@@ -1,4 +1,7 @@
 .header-image {
+  max-width: 2560px;
+  margin-right: auto;
+  margin-left: auto;
 
   .image {
     min-height: 35vh;

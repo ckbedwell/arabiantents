@@ -1,0 +1,11 @@
+.tooltip {
+
+  button span {
+    font-size: 0;
+  }
+
+  .information {
+    display: none;
+    position: absolute;
+  }
+}

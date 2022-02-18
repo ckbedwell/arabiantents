@@ -1,100 +1,187 @@
-<form action="/thank-you" method="post" class="small-form quick-form"  reminder="quick-form">
-    <div class="full name-field">
-        <div class="sixth text-center">
-            <span class="icon-vcard"></span>
+<?php
+$name = array(
+  'id' => 'field_name',
+  'label' => 'Your name:',
+  'placeholder' => 'Name',
+  'type' => 'text',
+);
+
+$email = array(
+  'id' => 'field_email',
+  'label' => 'Your email:',
+  'placeholder' => 'john@smith.com',
+  'type' => 'email',
+);
+
+$tel = array(
+  'id' => 'field_telephone',
+  'label' => 'Your telephone:',
+  'placeholder' => 'telephone',
+  'type' => 'tel',
+);
+
+$date = array(
+  'id' => 'field_date',
+  'label' => 'When?',
+  'type' => 'date',
+);
+
+$eventType = array(
+  'id' => 'field_events',
+  'label' => 'What is your event?',
+  'options' => array(
+    'Wedding',
+    'Party',
+    'Corporate Event',
+    'Festival'
+  )
+);
+
+$location = array(
+  'id' => 'field_postcode',
+  'label' => "What's the location of your venue?",
+  'placeholder' => 'Postcode / location',
+  'type' => 'text',
+  'tooltip' => "If you don't have an exact postcode, give us an indication of whereabouts in the country your venue will be so we can quote for delivery."
+);
+
+$message = array(
+  'id' => 'field_message',
+  'label' => 'Your message:',
+);
+?>
+
+<section class="contact-form">
+  <div class="width-contain">
+    
+    <div class="grid">
+      <div>
+        <h2 class="secondary contact-form__title">Tell us about your Event!</h2>
+        <p>Due to Covid-19 we may take slightly longer than the usul 24 hours to reply to your enquiry but look forward to hearing what you're planning. When you get in touch do let us know:</p>
+        <ul>
+          <li>
+            the number of guests you're expecting, and whether you need the space to be socially distanced or not
+          </li>
+          <li>
+            what tent/ furniture/ service you are interested in,
+          </li>
+          <li>
+            the date of your event,
+          </li>
+          <li>
+            the delivery location.
+          </li>
+        </ul>
+        <p>
+          From 2020 we have limited our delivery distance to within 100 miles within our West Sussex base, to help reduce carbon emissions.</p>
+        <p>
+          Ask about our Eco tips for your next event.
+        </p>
+        <p>
+          You can contact us directly by calling 0800 193 5229 emailing info@arabiantents.com or you can use the enquiry form opposite.
+        </p>
+      </div>
+      <form action="thank-you" method="post" class="">
+        <div class="fields-wrapper">
+          <div class="grid-3 grid-1-t gap-2">
+            <?php createInputField($name); ?>
+            <?php createInputField($email); ?>
+            <?php createInputField($tel); ?>
+          </div>
+
+          <div>
+            <?php createRadioField($eventType); ?>
+          </div>
+          <div class="grid-2 grid-1-m gap-2">
+            <?php createInputField($date); ?>
+            <?php createInputField($location); ?>
+          </div>
+          <?php createTextArea($message); ?>
         </div>
-        <div class="five-sixths">
-            <label class="heading-label">Your name:</label>
-            <input type="text" name="field_name" id="field_name" placeholder="Name" />
-        </div>
+
+        <input type="hidden" name="which-form" value="Quick Enquiry Form" />
+        <input type="hidden" name="page-url" value="<?= "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>" />
+        <input disabled type="submit" name="quick-form" data-id="quick-form" id="submit_results" class="action-button" placeholder="Submit" />
+        <input type="hidden" class="token" />
+      </form>
     </div>
+  </div>
+</section>
 
-    <div class="full email-field">
-        <div class="sixth text-center">
-            <span class="icon-at-sign"></span>
-        </div>
-        <div class="five-sixths">
-            <label class="heading-label">Your email:</label>
-            <input type="text" name="field_email" id="field_email" placeholder="Email" />
-        </div>
+<?php
+function createInputField($props)
+{
+  $id = $props['id'];
+  $label = $props['label'];
+  $placeholder = $props['placeholder'];
+  $type = $props['type'];
+  $tooltip = $props['tooltip'];
+  ob_start();
+?>
+  <div class="input-field">
+    <div class="flex gap-1">
+      <label class="heading-label"><?= $label; ?></label>
+      <?php if (isset($tooltip)) {
+        createTooltip($tooltip, $id);
+      } ?>
     </div>
+    <input type="<?= $type; ?>" name="<?= $id; ?>" id="<?= $id; ?>" placeholder="<?= $placeholder; ?>" />
+  </div>
+<?php
+  $output = ob_get_clean();
+  ob_flush();
+  echo $output;
+}
+?>
 
-    <div class="full telephone-field">
-        <div class="sixth text-center">
-            <span class="icon-phone"></span>
-        </div>
-        <div class="five-sixths">
-            <label class="heading-label">Your telephone:</label>
-            <input type="text" name="field_telephone" id="field_telephone" placeholder="Telephone" />
-        </div>
+<?php
+function createTextArea($props)
+{
+  $id = $props['id'];
+  $label = $props['label'];
+  $placeholder = $props['placeholder'];
+  $tooltip = $props['tooltip'];
+  ob_start();
+?>
+  <div class="input-field">
+    <div class="flex gap-1">
+      <label class="heading-label"><?= $label; ?></label>
+      <?php if (isset($tooltip)) {
+        createTooltip($tooltip, $id);
+      } ?>
     </div>
-<div class="full event-field">
-                    <div class="sixth text-center">
-                        <span class="icon-glass"></span>
-                    </div>
-                    <div class="five-sixths">
-                        <h4>What is your event?</h4>
-                        <input type="radio" name="field_events" value="Wedding" id="wedding">
-                        <label for="wedding" class="quarter-margined input-button clickable" style="padding: 2.95rem 3rem;">
-                            <span class="alignleft full vertical-align">Wedding</span>
-                        </label>
-
-                        <input type="radio" name="field_events" value="Party" id="party">
-                        <label for="party" class="quarter-margined input-button clickable" style="padding: 2.95rem 3rem;">
-                            <span class="alignleft full vertical-align">Party</span>
-                        </label>
-
-                        <input type="radio" name="field_events" value="Corporate" id="corporate">
-                        <label for="corporate" class="quarter-margined input-button clickable" style="padding: 2.95rem 3rem;">
-                            <span class="alignleft full vertical-align">Corporate Event</span>
-                        </label>
-
-                        <input type="radio" name="field_events" value="Festival" id="festival">
-                        <label for="festival" class="quarter-margined input-button clickable" style="padding: 2.95rem 3rem;">
-                            <span class="alignleft full vertical-align">Festival</span>
-                        </label>
+    <textarea name="<?= $id; ?>" id="<?= $id; ?>" placeholder="<?= $placeholder; ?>" rows="8"></textarea>
+  </div>
+<?php
+  $output = ob_get_clean();
+  ob_flush();
+  echo $output;
+}
+?>
 
 
-                    </div>
-                </div>
-			<div class="full date-field">
-                <div class="sixth text-center">
-                    <span class="icon-calendar"></span>
-                </div>
-                <div class="five-sixths hidden-fields">
-                    <h4 class="heading-label">Do you have a date?</h4>
-                    <input type="date" name="field_date" id="field_date" class="" placeholder="When?">
-                </div>
-            </div>
-
-            <div class="full postcode-field">
-                <div class="sixth text-center">
-                    <span class="icon-location"></span>
-                </div>
-                <div class="five-sixths">
-                    <h4 class="alignleft wrapper">What's the location of your venue?<button class="quick-info icon-info2" value="postcode-box"></button><span class="quick-info-box postcode-box hide">If you don't have an exact postcode, give us an indication of whereabouts in the country your venue will be so we can quote for delivery.</span></h4>
-                    <input type="text" name="field_postcode" id="field_postcode" class="clearleft" placeholder="Postcode / location">
-                </div>
-            </div>
-    <div class="full message-field">
-        <div class="sixth text-center">
-            <span class="icon-envelop"></span>
-        </div>
-        <div class="five-sixths">
-            <div class="full">
-                <label class="heading-label">Your message:</label>
-            </div>
-
-            <textarea name="field_message" id="field_message" class="full" rows="8" placeholder="Your message"></textarea>
-        </div>
+<?php
+function createRadioField($props)
+{
+  $id = $props['id'];
+  $label = $props['label'];
+  $options = $props['options'];
+  ob_start();
+?>
+  <div class="input-field">
+    <label class="heading-label"><?= $label; ?></label>
+    <div class="grid-4 grid-2-t gap-2">
+      <?php foreach ($options as $option) : ?>
+        <input type="radio" name="<?= $id; ?>" value="<?= $option; ?>" id="<?= $option; ?>" />
+        <label class="action-button" for="<?= $option; ?>">
+          <?= $option; ?>
+        </label>
+      <?php endforeach; ?>
     </div>
-
-    <div class="full">
-        <div class="five-sixths alignright">
-            <input type="hidden" name="which-form" value="Quick Enquiry Form"/>
-            <input type="hidden" name="page-url" value="<?= "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>"/>
-            <input disabled type="submit" name="quick-form" data-id="quick-form" id="submit_results" class="enquire-button" placeholder="Submit"/>
-            <input type="hidden" class="token"/>
-        </div>
-    </div>
-</form>
+  </div>
+<?php
+  $output = ob_get_clean();
+  ob_flush();
+  echo $output;
+}
+?>

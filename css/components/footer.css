@@ -1,0 +1,49 @@
+.awards-section {
+  margin-bottom: 8rem;
+
+  .awards {
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      height: 10rem;
+    }
+  }
+}
+
+.footer {
+  background-color: #ededed;
+  padding: 8rem 0;
+
+  .social-icons {
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+
+.hoh-image {
+  width: 20rem;
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: center;
+
+  ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li:not(:last-of-type) {
+      margin-right: 3rem;
+    }
+  }
+}
+
+.edit-link {
+  position: fixed;
+  bottom: 1rem;
+  left: 1rem;
+}

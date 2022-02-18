@@ -1,0 +1,23 @@
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  margin-top: 3rem;
+
+  > a {
+    color: var(--goldMedium);
+    font-size: 2rem;
+  }
+
+  ul {
+    margin: 0;
+  }
+
+  .social-icons {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    grid-gap: 2rem;
+    margin-top: 1rem;
+    font-size: 2rem;
+  }
+}

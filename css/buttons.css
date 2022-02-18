@@ -1,4 +1,6 @@
 button {
+  border: 0;
+  cursor: pointer;
   font-family: inherit;
   padding: 0;
   background-color: transparent;
@@ -11,8 +13,12 @@ button:focus {
 
 .action-button {
   background-color: var(--goldMedium);
+  border: 0;
   color: white;
+  cursor: pointer;
   display: flex;
+  font-family: inherit;
+  font-size: inherit;
   align-items: center;
   justify-content: center;
   padding: 1rem;

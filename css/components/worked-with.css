@@ -1,0 +1,22 @@
+.worked-with {
+
+  h3 {
+    display: inline-flex;
+    text-align: center;
+    font-size: 4rem;
+    position: relative;
+    margin-bottom: 6rem;
+  }
+
+  .slide-wrapper {
+    display: flex;
+    margin: 0 1rem;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+  img {
+    filter: grayscale(1)
+  }
+}

@@ -8,34 +8,35 @@
  * @package digicrab
  */
 ?>
-<footer class="" role="contentinfo">
-  <img data-src="wp-content/themes/arabiantents/images/british-awards.jpg">
-  <a href="https://www.youtube.com/watch?v=eAq0liEcCV8" target="_blank">
-    <img data-src="wp-content/uploads/2019/01/Award-Logo.png">
-  </a>
-  <img data-src="wp-content/themes/arabiantents/images/House-of-Hud-300x300.png">
-  <img src="wp-content/themes/arabiantents/images/festival-winner.jpg">
-  <img src="wp-content/themes/arabiantents/images/TWG-2019.jpg">
 
-  <p>We are a passionate, award-winning and inter-disciplinary team focused on making your next event a huge success.</p>
+<footer class="footer text-center">
+<div class="awards-section">
+  <div class="width-contain">
+    <div class="flex gap-5 awards">
+      <img data-src="wp-content/themes/arabiantents/images/footer/award-1.jpg">
+      <a href="https://www.youtube.com/watch?v=eAq0liEcCV8" target="_blank">
+        <img data-src="wp-content/themes/arabiantents/images/footer/award-2.png">
+      </a>
+      <img src="wp-content/themes/arabiantents/images/footer/award-3.png">
+      <img src="wp-content/themes/arabiantents/images/footer/award-4.png">
+    </div>
+  </div>
+</div>
+  <div class="width-contain-600">
+    <div class="flex-column flex-center-align gap-3">
+      <div class="hoh-image">
+        <?= createImage("wp-content/themes/arabiantents/images/House-of-Hud-300x300.png", "house of hud"); ?>
+      </div>
+      <div>We are a passionate, award-winning and inter-disciplinary team focused on making your next event a huge success.</div>
 
-  <nav class="" role="navigation">
-    <? wp_nav_menu(array('theme_location' => 'footer', 'menu_id' => 'footer-menu', 'menu_class' => 'footer-menu')); ?>
-  </nav>
-  <? if (is_active_sidebar('contact-details') || is_active_sidebar('contact-details')) {
-    dynamic_sidebar('contact-details');
-  } ?>
-  <h4>
-    <a href="<?= esc_url(home_url('/')); ?>" rel="home">
-      <? bloginfo('name'); ?>
-    </a>
-  </h4>
-  <?
-  if (is_active_sidebar('address-details')) {
-    dynamic_sidebar('address-details');
-  }
-  ?>
-  <p>Copyright © <?php echo date("Y"); ?></p>
+      <? include(locate_template('/partials/address.php')); ?>
+
+      <nav class="footer-nav" role="navigation">
+        <? wp_nav_menu(array('theme_location' => 'footer', 'menu_id' => 'footer-menu', 'menu_class' => 'footer-menu')); ?>
+      </nav>
+      <div>Copyright © <?php echo date("Y"); ?></div>
+    </div>
+  </div>
 </footer>
 
 <? include(locate_template('/partials/overlays.php')); ?>

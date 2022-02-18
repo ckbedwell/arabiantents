@@ -26,12 +26,12 @@ class digicrab_three_fifty_blocks_contact_widget extends WP_Widget
 
         // if the telephone number is set
         if ($telephone) {
-            echo '<a title="Telephone" class="telephone" href="tel:' . $telephone .'"><span class="icon-phone"></span>' . $telephone . '</a>';
+            echo '<a title="Telephone" class="telephone" href="tel:' . $telephone .'">' . $telephone . '</a>';
         }
 
         // if the email address is set
         if ($email) {
-            echo '<a title="Email" class="email" href="mailto:' . $email . '"><span class="icon-envelop"></span>' . $email . '</a>';
+            echo '<a title="Email" class="email" href="mailto:' . $email . '">' . $email . '</a>';
         }
 
         echo '<ul class="social-icons">';
@@ -68,7 +68,6 @@ class digicrab_three_fifty_blocks_contact_widget extends WP_Widget
             echo '<li><a title="youtube" class="youtube" target="_blank" href="' . $youtube . '"><span class="icon-youtube-square"></span></a></li>';
         }
 
-	echo '<li><a class="search-toggle" href="#"><span class="icon-search"></span></a></li>';
         echo $after_widget;
     }
 

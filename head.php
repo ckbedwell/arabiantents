@@ -1,5 +1,5 @@
 <head>
-  <base href="http://localhost:81/arabiantents/">
+  <base href="http://127.0.0.1:81/arabiantents/">
   <!-- Pinterest verification -->
   <meta name="p:domain_verify" content="2aea98e6f4694a068f2d03dd8eb83768" />
   <!-- Google Tag Manager -->

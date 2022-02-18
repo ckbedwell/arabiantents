@@ -5,6 +5,14 @@
 
 html {
   font-size: 62.5%;
+
+  @media(--tabletMedium) {
+    font-size: 58%;
+  }
+
+  @media(--mobileLarge) {
+    font-size: 54%;
+  }
 }
 
 body {

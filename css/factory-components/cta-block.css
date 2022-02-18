@@ -4,12 +4,47 @@
   position: relative;
   overflow: hidden;
 
+  &:hover {
+
+    img {
+      transform: scale(1.05);
+    }
+  }
+
+  &:before,
+  &:after {
+    --size: 50px;
+    --offset: calc((var(--size) - (var(--size) * 2)) / 2);
+    content: "";
+    position: absolute;
+    width: var(--size);
+    height: var(--size);
+    background-color: white;
+    z-index: 10;
+    transform: rotate(45deg);
+    pointer-events: none;
+  }
+
+  &:before {
+    top: var(--offset);
+    left: var(--offset);
+  }
+
+  &:after {
+    right: var(--offset);
+    bottom: var(--offset);
+  }
+
   .image {
     height: 100%;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     width: 100%;
+
+    img {
+      transition: 0.3s;
+    }
   }
 
   .cta_block__content {

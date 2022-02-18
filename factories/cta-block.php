@@ -5,6 +5,7 @@ function createCtaBlock($title, $props)
   $desc = $props['desc'];
   $img = $props['img'];
   $href = $props['href'];
+  $cta = $props['cta'];
 ?>
   <a class="cta-block" href="<?= $href; ?>">
     <? if (isset($img)) {
@@ -17,7 +18,7 @@ function createCtaBlock($title, $props)
       </div>
       <div>
         <span class="action-button">
-          Click me
+          <?= $cta ;?>
         </span>
       </div>
     </div>

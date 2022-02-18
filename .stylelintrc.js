@@ -40,11 +40,11 @@ module.exports = {
     "declaration-no-important": true,
     "font-weight-notation": `numeric`,
     "length-zero-no-unit": true,
-    "max-nesting-depth": 2,
+    "max-nesting-depth": 5,
     "no-duplicate-at-import-rules": true,
     "number-no-trailing-zeros": true,
     "selector-max-id": 0,
-    "selector-max-compound-selectors": 3,
+    "selector-max-compound-selectors": 5,
     "selector-max-universal": 1,
     "unit-disallowed-list": [
       `em`,

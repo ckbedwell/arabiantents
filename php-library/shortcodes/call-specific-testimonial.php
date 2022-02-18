@@ -1,6 +1,6 @@
 <?
 
-function call_testimonial_function($atts, $content = null) {
+function call_testimonial_function($atts) {
     extract(shortcode_atts(array(
         'name' => '',
         ), $atts));
@@ -9,7 +9,6 @@ function call_testimonial_function($atts, $content = null) {
     <? ob_start(); ?>
         <?
             $postID = get_post_meta (get_the_ID(), 'specific-testimonial', true);
-            $postURL = get_the_permalink($postID);
             $postExcerpt = apply_filters('the_excerpt', get_post_field('post_excerpt', $postID));
             $postTitle = get_the_title($postID);
             ?>

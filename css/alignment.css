@@ -1,16 +1,17 @@
-.alignleft {
-  float: left;
-  left: 0;
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.clearleft {
-  float: left;
-  clear: left;
+.flex-center-justify {
+  display: flex;
+  justify-content: center;
 }
 
-.alignright {
-  float: right;
-  right: 0;
+.flex-center-align {
+  display: flex;
+  align-items: center;
 }
 
 .vertical-align {

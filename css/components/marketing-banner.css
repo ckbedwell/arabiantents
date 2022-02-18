@@ -1,0 +1,6 @@
+.marketing-banner {
+  background-color: var(--goldMedium);
+  color: white;
+  padding: 0.75rem 0;
+  text-align: center;
+}

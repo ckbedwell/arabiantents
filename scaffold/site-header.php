@@ -1,8 +1,4 @@
-<div class="marketing-banner">
-  <div class="width-contain">
-      Marketing banner
-  </div>
-</div>
+<? include(locate_template('/scaffold/marketing-banner.php')); ?>
 <header class="site-header">
   <div class="width-contain">
     <div class="site-header__wrapper">
@@ -14,24 +10,11 @@
         />
       </a>
       <div class="flex gap-1">
-        <a class="action-button">
+        <a href="event-design/view-brochure/" class="action-button">
           Get brochures
         </a>
-        <button
-          class="site-header__menu"
-          id="site-header-menu"
-        >
-          <span class="icon-menu"></span>
-          Menu
-        </button>
+        <? include(locate_template('/scaffold/menu.php')); ?>
       </div>
     </div>
   </div>
 </header>
-
-<script>
-  const siteHeaderMenu = document.getElementById(`site-header-menu`)
-  siteHeaderMenu.addEventListener(`click`, () => {
-    console.log(`do something`)
-  })
-</script>
