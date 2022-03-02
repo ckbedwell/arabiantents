@@ -35,7 +35,7 @@ $specificTestimonial = rwmb_meta('specific-testimonial')
     </div>
   </section>
   <section class="width-contain">
-    <div class="grid-3 grid-2-t grid-1-m gap-3">
+    <div class="grid-3 grid-2-t grid-1-m gap-3 cta-blocks">
       <?
       $ctaBlocks = array(
         'Event Design' => array(
@@ -72,6 +72,7 @@ $specificTestimonial = rwmb_meta('specific-testimonial')
           'desc' => "Get in touch! We'd love to hear all about your event",
           'href' => 'contact',
           'cta' => 'Send us a message',
+          'icon' => 'icon-phone',
         ),
       );
 
@@ -82,15 +83,15 @@ $specificTestimonial = rwmb_meta('specific-testimonial')
     </div>
   </section>
 
+  <? get_template_part('partials/enquiry-forms/quick-form'); ?>
+
   <section class="">
     <div class="width-contain-960">
-      <? 
-        include(locate_template('/partials/testimonial-slider.php'));
+      <?
+      include(locate_template('/partials/testimonial-slider.php'));
       ?>
     </div>
   </section>
-
-  <? get_template_part('partials/enquiry-forms/quick-form'); ?>
 
   <section class="">
     <div class="width-contain">

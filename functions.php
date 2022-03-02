@@ -54,6 +54,7 @@ if (!function_exists('digicrab_setup')) {
 
     register_nav_menus(array(
       'primary' => __('Primary Menu', 'digicrab'),
+      'desktop' => __('Desktop Menu', 'digicrab'),
       'footer' => __('Footer Menu', 'digicrab'),
       'home' => __('Home Menu', 'digicrab'),
     ));
@@ -131,6 +132,27 @@ add_action('widgets_init', 'digicrab_widgets_init');
 /**
  * Add surrounding div to sub-menu_order
  */
+
+// add_filter('wp_nav_menu_objects', 'my_wp_nav_menu_objects', 10, 2);
+
+function my_wp_nav_menu_objects($items, $args)
+{
+  // loop
+  foreach ($items as &$item) {
+    // vars
+    $image = get_field('image', $item);
+
+    // append icon
+    if ($image) {
+      // $item->title = var_dump($image);
+      $item->title .= '<div class="padded"><div class="image" style="--aspect-h:' . $image['height'] . '; --aspect-w:' . $image['width'] . ';"><img alt="' . $image['title'] .'" src="' . $image['url'] . '" /></div></div>';
+    }
+  }
+
+
+  // return
+  return $items;
+}
 
 class Child_Wrap extends Walker_Nav_Menu
 {
@@ -325,7 +347,7 @@ add_action('init', 'modify_jquery');
 function digicrab_scripts()
 {
   wp_enqueue_style('video-style', get_template_directory_uri() . '/css/jquery.background-video.css', array(), '1.1.1');
-  wp_enqueue_style('minified-styles', get_template_directory_uri() . '/compiled/css/main.css', array(), '1.0.0');
+  wp_enqueue_style('minified-styles', get_template_directory_uri() . '/compiled/css/main.css', array(), '1.0.2');
   wp_enqueue_style('owl', get_template_directory_uri() . '/js/owl-carousel/assets/owl.carousel.css', array(), '1.1.1');
 
   wp_enqueue_script('digicrab-js', get_template_directory_uri() . '/js/digicrab.js', array(), '1.4', true);

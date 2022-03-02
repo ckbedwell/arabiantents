@@ -5,6 +5,10 @@
 
   .image {
     min-height: 35vh;
+
+    @media(--mobileLarge) {
+      min-height: 50vh;
+    }
   }
 }
 

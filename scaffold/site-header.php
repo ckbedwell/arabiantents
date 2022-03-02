@@ -9,12 +9,8 @@
           src="wp-content/themes/arabiantents/images/atc-rectangle-smaller.png"
         />
       </a>
-      <div class="flex gap-1">
-        <a href="event-design/view-brochure/" class="action-button">
-          Get brochures
-        </a>
-        <? include(locate_template('/scaffold/menu.php')); ?>
-      </div>
+        <? include(locate_template('/scaffold/desktop-menu.php')); ?>
+        <? include(locate_template('/scaffold/mobile-menu.php')); ?>
     </div>
   </div>
 </header>

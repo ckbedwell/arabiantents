@@ -33,7 +33,7 @@
   --fontPrimary: 'Playfair Display', serif;
   --fontPrimary: 'Playfair Display', serif;
   --fontHeaders: "Italianno";
-  --fontHeaders: "Tangerine";
+  --fontHeaders: "Nella Sue";
 }
 
 h1,
@@ -44,6 +44,7 @@ h5,
 h6 {
   margin: 0 0 2rem 0;
   font-family: var(--fontHeaders);
+  font-weight: 500;
 
   &.secondary {
     font-family: var(--fontPrimary);

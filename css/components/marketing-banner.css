@@ -4,3 +4,11 @@
   padding: 0.75rem 0;
   text-align: center;
 }
+
+
+.marketing-banner-slider:not(.slick-initialized) {
+
+  .slide:not(:first-child) {
+    display: none;
+  }
+}
