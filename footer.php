@@ -39,8 +39,6 @@
   </div>
 </footer>
 
-<? include(locate_template('/partials/overlays.php')); ?>
-
 <script>
   (function(i, s, o, g, r, a, m) {
     i['GoogleAnalyticsObject'] = r;
@@ -55,6 +53,7 @@
   ga('create', 'UA-105815387-1', 'auto');
 </script>
 <? wp_footer(); ?>
+<? edit_post_link(__('Edit', 'digicrab'), '<span class="edit-link">', '</span>'); ?>
 </body>
 
 </html>

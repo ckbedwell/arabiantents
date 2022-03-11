@@ -77,3 +77,9 @@ p {
 .small-h3 {
   font-size: 1.4rem;
 }
+
+.section-header {
+  font-size: 4rem;
+  margin-bottom: 4rem;
+  text-align: center;
+}

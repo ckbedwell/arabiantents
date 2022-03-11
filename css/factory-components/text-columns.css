@@ -1,0 +1,6 @@
+.text-columns {
+  @media(--aboveTabletLarge) {
+    column-count: 2;
+    column-gap: 4rem;
+  }
+}

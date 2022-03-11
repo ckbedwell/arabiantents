@@ -51,9 +51,8 @@ $message = array(
 );
 ?>
 
-<section class="contact-form">
+<section class="contact-form sectioned">
   <div class="width-contain">
-    
     <div class="grid">
       <div>
         <h2 class="secondary contact-form__title">Tell us about your Event!</h2>

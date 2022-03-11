@@ -5,4 +5,5 @@
   include(locate_template('factories/header-image.php'));
   include(locate_template('factories/image.php'));
   include(locate_template('factories/tooltip.php'));
+  include(locate_template('factories/text-columns.php'));
 ?>

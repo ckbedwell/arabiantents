@@ -25,6 +25,8 @@
 @import url('components/desktop-menu.css');
 @import url('components/contact.css');
 @import url('components/marketing-banner.css');
+@import url('components/cta-blocks.css');
+@import url('components/video.css');
 
 @import url('factory-components/blockquote.css');
 @import url('factory-components/cta-block.css');
@@ -32,10 +34,13 @@
 @import url('factory-components/header-image.css');
 @import url('factory-components/image.css');
 @import url('factory-components/tooltip.css');
+@import url('factory-components/text-columns.css');
 
 @import url('pages/contact-page.css');
 @import url('pages/ideas-page.css');
 @import url('pages/home-page.css');
+
+@import url('libraries/magnific.css');
 
 .hide {
   display: none;

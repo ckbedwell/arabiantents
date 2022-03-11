@@ -1,33 +1,29 @@
-.gallery .lightbox-link[class*="display-card"]:hover,
-.gallery .lightbox-link:hover [class*="display-card"],
-.gallery .lightbox-link:hover img {
-  transform: scale(1.2);
-}
+.gallery {
+  --spacing: 2rem;
+  column-count: 2;
 
-.lightbox-link.image-link:before {
-  content: "\e90d";
-}
+  @media(--aboveTabletLarge) {
+    column-count: 3;
+    column-gap: var(--spacing);
+  }
 
+  a {
+    display: block;
+    margin-bottom: var(--spacing);
+    break-inside: avoid;
+    page-break-inside: avoid;
+    background-color: #eee;
+    overflow: hidden;
 
-.tiered-gallery .lightbox-link {
-  float: left;
-  width: 48%;
-  margin: 1%;
-}
+    img {
+      transition: 0.3s;
+    }
 
-.tiered-gallery .lightbox-link:first-of-type {
-  width: 98%;
-}
+    &:hover {
 
-.tiered-gallery .lightbox-link:nth-of-type(n+4) {
-  width: 32.33333%;
-  margin: 0.5%;
-}
-
-.tiered-gallery .lightbox-link:first-of-type [class*="display-card"] {
-  height: 30rem;
-}
-
-.tiered-gallery .lightbox-link:nth-of-type(n+4) [class*="display-card"] {
-  height: 10rem;
+      img {
+        transform: scale(1.05);
+      }
+    }
+  }
 }

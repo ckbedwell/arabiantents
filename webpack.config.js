@@ -41,7 +41,7 @@ module.exports =  {
       filename: `css/[name].css`,
     }),
     new BrowserSyncPlugin({
-      proxy: 'http://localhost/arabiantents',
+      proxy: 'http://localhost/arabiantents/',
       port: 80,
     })
   ]

@@ -11,7 +11,7 @@ function createCtaBlock($title, $props)
   <div class="cta-block">
     <a class="cta-block__image-wrapper" href="<?= $href; ?>">
       <? createImage($img, $desc); ?>
-      <? if(isset($icon)) : ?>
+      <? if (isset($icon)) : ?>
         <span class="<?= $icon; ?> cta-block__icon"></span>
       <? endif; ?>
       <div class="cta_block__content">
@@ -22,12 +22,14 @@ function createCtaBlock($title, $props)
         </div>
       </div>
     </a>
-    <div>
-      <div class="cta_block__desc"><?= $desc ?></div>
-      <a class="action-button" href="<?= $href; ?>">
-        <?= $cta; ?>
-      </a>
-    </div>
+    <? if ($desc) : ?>
+      <div>
+        <div class="cta_block__desc"><?= $desc ?></div>
+        <a class="action-button" href="<?= $href; ?>">
+          <?= $cta; ?>
+        </a>
+      </div>
+    <? endif; ?>
   </div>
 <?php
   $output = ob_get_clean();

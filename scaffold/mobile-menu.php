@@ -23,7 +23,6 @@
     let open = false
 
     $('#mobile-nav .menu-item-has-children').each((index, element) => {
-      console.log(element)
       const button = document.createElement(`button`)
       button.innerHTML = '<span class="icon-arrow-right"></span>'
       button.onclick = () => {

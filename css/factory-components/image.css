@@ -3,7 +3,6 @@
   padding-bottom: calc(var(--aspect-h) / var(--aspect-w) * 100%);
 
   img {
-    object-fit: cover;
     object-position: center;
     position: absolute;
     height: 100%;
@@ -12,5 +11,19 @@
     right: 0;
     bottom: 0;
     left: 0;
+  }
+
+  &.cover {
+
+    img {
+      object-fit: cover;
+    }
+  }
+
+  &.contain {
+
+    img {
+      object-fit: contain;
+    }
   }
 }

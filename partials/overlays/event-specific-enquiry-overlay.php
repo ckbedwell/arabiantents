@@ -1,7 +1,6 @@
-<!----- TENT SPECIFIC FORM ---->
 <div class="more-info-overlay width-contain <?= $hide; ?> fade-in enquiry-form">
-    <a class="icon-cross close" title="Close Enquiry Form"><span>Close</span></a>
-    <?
-      include(locate_template('/partials/enquiry-forms/event-enquiry.php'));
-    ?>
+  <a class="icon-cross close" title="Close Enquiry Form"><span>Close</span></a>
+  <?
+  include(locate_template('/partials/enquiry-forms/event-enquiry.php'));
+  ?>
 </div>

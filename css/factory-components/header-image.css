@@ -3,11 +3,58 @@
   margin-right: auto;
   margin-left: auto;
 
+  h1 {
+    color: var(--goldLight);
+    text-shadow: 2px 2px black;
+    font-size: 7rem;
+    text-align: center;
+  }
+
   .image {
     min-height: 35vh;
+  }
 
-    @media(--mobileLarge) {
+  .radial {
+    align-items: center;
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0) 100%);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .usps {
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-size: 2rem;
+  }
+
+  .divider {
+    width: 2px;
+    background-color: white;
+  }
+
+  @media (--mobileLarge) {
+
+    .image {
       min-height: 50vh;
+    }
+
+    h1 {
+      font-size: 6rem;
+    }
+
+    h2 {
+      font-size: 4rem;
+    }
+
+    .usps {
+      font-size: 1.6rem;
     }
   }
 }
