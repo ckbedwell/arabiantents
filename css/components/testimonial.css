@@ -1,0 +1,7 @@
+.testimonial-entry {
+  border: 1px solid rgba(192, 192, 192,1);
+  background-color: rgba(255,255,255,1);
+  box-shadow: 0 0 10px rgb(140 140 140);
+  padding: 2rem;
+  margin-bottom: 4rem;
+}

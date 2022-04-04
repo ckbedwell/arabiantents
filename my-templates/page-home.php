@@ -15,7 +15,7 @@ This collection of unique marquees are not just confined to Arabian influences, 
 
 <main <? post_class('site-main home-page'); ?> role="main">
   <section class="sectioned">
-    <?= createHeaderImage($post, "The very best in tent hire", [
+    <?= createHeaderImage(postFeaturedImage($post), "The very best in tent hire", [
       'Parties' => '/event-design/parties',
       'Events' => '/event-design',
       'Weddings' => '/event-design/weddings',
@@ -57,10 +57,10 @@ This collection of unique marquees are not just confined to Arabian influences, 
       'Contact' => array(
         'desc' => "Get in touch! We'd love to hear all about your event",
         'href' => 'contact',
-        'icon' => 'icon-phone',
+        'img' => 'https://arabiantents.com/wp-content/uploads/2022/03/IMG-20201003-WA0001.jpg',
       ),
     );
-      echo inc('/partials/cta-blocks.php', [ 'args' => $ctaBlocks]);
+      echo inc('/partials/cta-blocks.php', [ 'args' => $ctaBlocks, 'ratio' => [1,1]] );
     ?>
 
   <? get_template_part('partials/enquiry-forms/quick-form'); ?>

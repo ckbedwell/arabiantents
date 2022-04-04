@@ -8,11 +8,10 @@
 <? get_header(); ?>
 
 <main id="post-<? the_ID(); ?>" <? post_class('site-main'); ?> role="main">
-  <?= createHeaderImage($post, get_the_title()); ?>
+  <?= createHeaderImage(postFeaturedImage($post), get_the_title()); ?>
   <? include(locate_template('/scaffold/breadcrumbs.php')); ?>
-  <section class="width-contain">
+  <section class="width-contain sectioned">
     <h2 class="section-header">What kind of event are you having?</h2>
-    <div class="row-padding-extra-small">
       <?= inc('/partials/cta-blocks.php', [
         'args' => queryToBlocks([
           'post_type' => 'page',
@@ -24,15 +23,14 @@
               'terms' => 'service-page',
             ]
           ]
-        ])
+        ]),
+        'ratio' => [1, 1]
       ]); ?>
-    </div>
   </section>
 
-  <section class="width-contain sectioned">
-    <div class="width-contain-700 intro">
-      <?= do_shortcode(wpautop(get_the_content())); ?>
-    </div>
+  <section class="width-contain-960 sectioned">
+    <h2 class="section-header"><?= $section1Title; ?></h2>
+    <?= createTextColumns(get_the_content()); ?>
   </section>
 
   <?= inc("/partials/events-sub.php"); ?>

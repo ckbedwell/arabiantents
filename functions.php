@@ -1,6 +1,7 @@
 <?
 
 include(locate_template('factories/index.php'));
+include(locate_template('adaptors/index.php'));
 
 session_start();
 //  show_admin_bar(false);

@@ -11,7 +11,8 @@
             'terms' => 'additional-service',
           ]
         ]
-      ])
+      ]),
+      'ratio' => [1, 1],
     ]); ?>
   </div>
 </section>

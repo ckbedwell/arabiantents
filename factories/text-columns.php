@@ -4,7 +4,7 @@ function createTextColumns($content)
   ob_start();
 ?>
   <div class="text-columns">
-    <?= wpautop($content); ?>
+    <?= do_shortcode(wpautop($content)); ?>
   </div>
 <?php
   $output = ob_get_clean();

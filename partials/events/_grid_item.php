@@ -16,7 +16,7 @@
     );
   }
 
-  echo inc('/partials/cta-blocks.php', [ 'args' => $ctaBlocks]);
+  echo inc('/partials/cta-blocks.php', [ 'args' => $ctaBlocks, 'ratio' => [1,1]]);
 
   wp_reset_query();
 ?>

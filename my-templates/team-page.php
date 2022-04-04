@@ -7,13 +7,11 @@
 get_header(); ?>
 
 <main id="post-<? the_ID(); ?>" <? post_class('site-main'); ?> role="main">
-  <? include(locate_template('featured-image.php')); ?>
-  <? if (function_exists('breadcrumbs')) {
-    breadcrumbs();
-  } ?>
+  <?= createHeaderImage(postFeaturedImage($post), get_the_title()); ?>
+  <? include(locate_template('/scaffold/breadcrumbs.php')); ?>
 
-  <section class="entry-content">
-    <div class="width-contain">
+  <section class="width-contain sectioned">
+    <div class="grid-3 grid-2-t gap-3">
       <?
       $args = array(
         'exclude' => array(1, 5, 15, 16, 22), // 1 = ckbedwell, 5 = Arabian Tents Editor, 15 = James Hubbard, 16 = Anita Constaintine, 22 = Artemis Marketing
@@ -31,32 +29,26 @@ get_header(); ?>
         $authorImage = get_userdata(get_query_var($author_ID = $authorID));
         $lowerCase = strtolower($user->display_name);
         $jpegName = str_replace(" ", "-", $lowerCase);
+        $src = get_template_directory_uri() . "/images/team-members/" . $jpegName. ".jpg";
+        $name = $user->display_name;
+        $jobTitle = get_user_meta($user->ID, 'jobtitle', true);
+        $description = $user->description;
+        
         ?>
-        <div class="third team-member">
-          <a href="<?= get_author_posts_url($authorID); ?>" class="aligncenter image-link">
-            <img data-src="<?= get_template_directory_uri(); ?>/images/team-members/<?= $jpegName; ?>.jpg" height="465">
-            <noscript>
-              <img src="<?= get_template_directory_uri(); ?>/images/team-members/<?= $jpegName; ?>.jpg">
-            </noscript>
-          </a>
-          <h2 class="text-center height-match"><?= $user->display_name; ?></h2>
-          <h3 class="branding-color text-center"><?= $jobTitle = get_user_meta($user->ID, 'jobtitle', true); ?></h3>
-          <div class="height-match-two"><? $description = $user->description;
-                                        echo wpautop($description); ?></div>
-          <a class="black-button aligncenter clickable" href="<?= get_author_posts_url($authorID); ?>">view profile</a>
+        <div class="team-member">
+          <?= createImage($src, $name, 1.61, 1); ?>
+          <h2 class="text-center">
+            <?= $name ?>
+          </h2>
+          <h3 class="text-center">
+            <?= $jobTitle; ?>
+          </h3>
+          <div class="">
+            <?= wpautop($description); ?>
+          </div>
         </div>
-
-
       <? endforeach; ?>
-
-
-    </div>
+      </div>
   </section>
-
-  <? include(locate_template('/partials/cta.php')); ?>
-
-  <footer class="entry-footer">
-    <? edit_post_link(__('Edit', 'digicrab'), '<span class="edit-link">', '</span>'); ?>
-  </footer>
 </main>
 <? get_footer(); ?>

@@ -1,5 +1,5 @@
 <?php
-function createCtaBlock($title, $props)
+function createCtaBlock($title, $props, $ratio)
 {
   ob_start();
   $desc = $props['desc'];
@@ -7,10 +7,12 @@ function createCtaBlock($title, $props)
   $href = $props['href'];
   $cta = $props['cta'];
   $icon = $props['icon'];
+  $width = $ratio[0];
+  $height = $ratio[1];
 ?>
   <div class="cta-block">
     <a class="cta-block__image-wrapper" href="<?= $href; ?>">
-      <? createImage($img, $desc); ?>
+      <? createImage($img, $desc, $height, $width); ?>
       <? if (isset($icon)) : ?>
         <span class="<?= $icon; ?> cta-block__icon"></span>
       <? endif; ?>

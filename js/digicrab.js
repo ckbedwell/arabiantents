@@ -517,7 +517,6 @@ jQuery(document).ready(function ($) {
   }
 
   function close_overlays() {
-    enquiry_reminder();
     $("html").removeClass("active-overlay active-nav-overlay");
     $('section[class*="-sub"]').removeClass("active"); //mega-menu
     $(".primary-menu .active").removeClass("active");
@@ -689,47 +688,6 @@ var magnific = function () {
     });
   });
 };
-
-/****************************** TALLEST SIBLING *************************************/
-
-jQuery(window).load(function () {
-  var thirds = jQuery(".team-member");
-  for (var i = 0; i < thirds.length; i += 3) {
-    var set = thirds.slice(i, i + 3);
-    //set.wrapAll("<div class='new'></div>"); WRAP THEM IN A NEW DIV
-    var heightMatch = set
-      .map(function () {
-        var heightMatch = jQuery(this).children(".height-match");
-        return heightMatch.height();
-      })
-      .get();
-    var maxHeight = Math.max.apply(null, heightMatch);
-    jQuery(set).children(".height-match").height(maxHeight);
-
-    var heightMatchTwo = set
-      .map(function () {
-        var heightMatch = jQuery(this).children(".height-match-two");
-        return heightMatch.height();
-      })
-      .get();
-    var maxHeightTwo = Math.max.apply(null, heightMatchTwo);
-    jQuery(set).children(".height-match-two").height(maxHeightTwo);
-  }
-
-  // Get an array of all element heights
-  var elementHeights = jQuery(".height-matcher")
-    .map(function () {
-      return jQuery(this).height();
-    })
-    .get();
-
-  // Math.max takes a variable number of arguments
-  // `apply` is equivalent to passing each height as an argument
-  var maxHeight = Math.max.apply(null, elementHeights);
-
-  // Set each height to the max height
-  jQuery(".height-matcher").height(maxHeight);
-});
 
 /*************************** MASONRY **************************************/
 

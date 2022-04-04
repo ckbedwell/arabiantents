@@ -7,29 +7,6 @@
  * @package digicrab
  */
 
-function queryToBlocks($args) {
-  $query = new WP_Query ($args);
-  $posts = $query->posts;
-  $ctaBlocks = array();
-
-  foreach ($posts as $post) {
-    $postId = $post->ID;
-    $title = $post->post_title;
-    $desc = $post->post_excerpt;
-    $href = get_permalink($postId);
-
-    $ctaBlocks[$title] = array(
-      // 'desc' => $desc,
-      'href' => $href,
-      'img' => get_the_featured_image($postId)['full_url'],
-    );
-  }
-
-  wp_reset_query();
-  return $ctaBlocks;
-}
-
-
 function breadcrumbs () {
     echo '<div class="fill"><div class="width-contain"><div class="alignleft breadcrumbs">';
     $pageUrl = $_SERVER["REQUEST_URI"];

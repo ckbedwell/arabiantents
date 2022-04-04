@@ -2,7 +2,7 @@
 <div class="grid-<?= $count; ?> grid-1-m gap-3">
   <?php
     foreach ($ideas as $idea) :
-    $image = get_field('term_image', 'post_tag' . '_' . get_term($idea)->term_id);
+    $image = get_field('term_image', 'post_tag' . '_' . get_term($idea)->term_id)['url'];
     $title = get_term($idea)->name;
   ?>
     <div>

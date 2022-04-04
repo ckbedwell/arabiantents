@@ -11,17 +11,11 @@ get_header();
 
 $CTAimages = rwmb_meta('cta-image');
 $desc =  get_post_meta($post->ID, 'singular-desc', true);
-$stickyCTA = get_post_meta($post->ID, 'sticky-cta-text', true);
 $videos = rwmb_meta('videos');
 $images = rwmb_meta('photos', 'type=image');
 $specificTestimonial = rwmb_meta('specific-testimonial');
 $ideas = wp_get_post_tags(get_the_ID());
 $partners = get_field("partners_gallery");
-
-if (!$stickyCTA) {
-  $stickyCTA = "Let's plan your perfect " . $desc . "!";
-}
-
 $divideOnH2 = preg_split('/(?=<h2>)/', get_the_content(), -1, PREG_SPLIT_NO_EMPTY);
 $sections = [];
 
@@ -51,7 +45,7 @@ $section3 = array_shift($sections);
   }
 </style>
 <main id="post-<? the_ID(); ?>" <? post_class('site-main'); ?> role="main">
-  <?= createHeaderImage($post, get_the_title()); ?>
+  <?= createHeaderImage(postFeaturedImage($post), get_the_title()); ?>
   <? include(locate_template('/scaffold/breadcrumbs.php')); ?>
 
   <section class="width-contain-960 sectioned">

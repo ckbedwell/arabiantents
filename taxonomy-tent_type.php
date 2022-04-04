@@ -12,63 +12,27 @@ if ($count == 1) {
   include(locate_template('single-tent.php'));
 } else {
   $description = term_description($wp_query->term_id);
+  $queried_object = get_queried_object();
+  $title = $queried_object->name;
+
   get_header(); ?>
   <main id="post-<? the_ID(); ?>" <? post_class('site-main'); ?> role="main">
-    <? include(locate_template('featured-image.php')); ?>
+  <?= createHeaderImage(taxonomyFeaturedImage($queried_object), $title); ?>
+  <? include(locate_template('/scaffold/breadcrumbs.php')); ?>
 
-    <section class="parent-contain entry-content scrollto-padding" id="scrollto-entry-content">
-      <? if (function_exists('breadcrumbs')) {
-        breadcrumbs();
-      } ?>
-    </section>
-    <?php if ($description) : ?>
-      <section class="parent-contain">
-        <div class="width-contain intro">
-          <?php echo $description; ?>
-        </div>
-      </section>
-    <?php endif; ?>
+  <?php if ($description) : ?>
+    <div class="width-contain-1000 sectioned">
+      <?= createTextColumns($description); ?>
+    </div>
+  <?php endif; ?>
 
-    <section class="parent-contain">
-      <div class="width-contain">
-        <? if (have_posts()) : ?>
-
-          <? while (have_posts()) : the_post(); ?>
-            <?
-            $featuredImage = get_the_featured_image($post->ID);
-            $count = $wp_query->post_count;
-            if ($count == 1) {
-              $size = 'full archive';
-            } elseif ($count % 2 == 0) {
-              $size = 'half archive';
-            } else {
-              $size = 'third archive';
-            }
-            ?>
-            <div class="<?= $size; ?> larger-cards" id="post-<? the_ID(); ?>">
-              <a class="full image-link" href="<? the_permalink(); ?>">
-                <div class="display-card featured-image" data-bg="<?= $featuredImage['full_url']; ?>"></div>
-                <noscript>
-                  <div class="display-card featured-image" style="background-image: url(<?= $featuredImage['full_url']; ?>);"></div>
-                </noscript>
-
-                <div class="overlay-information">
-                  <h3><? the_title(); ?></h3>
-                </div>
-              </a>
-            </div>
-
-          <? endwhile; ?>
-          <? posts_pagination(); ?>
-
-
-        <? else : ?>
-          <? get_template_part('content', 'none'); ?>
-        <? endif; ?>
-      </div>
-    </section>
-    <? include(locate_template('/partials/cta.php')); ?>
+  <?= inc('/partials/cta-blocks.php', [
+            'args' => queryToBlocks([
+              'post_type' => 'tent',
+              'tent_type' => $term->slug
+            ]),
+            'ratio' => [1.5, 1]
+          ]); ?>
   </main>
 
-<? get_footer();
-} ?>
+<? } get_footer(); ?>

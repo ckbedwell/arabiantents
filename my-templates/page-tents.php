@@ -4,70 +4,39 @@
  * Template Name: Tents Overview Page
  */
 
-get_header(); ?>
+get_header();
+?>
 <main id="post-<? the_ID(); ?>" <? post_class('site-main'); ?> role="main">
-  <? get_template_part('featured-image'); ?>
+  <?= createHeaderImage(postFeaturedImage($post), get_the_title()); ?>
+  <? include(locate_template('/scaffold/breadcrumbs.php')); ?>
+  <?
+  $terms = get_terms('tent_type', array(
+    'hide_empty' => 0,
+    //'orderby' => 'count', BEING ORDERED BY CUSTOM TAXONOMY ORDER NE PLUGIN
+  ));
 
-  <section class="parent-contain scrollto-padding" id="scrollto-entry-content">
-    <? if (function_exists('breadcrumbs')) {
-      breadcrumbs();
-    } ?>
-
-  </section>
-  <div class="entry-content">
-    <?
-    $terms = get_terms('tent_type', array(
-      'hide_empty' => 0,
-      //'orderby' => 'count', BEING ORDERED BY CUSTOM TAXONOMY ORDER NE PLUGIN
-
-    ));
-
-    foreach ($terms as $term) {
-      $args = array(
-        'post_type' => 'tent',
-        'tent_type' => $term->slug
-      );
-      $query = new WP_Query($args);
-      if (have_posts()) : ?>
-        <div class="parent-contain row-padding tent-archive">
-          <div class="width-contain">
-            <div class="width-contain text-center">
-              <a class="branding-color" href="<?= get_term_link($term->term_id); ?>">
-                <h2><?= $term->name; ?></h2>
-              </a>
-              <?= wpautop($term->description); ?>
-            </div>
-            <div class="full">
-              <? while ($query->have_posts()) : $query->the_post(); ?>
-                <?
-                $featuredImage = get_the_featured_image($post->ID);
-                $count = $query->post_count;
-                $size = sized_by_count($count, 'half', 'third', true);
-                ?>
-                <div class="<?= $size; ?> larger-cards" id="post-<? the_ID(); ?>">
-                  <a class="full image-link wrapper" href="<? the_permalink(); ?>">
-                    <div class="display-card featured-image" data-bg="<?= $featuredImage['full_url']; ?>"></div>
-                    <noscript>
-                      <div class="display-card featured-image" style="background-image: url(<?= $featuredImage['full_url']; ?>);"></div>
-                    </noscript>
-
-                    <div class="overlay-information">
-                      <h3><? the_title(); ?></h3>
-                    </div>
-                  </a>
-                </div>
-              <? endwhile; ?>
-            </div>
+  foreach ($terms as $term) :
+    if (have_posts()) : ?>
+      <section class="width-contain sectioned">
+        <a class="" href="<?= get_term_link($term->term_id); ?>">
+          <h2 class="section-header"><?= $term->name; ?></h2>
+        </a>
+        <? if (!empty($term->description)) : ?>
+          <div class="width-contain-1000 sectioned">
+            <?= createTextColumns($term->description); ?>
           </div>
+        <? endif; ?>
+        <div>
+          <?= inc('/partials/cta-blocks.php', [
+            'args' => queryToBlocks([
+              'post_type' => 'tent',
+              'tent_type' => $term->slug
+            ]),
+            'ratio' => [1.5, 1]
+          ]); ?>
         </div>
-    <? wp_reset_postdata();
-      endif;
-    } ?>
-
-  </div>
-  <? include(locate_template('/partials/cta.php')); ?>
-  <footer class="entry-footer">
-    <? edit_post_link(__('Edit', 'digicrab'), '<span class="edit-link">', '</span>'); ?>
-  </footer>
+      </section>
+    <? endif;
+  endforeach; ?>
 </main>
 <? get_footer(); ?>
