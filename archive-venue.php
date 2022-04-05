@@ -15,33 +15,58 @@ get_header();
 wp_reset_query(); ?>
 
 <main id="post-<? the_ID(); ?>" <? post_class('site-main'); ?> role="main">
-  <header class="row-padding small-header text-center">
-    <div class="width-contain">
-      <h1 class="entry-title">Venues</h1>
-    </div>
-  </header>
+  <section class="width-contain-600 sectioned text-center">
+    <h1>Venues</h1>
+    <?= get_the_excerpt(get_page_by_title('Venues')->ID); ?>
+  </section>
 
-  <section class="parent-contain no-padding-top intro map-wrapper">
-    <p class="width-contain-600 row-padding-small text-center">
-      <?= get_the_excerpt(get_page_by_title('Venues')->ID); ?>
-    </p>
-    <div class="width-contain">
-      <div id="map" class="map"></div>
-      <div class="material-card scroll-toggle">
-        <input type="checkbox" id="scroll-toggle" />
-        <label for="scroll-toggle">Enable mousewheel scrolling</label>
-      </div>
+  <section class="width-contain sectioned">
+    <div id="map" class="map"></div>
+    <div>
+      <input type="checkbox" id="scroll-toggle" />
+      <label for="scroll-toggle">Enable mousewheel scrolling</label>
     </div>
   </section>
 
-  <? if (function_exists('breadcrumbs')) {
-    breadcrumbs();
-  } ?>
+  <style>
+    .width-contain-600 h1 {
+      font-size: 4rem;
+      margin-top: 4rem;
+    }
 
-  <section class="parent-contain entry-content" id="scrollto-entry-content">
-    <div class="width-contain">
+    .map {
+      height: 65vh;
+    }
 
-      <form action="/found-venues/" method="get">
+    .map ul {
+      padding: 0;
+      margin: 0;
+      list-style-type: none;
+    }
+
+    .map h1,
+    .map h2 {
+      margin: 0 0 1rem;
+    }
+
+    .featured-image {
+      display: inline-block;
+      width: 30rem;
+      height: 15rem;
+      background-size: cover;
+      background-position: center;
+      margin-bottom: 2rem;
+    }
+
+    .area-card {
+      margin-bottom: 8rem;
+      border-bottom: 1px solid var(--goldDark);
+    }
+  </style>
+
+  <section class="width-contain">
+
+    <!-- <form action="/found-venues/" method="get">
         <div class="row">
 
           <?php $locations = get_terms('location', array(
@@ -155,54 +180,41 @@ wp_reset_query(); ?>
               <button type="submit" class="enquire-button align-center">Find Venues</button>
 
         </div>
-      </form>
+      </form> -->
 
-      <?
-      $terms = get_terms('location', array(
-        'orderby'    => 'title',
-        'order'      => 'ASC',
-        'hide_empty' => 0
-      ));
+    <?
+    $terms = get_terms('location', array(
+      'orderby'    => 'title',
+      'order'      => 'ASC',
+      'hide_empty' => 0
+    ));
 
-      foreach ($terms as $term) : ?>
+    foreach ($terms as $term) : ?>
 
-        <div class="alignleft col-third-list full padded material-card" style="margin-bottom: 8rem">
-          <?
-          $args = array(
-            'post_type' => 'venue',
-            'location' => $term->slug
-          );
+      <div class="area-card">
+        <?
+        $args = array(
+          'post_type' => 'venue',
+          'location' => $term->slug
+        );
 
-          $query = new WP_Query($args);
-          $count = $query->post_count;
-          ?>
+        $query = new WP_Query($args);
+        $count = $query->post_count;
+        ?>
 
-          <h2>Venues in <?= $term->name; ?> (<?= $count; ?>)</h2>
+        <h2>Venues in <?= $term->name; ?> (<?= $count; ?>)</h2>
+        <div class="grid-4 grid-2-m gap-3">
           <? while ($query->have_posts()) : $query->the_post(); ?>
             <? $featuredImage = get_the_featured_image($post->ID); ?>
-            <div class="third archive-item venue" id="post-<? the_ID(); ?>">
-              <div class="parent-contain">
-                <div class="full">
-                  <div class="display-card-medium featured-image" data-bg="<?= $featuredImage['full_url']; ?>"></div>
-
-                  <noscript>
-                    <div class="display-card-medium featured-image" style="background-image: url(<?= $featuredImage['full_url']; ?>);"></div>
-                  </noscript>
-
-
-                </div>
-                <?php echo get_favorites_button($post->ID); ?>
-              </div>
-              <div class="parent-contain">
-                <h3><? the_title(); ?></h3>
-
-              </div>
+            <div id="post-<? the_ID(); ?>">
+              <div class="featured-image" data-bg="<?= $featuredImage['full_url']; ?>"></div>
+              <h3><? the_title(); ?></h3>
             </div>
           <? endwhile; ?>
         </div>
-      <? endforeach;
-      wp_reset_postdata(); ?>
-    </div>
+      </div>
+    <? endforeach;
+    wp_reset_postdata(); ?>
   </section>
 </main>
 <!---------- GOOGLE MAPS ----------------->
@@ -255,7 +267,7 @@ wp_reset_query(); ?>
       });
 
       marker.addListener('click', function() {
-        infowindow.setContent('<h1>' + this.title + '</h1><a href="' + this.url + '" class="featured-image image-link" style="background-image: url(' + this.featured + ');' +
+        infowindow.setContent('<h1>' + this.title + '</h1><a href="' + this.url + '" class="featured-image" style="background-image: url(' + this.featured + ');' +
           '"></a><div class="contact-info"><div class="half"><h2>Address</h2>' + this.address + '</div>' +
           '<div class="half"><h2>Contact</h2><ul><li><a target="_blank" href="' + this.website + '">View website</a></li>' +
           '<li><a href="tel:' + this.phone + '">' + this.phone + '</a></li><li><a href="mailto:' + this.email + '">' + this.email + '</a></li></ul></div></div>');

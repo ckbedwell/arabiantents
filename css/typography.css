@@ -83,3 +83,9 @@ p {
   margin-bottom: 4rem;
   text-align: center;
 }
+
+.page-title {
+  font-size: 4rem;
+  margin: 4rem 0;
+  text-align: center;
+}
