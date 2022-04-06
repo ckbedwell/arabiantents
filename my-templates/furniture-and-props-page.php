@@ -22,7 +22,7 @@ get_header(); ?>
       <div class="width-contain">
         <h2 class="text-center">What kind of furniture do you want to see?</h2>
         <a class="third-margined no-padding image-link" href="/furniture-decoration/indoor-furniture">
-          <img data-src="/wp-content/uploads/2016/01/indoor-large.jpg">
+          <img src="/wp-content/uploads/2016/01/indoor-large.jpg">
           <noscript>
             <img src="/wp-content/uploads/2016/01/indoor-large.jpg">
           </noscript>
@@ -34,7 +34,7 @@ get_header(); ?>
         </a>
 
         <a class="third-margined no-padding image-link" href="/furniture-decoration/outdoor-furniture">
-          <img data-src="/wp-content/uploads/2016/01/outdoor-large.jpg">
+          <img src="/wp-content/uploads/2016/01/outdoor-large.jpg">
           <noscript>
             <img src="/wp-content/uploads/2016/01/outdoor-large.jpg">
           </noscript>
@@ -46,7 +46,7 @@ get_header(); ?>
         </a>
 
         <a class="third-margined no-padding image-link" href="/furniture-decoration/props-decor">
-          <img data-src="/wp-content/uploads/2016/01/props-large.jpg">
+          <img src="/wp-content/uploads/2016/01/props-large.jpg">
           <noscript>
             <img src="/wp-content/uploads/2016/01/props-large.jpg">
           </noscript>

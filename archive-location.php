@@ -54,7 +54,7 @@ get_header(); ?>
             $featuredImage = get_field('term_image', $post->ID);
             ?>
             <a class="full" href="<? the_permalink(); ?>">
-              <img class="full" data-src="<?= $featuredImage; ?>">
+              <img class="full" src="<?= $featuredImage; ?>">
               <noscript>
                 <img class="full" src="<?= $featuredImage; ?>">
               </noscript>

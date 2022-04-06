@@ -5,6 +5,8 @@ $featuredImg = get_the_featured_image(get_the_ID()); //DIFFERENT (IMG INSTEAD OF
 $specificTestimonial = get_post_meta(get_the_ID(), 'specific-testimonial', true);
 $images = rwmb_meta('photos', 'type=image');
 $acfVideo = get_field('video');
+$content = get_the_content();
+$h2Header = rwmb_meta('more-info-h2', $args = array('type=text'));
 
 get_header(); ?>
 
@@ -17,14 +19,14 @@ get_header(); ?>
 
     <section class="width-contain-960 sectioned">
       <h2 class="section-header">
-        <?= rwmb_meta('more-info-h2', $args = array('type=text')); ?>
+        <?= $h2Header; ?>
       </h2>
-      <?= createTextColumns(get_the_content()); ?>
+      <?= createTextColumns($content); ?>
     </section>
 
     <? if (!empty($specificTestimonial)) : ?>
       <section class="width-contain-960 sectioned">
-        <? get_template_part('partials/specific-testimonial'); ?>
+        <? inc('/partials/specific-testimonial.php', ['testimonial' => $specificTestimonial]); ?>
       </section>
     <? endif; ?>
 

@@ -246,10 +246,10 @@ function foresight_hires_img_replace($the_content)
     // Iteration time
     foreach ($imgs as $img) {
       // Let's make sure the img has not been already manipulated by us
-      // by checking if it has a data-src attribute (we could also check
+      // by checking if it has a src attribute (we could also check
       // if it has the fs-img class, or whatever check you might feel is
       // the most appropriate.
-      if ($img->hasAttribute('data-src')) continue;
+      if ($img->hasAttribute('src')) continue;
 
       // Also, let's check that the <img> we found is not child of a <noscript>
       // tag, we want to leave those alone as well.
@@ -260,14 +260,14 @@ function foresight_hires_img_replace($the_content)
 
       $src = $img->getAttribute('src');
       $img->removeAttribute('src');
-      $img->setAttribute('data-src', $src);
+      $img->setAttribute('src', $src);
     };
 
     return $post->saveHTML();
   }
 }
 
-add_filter('the_content', 'foresight_hires_img_replace');
+// add_filter('the_content', 'foresight_hires_img_replace');
 
 /**
  * Disable the emojis

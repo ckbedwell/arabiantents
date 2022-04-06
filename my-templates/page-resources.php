@@ -23,7 +23,7 @@ get_header(); ?>
             <div class="third-margined no-padding">
               <h4 class=""><? the_sub_field("resource_title"); ?></h4>
               <a href="<? the_sub_field("link"); ?>" target="_blank" class="height-matcher full image-link download-link material-card" style="display: flex; align-items: center;">
-                <img data-src="<? the_sub_field("resource_cover_image"); ?>">
+                <img src="<? the_sub_field("resource_cover_image"); ?>">
                 <noscript>
                   <img src="<? the_sub_field("resource_cover_image"); ?>">
                 </noscript>

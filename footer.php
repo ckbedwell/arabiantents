@@ -13,9 +13,9 @@
 <div class="awards-section">
   <div class="width-contain">
     <div class="flex gap-5 awards">
-      <img data-src="wp-content/themes/arabiantents/images/footer/award-1.jpg">
+      <img src="wp-content/themes/arabiantents/images/footer/award-1.jpg">
       <a href="https://www.youtube.com/watch?v=eAq0liEcCV8" target="_blank">
-        <img data-src="wp-content/themes/arabiantents/images/footer/award-2.png">
+        <img src="wp-content/themes/arabiantents/images/footer/award-2.png">
       </a>
       <img src="wp-content/themes/arabiantents/images/footer/award-3.png">
       <img src="wp-content/themes/arabiantents/images/footer/award-4.png">

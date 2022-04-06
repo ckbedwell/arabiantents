@@ -62,7 +62,7 @@ get_header(); ?>
             } ?>
             <?= wpautop(get_the_content()); ?>
             <? if ($acfTestimonial) {
-              include(locate_template('/partials/specific-testimonial.php'));
+              inc('/partials/specific-testimonial.php', ['testimonial' => $acfTestimonial]);
             } ?>
           </div>
         </div>

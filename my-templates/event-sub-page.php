@@ -60,10 +60,10 @@ $section3 = array_shift($sections);
   <?php endif; ?>
 
   <? if (!empty($specificTestimonial)) : ?>
-    <section class="width-contain-960 sectioned">
-      <? get_template_part('partials/specific-testimonial'); ?>
-    </section>
-  <? endif; ?>
+      <section class="width-contain-960 sectioned">
+        <?= inc('/partials/specific-testimonial.php', ['testimonial' => $specificTestimonial]); ?>
+      </section>
+    <? endif; ?>
 
   <? get_template_part('partials/enquiry-forms/quick-form'); ?>
 

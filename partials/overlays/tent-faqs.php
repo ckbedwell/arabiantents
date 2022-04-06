@@ -120,7 +120,7 @@
           ?>
           <div class="">
             <div class="">
-              <img data-src="<?= $featuredImage['full_url']; ?>" class="point-five-trans">
+              <img src="<?= $featuredImage['full_url']; ?>" class="point-five-trans">
             </div>
             <div class="">
               <h3><?= $title; ?></h3>
@@ -173,8 +173,8 @@
     });
 
     jQuery('[scrollto]').click(function() {
-      jQuery('.tent-faqs [data-src]').each(function() {
-        var dataLink = jQuery(this).attr('data-src');
+      jQuery('.tent-faqs [src]').each(function() {
+        var dataLink = jQuery(this).attr('src');
         jQuery(this).attr('src', dataLink);
       });
 

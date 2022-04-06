@@ -6,7 +6,7 @@
             ?>
 
 
-            <img class="rounded" data-src="<?= get_cupp_meta($authorID, $size); ?>">
+            <img class="rounded" src="<?= get_cupp_meta($authorID, $size); ?>">
             <noscript>
                 <img class="rounded" src="<?= get_cupp_meta($authorID, $size); ?>">
             </noscript>

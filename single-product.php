@@ -56,7 +56,10 @@
                     <div class="half intro">
                         <? if($acfAddHeader) { echo '<h2>' . $acfAddHeader . '</h2>'; } ?>
                         <?= wpautop(get_the_content()); ?>
-                        <? if ($acfTestimonial) { include(locate_template('/partials/specific-testimonial.php')); } ?>
+                        <? if ($acfTestimonial) {
+                          inc('/partials/specific-testimonial.php', ['testimonial' => $specificTestimonial]);
+                        } ?>
+                        
                     </div>
                     <?
 

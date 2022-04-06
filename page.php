@@ -14,29 +14,12 @@
 get_header(); ?>
 
 <main id="post-<? the_ID(); ?>" <? post_class('site-main'); ?> role="main">
+  <?= createHeaderImage(postFeaturedImage($post), get_the_title()); ?>
+  <? include(locate_template('/scaffold/breadcrumbs.php')); ?>
 
-  <? include(locate_template('featured-image.php')); ?>
-
-  <div class="entry-content dfs scrollto-padding barbara" id="scrollto-entry-content">
-    <? if (function_exists('breadcrumbs')) {
-      breadcrumbs();
-    } ?>
-
-    <section class="entry-content">
-      <div class="width-contain">
-        <div class="width-contain-700 intro">
-          <?= do_shortcode(wpautop(get_the_content())); ?>
-        </div>
-      </div>
-    </section>
-  </div>
-
-
-
-
-  <footer class="entry-footer">
-    <? edit_post_link(__('Edit', 'digicrab'), '<span class="edit-link">', '</span>'); ?>
-  </footer>
-  <? include(locate_template('/partials/cta.php')); ?>
+  <section class="width-contain-960 sectioned">
+    <h2 class="section-header"><?= $section1Title; ?></h2>
+    <?= createTextColumns(get_the_content()); ?>
+  </section>
 </main>
 <? get_footer(); ?>

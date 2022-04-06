@@ -156,7 +156,7 @@ get_header();
           <div class="third-margined">
             <h5>Download our furniture pricelist</h5>
             <a href="https://arabiantents.com/wp-content/themes/arabiantents/resources/HoH-Price-List-05.18-HoH.pdf" target="_blank" class="image-link download-link text-center material-card">
-              <img data-src="https://arabiantents.com/wp-content/uploads/2019/09/Screenshot-2019-09-20-at-15.25.04.png" src="https://arabiantents.com/wp-content/uploads/2019/09/Screenshot-2019-09-20-at-15.25.04.png" class="lazy-loaded">
+              <img src="https://arabiantents.com/wp-content/uploads/2019/09/Screenshot-2019-09-20-at-15.25.04.png" src="https://arabiantents.com/wp-content/uploads/2019/09/Screenshot-2019-09-20-at-15.25.04.png" class="lazy-loaded">
               <noscript>
                 <img src="https://arabiantents.com/wp-content/uploads/2019/09/Screenshot-2019-09-20-at-15.25.04.png">
               </noscript>

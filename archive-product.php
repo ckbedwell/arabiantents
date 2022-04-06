@@ -8,64 +8,21 @@
  * @package digicrab
  */
 
-// $page = get_page_by_title('Product Gallery');
-// $pageID = $page->ID;
-// $featuredImage = get_the_featured_image($pageID)["full_url"];
+get_header();
+$archive = get_queried_object();
 
-get_header(); ?>
+?>
 <main id="post-<? the_ID(); ?>" <? post_class('site-main'); ?> role="main">
-  <header class="row-padding wrapper small-header">
-    <div class="width-contain text-center">
-      <h1 class="entry-title">Furniture Gallery</h1>
-    </div>
-  </header>
+  <h1 class="page-title">
+    <?= $archive->label; ?>
+  </h1>
+  <? include(locate_template('/scaffold/breadcrumbs.php')); ?>
 
-  <div class="parent-contain scrollto-padding" id="scrollto-entry-content">
-    <? if (function_exists('breadcrumbs')) {
-      breadcrumbs();
-    }
-    ?>
-    <section class="parent-contain entry-content" id="scrollto-entry-content">
-      <div class="slider-contain">
-        <div class="text-center slider-primary">
-          <? while (have_posts()) : the_post(); ?>
-            <? if ($featuredImage = get_field('term_image')) : ?>
-              <div class="slide">
-                <div class="full vertical-align">
-                  <div class="wrapper">
-                    <img src="<?= $featuredImage; ?>" alt="Product photo">
-                    <a href="<? the_permalink(); ?>" class="alignright point-three-trans clickable featured-image-caption" title="Go to the <? the_title(); ?>">
-                      <span class="alignleft vertical-align icon-info"></span>
-                      <? the_title(); ?>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            <? endif; ?>
-          <? endwhile;
-          rewind_posts(); ?>
-        </div>
-        <div class="row-padding-small slider-nav">
-          <?
-          if (have_posts()) :
-            while (have_posts()) : the_post();
-          ?>
-              <? if ($featuredImage = get_field('term_image')) : ?>
-                <div class="slide">
-                  <div class="full display-card-small featured-image clickable" style="background-image: url(<?= $featuredImage; ?>);"></div>
-                </div>
-
-              <? endif; ?>
-          <? endwhile;
-          endif; ?>
-        </div>
-      </div>
-    </section>
-    <? include(locate_template('/partials/cta.php')); ?>
-  </div>
-
-  <footer class="entry-footer">
-    <? edit_post_link(__('Edit', 'digicrab'), '<span class="edit-link">', '</span>'); ?>
-  </footer>
+  <section class="width-contain sectioned">
+      <?= inc('/partials/image-blocks.php', [
+        'blocks' => archiveToBlocks($wp_query->posts),
+        'ratio' => [1, 1]
+      ]); ?>
+  </section>
 </main>
 <? get_footer(); ?>

@@ -30,7 +30,7 @@ get_header(); ?>
           $featuredImage = get_the_featured_image($post->ID);
           ?>
           <a class="full" href="<? the_permalink(); ?>">
-            <img class="full" data-src="<?= $featuredImage['full_url']; ?>">
+            <img class="full" src="<?= $featuredImage['full_url']; ?>">
             <noscript>
               <img class="full" src="<?= $featuredImage['full_url']; ?>">
             </noscript>
