@@ -450,24 +450,6 @@ jQuery(document).ready(function ($) {
     }
   });
 
-  /******************************************************/
-
-  function show_diners() {
-    var totalGuests = jQuery("#field_total_guests");
-    var totalGuestsVal = totalGuests.val();
-    var parentForm = totalGuests.closest("form");
-    if (totalGuestsVal > 0) {
-      jQuery(parentForm).addClass("display-hidden"); // SHOW DINING GUESTS INPUT
-    } else {
-      jQuery(parentForm).removeClass("display-hidden");
-    }
-    return parentForm;
-  }
-
-  jQuery("#field_total_guests").on("change", function () {
-    show_diners();
-  });
-
   /*****************************************************/
 
   //GIVE FORMS DIFFERENT IDS
@@ -476,88 +458,8 @@ jQuery(document).ready(function ($) {
     jQuery(this).attr("ID", id);
   });
 
-  //SLICK - IMAGE GALLERY
-
-  $(".slider-primary").slick({
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    arrows: false,
-    fade: true,
-    asNavFor: ".slider-nav",
-    infinite: false,
-  });
-
-  $(".slider-nav").slick({
-    slidesToShow: 5,
-    slidesToScroll: 1,
-    asNavFor: ".slider-primary",
-    centerMode: true,
-    focusOnSelect: true,
-    infinite: false,
-    responsive: [
-      {
-        breakpoint: 960,
-        settings: {
-          slidesToShow: 3,
-        },
-      },
-    ],
-  });
-
-  $(".slider-nav").click(function () {
-    $("html").addClass("nav-up");
-  });
-
-  // ********************************************* OVERLAYS ***************************************** //
-
-  function open_overlay() {
-    $("html").addClass("active-overlay");
-    $(".overlay").removeClass("hide").addClass("active");
-    $(".message-reminder").addClass("hide");
-  }
-
-  function close_overlays() {
-    $("html").removeClass("active-overlay active-nav-overlay");
-    $('section[class*="-sub"]').removeClass("active"); //mega-menu
-    $(".primary-menu .active").removeClass("active");
-    $(".more-info-overlay").addClass("hide").removeClass("active");
-    $(".overlay").removeClass("active").addClass("hide");
-  }
-
-  function go_back() {
-    $(".tent-selection .tent-type").addClass("hide");
-    $(".tent-selection .all-tent-types")
-      .removeClass("hide")
-      .addClass("fade-in");
-  }
-
-  //***** Tent Page More Info Overlay *****//
-
-  $(document).on("click", ".tent-selection .all-tent-types a", function () {
-    var target = "#" + $(this).attr("value");
-    if ($(target).length) {
-      $(".tent-selection .all-tent-types").addClass("hide");
-      $(target).removeClass("hide").addClass("fade-in");
-    }
-  });
-
-  $(document).on("click", ".tent-selection .go-back", function () {
-    go_back();
-  });
-
   $(".more-info, .more-info > a").click(function () {
     var activeOverlay = "." + $(this).attr("value");
-    open_overlay();
-    $(activeOverlay).removeClass("hide").addClass("active");
-    return false;
-  });
-
-  //FEEDBACK FORM
-  $(".newsletter-link a").attr("value", "newsletter-form");
-
-  $(document).on("click", ".tent-selection .more-info", function () {
-    var activeOverlay = "." + $(this).attr("value");
-    close_overlays();
     open_overlay();
     $(activeOverlay).removeClass("hide").addClass("active");
     return false;
@@ -591,80 +493,10 @@ jQuery(document).ready(function ($) {
     go_back();
   });
 
-  //Edit Link Button
-  $(".edit-link a").addClass("black-button scale-five");
-
-  //Image Link Class
-
-  $("a.featured-image, a.lightbox-link")
-    .filter(function () {
-      return $(this).css("backgroundImage") != "";
-    })
-    .addClass("image-link");
-
-  //Entry Header Heights Set
-
-  $(".height-filler").each(function () {
-    var $parent = $(this).parent().outerHeight();
-    $(this).css("height", $parent);
-  });
-
-  /*************** SMOOTH SCROLLING ***************/
-
-  $(function () {
-    $('a[href^="#scrollto"]:not([href="#"])').click(function (event) {
-      event.preventDefault();
-      if (
-        location.pathname.replace(/^\//, "") ==
-          this.pathname.replace(/^\//, "") &&
-        location.hostname == this.hostname
-      ) {
-        //CHECK SAME SITE
-        var target = $(this.hash);
-        target = target.length
-          ? target
-          : $("[name=" + this.hash.slice(1) + "]");
-        if (target.length) {
-          if (target.offset().top < $(document).scrollTop()) {
-            //IF SCROLLING UP OFFSET BY 150px
-            $("html,body").animate(
-              {
-                scrollTop: target.offset().top - 150,
-              },
-              500
-            );
-          } else {
-            $("html,body").animate(
-              {
-                //IF SCROLLING DOWN NO OFFSET
-                scrollTop: target.offset().top,
-              },
-              500
-            );
-          }
-          return false;
-        }
-      }
-    });
-  });
-
   /*************** SELECT INPUT USING CHOSEN ***************/
 
   $(".chosen-select").chosen();
 
-  /********** FEATURED IMAGE CAPTION STARTS GALLERY *****/
-
-  $(".featured-image-caption").click(function () {
-    $(".tiered-gallery a:first-of-type").click();
-  });
-
-  /*** ***/
-
-  $(document).on("click", ".mobile-menu", function () {
-    $(this).toggleClass("active");
-    $("html").toggleClass("active-overlay");
-    $(".main-navigation").toggleClass("active");
-  });
 }); //END READY
 
 /********************************* MAGNIFIC *******************************************/
@@ -672,6 +504,25 @@ var magnific = function () {
   jQuery(".gallery").each(function () {
     jQuery(this).magnificPopup({
       delegate: "a",
+      type: "image",
+      mainClass: 'mfp-with-zoom', // this class is for CSS animation below
+      zoom: {
+        enabled: true, // By default it's false, so don't forget to enable it
+        duration: 300, // duration of the effect, in milliseconds
+        easing: 'ease-in-out', // CSS transition easing function
+      },
+      image: {
+        titleSrc: "caption",
+      },
+      gallery: {
+        enabled: true,
+      },
+    });
+  });
+
+  jQuery(".post-content").each(function () {
+    jQuery(this).magnificPopup({
+      delegate: "a[rel*=attachment]",
       type: "image",
       mainClass: 'mfp-with-zoom', // this class is for CSS animation below
       zoom: {
@@ -722,14 +573,6 @@ jQuery(document).ajaxComplete(function () {
   });
 });
 
-/*************************** ADD CAMERA ICON TO POST IMAGES **************************************/
-
-jQuery(".wp-caption-text").prepend('<span class="icon-camera"></span>');
-
-/*************************** ADD SPAN TAGS TO BLOCKQUOTES **************************************/
-
-jQuery(".entry-content blockquote p:first-of-type").wrap("<span></span>");
-
 /*************************** YOUTUBE API **************/
 
 // https://developers.google.com/youtube/iframe_api_reference
@@ -777,10 +620,3 @@ function onPlayerStateChange(event) {
   if (event.data === 0) {
   }
 }
-
-jQuery(".sticky-info .two-thirds .more-info").click(function () {
-  var tag = document.createElement("script");
-  tag.src = "https://www.youtube.com/iframe_api";
-  var firstScriptTag = document.getElementsByTagName("script")[0];
-  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-});
