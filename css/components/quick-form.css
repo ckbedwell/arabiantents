@@ -38,7 +38,22 @@
   }
 
   input[type="radio"] {
-    display: none;
+    appearance: none;
+    position: absolute;
+    z-index: -1;
+
+    + label {
+      border: 1px solid transparent;
+    }
+
+    &:focus + label {
+      border: 1px solid #000;
+      box-shadow: 0 0 0 1px #000;
+    }
+
+    &:checked + label {
+      background-color: var(--goldOther);
+    }
   }
 
   label {
@@ -54,5 +69,18 @@
 
   .input-field {
     margin-bottom: 2rem;
+  }
+
+  .error-message {
+    display: none;
+    color: #d85d5d;
+    margin-top: 0.5rem;
+  }
+
+  .error {
+
+    .error-message {
+      display: block;
+    }
   }
 }
