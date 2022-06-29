@@ -1,0 +1,13 @@
+<?
+  include(locate_template('blocks/block-wrapper.php'));
+  include(locate_template('blocks/block-quote.php'));
+  include(locate_template('blocks/block-heading.php'));
+  include(locate_template('blocks/block-image.php'));
+  include(locate_template('blocks/block-images.php'));
+  include(locate_template('blocks/block-video.php'));
+  include(locate_template('blocks/block-text-columns.php'));
+  include(locate_template('blocks/block-worked-with.php'));
+  include(locate_template('blocks/block-testimonials.php'));
+  include(locate_template('blocks/block-image-gallery.php'));
+  include(locate_template('blocks/block-page-blocks.php'));
+?>

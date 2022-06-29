@@ -5,14 +5,12 @@
   position: fixed;
   top: 0;
   left: 0;
-}
-
-.active-nav-overlay .overlay {
-  z-index: 9;
+  display: none;
 }
 
 .active-overlay .overlay {
   z-index: 15;
+  display: block;
 }
 
 .active-overlay {

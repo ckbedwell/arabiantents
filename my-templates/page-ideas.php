@@ -44,7 +44,7 @@ foreach ($tags as $tag) {
   <section class="width-contain sectioned">
     <div class="isotope-grid grid-3 grid-2-t gap-3">
       <? foreach ($ctaBlocks as $key => $props) {
-        createCtaBlock($key, $props, [1.6, 1]);
+        echo createCtaBlock($key, $props, [1.6, 1]);
       } ?>
     </div>
   </section>

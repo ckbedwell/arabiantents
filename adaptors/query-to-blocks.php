@@ -12,6 +12,7 @@
 
       $ctaBlocks[$title] = array(
         // 'desc' => $desc,
+        'id' => $postId,
         'href' => $href,
         'img' => get_the_featured_image($postId)['full_url'],
       );

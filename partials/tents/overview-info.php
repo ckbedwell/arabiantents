@@ -2,22 +2,22 @@
   $infoBlocks = array(
     'Max Capacity:' => array(
       'icon' => 'icon-users',
-      'answer' => 'answer1',
+      'answer' => 'answer0',
       'info' => rwmb_meta('max-capacity', $args = array('type=number')),
     ),
     'Min. Space Required:' => array(
       'icon' => 'icon-rulers',
-      'answer' => 'answer2',
+      'answer' => 'answer1',
       'info' => rwmb_meta('min-size', $args = array('type=text')),
     ),
     'Build Time:' => array(
       'icon' => 'icon-clock',
-      'answer' => 'answer3',
+      'answer' => 'answer2',
       'info' => rwmb_meta('build-time', $args = array('type=text')),
     ),
     'Layout and Price:' => array(
       'icon' => 'icon-coin-pound',
-      'answer' => 'answer8',
+      'answer' => 'answer7',
       'info' => 'See examples',
     )
   )
@@ -31,11 +31,9 @@
           <span class="info-block__icon <?= $infoBlock['icon'] ?>"></span>
           <span class="info-block__title">
             <?= $key; ?>
-            <button class="more-info icon-info2 js-only" value="tent-faqs" scrollto="<?= $infoBlock['answer']; ?>"></button>
+            <button class="more-info icon-info2" data-value="<?= $infoBlock['answer']; ?>"></button>
           </span>
-          <a class="meta-info more-info" value="tent-faqs" scrollto="answer1">
-            <?= $infoBlock['info']; ?>
-          </a>
+          <?= $infoBlock['info']; ?>
         </div>
       <?php endforeach; ?>
     </div>

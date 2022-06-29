@@ -1,10 +1,9 @@
 <?
-  include(locate_template('factories/blockquote.php'));
-  include(locate_template('factories/cta-block.php'));
-  include(locate_template('factories/image-block.php'));
-  include(locate_template('factories/display-card.php'));
-  include(locate_template('factories/header-image.php'));
-  include(locate_template('factories/image.php'));
-  include(locate_template('factories/tooltip.php'));
-  include(locate_template('factories/text-columns.php'));
+  include(locate_template('factories/factory-blockquote.php'));
+  include(locate_template('factories/factory-cta-block.php'));
+  include(locate_template('factories/factory-image-block.php'));
+  include(locate_template('factories/factory-header-image.php'));
+  include(locate_template('factories/factory-image.php'));
+  include(locate_template('factories/factory-tooltip.php'));
+  include(locate_template('factories/factory-text-columns.php'));
 ?>

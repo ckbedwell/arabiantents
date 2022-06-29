@@ -29,6 +29,7 @@
 @import url('components/video.css');
 @import url('components/overview-info.css');
 @import url('components/testimonial.css');
+@import url('components/highlight-section.css');
 
 @import url('factory-components/blockquote.css');
 @import url('factory-components/cta-block.css');
@@ -40,7 +41,6 @@
 
 @import url('pages/contact-page.css');
 @import url('pages/ideas-page.css');
-@import url('pages/home-page.css');
 @import url('pages/single-tent-page.css');
 
 @import url('libraries/magnific.css');

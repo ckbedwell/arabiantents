@@ -39,6 +39,6 @@ function createTooltip($tooltip, $id)
 <?php
   $output = ob_get_clean();
   ob_flush();
-  echo $output;
+  return $output;
 }
 ?>

@@ -21,10 +21,18 @@
     flex-direction: column;
     height: 100%;
     width: 100%;
-    padding-top: 4rem;
+    padding: 4rem;
     position: absolute;
     top: 0;
     left: 0;
+
+    &.bottom {
+      justify-content: flex-end;
+    }
+
+    &.center {
+      justify-content: center;
+    }
   }
 
   .usps {

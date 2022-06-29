@@ -26,6 +26,6 @@ function createImageBlock($title, $props, $ratio)
 <?php
   $output = ob_get_clean();
   ob_flush();
-  echo $output;
+  return $output;
 }
 ?>

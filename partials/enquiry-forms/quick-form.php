@@ -58,12 +58,12 @@ $message = array(
 );
 ?>
 
-<section class="contact-form sectioned">
+<section class="contact-form sectioned highlight-section">
   <div class="width-contain">
     <div class="grid">
       <div>
         <h2 class="secondary contact-form__title">Tell us about your Event!</h2>
-        <p>Due to Covid-19 we may take slightly longer than the usul 24 hours to reply to your enquiry but look forward to hearing what you're planning. When you get in touch do let us know:</p>
+        <p>We look forward to hearing what you're planning; when you get in touch do let us know:</p>
         <ul>
           <li>
             the number of guests you're expecting, and whether you need the space to be socially distanced or not
@@ -264,7 +264,7 @@ function createInputField($props)
     <div class="flex gap-1">
       <label class="heading-label"><?= $label; ?></label>
       <?php if (isset($tooltip)) {
-        createTooltip($tooltip, $id);
+        echo createTooltip($tooltip, $id);
       } ?>
     </div>
     <input type="<?= $type; ?>" name="<?= $id; ?>" id="<?= $id; ?>" placeholder="<?= $placeholder; ?>" />
@@ -291,7 +291,7 @@ function createTextArea($props)
     <div class="flex gap-1">
       <label class="heading-label"><?= $label; ?></label>
       <?php if (isset($tooltip)) {
-        createTooltip($tooltip, $id);
+        echo createTooltip($tooltip, $id);
       } ?>
     </div>
     <textarea name="<?= $id; ?>" id="<?= $id; ?>" placeholder="<?= $placeholder; ?>" rows="8"></textarea>

@@ -25,7 +25,7 @@ if ($count > 4) {
   <div class="grid-<?= $length; ?> grid-2-t grid-1-m gap-3 cta-blocks">
     <?
     foreach ($imageBlocks as $key => $props) {
-      createImageBlock($key, $props, $ratio);
+      echo createImageBlock($key, $props, $ratio);
     }
     ?>
   </div>

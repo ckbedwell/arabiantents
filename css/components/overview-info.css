@@ -67,7 +67,7 @@
       }
     }
 
-    li a {
+    li button {
       display: block;
       padding: 2rem;
       position: relative;
@@ -86,7 +86,7 @@
       box-shadow: 0 3px 10px rgb(156, 156, 156);
     }
 
-    li.active a {
+    li.active button {
       background-color: rgba(241, 236, 224, 1);
     }
   }

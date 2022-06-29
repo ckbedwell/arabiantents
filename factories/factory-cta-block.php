@@ -12,7 +12,7 @@ function createCtaBlock($title, $props, $ratio)
 ?>
   <div class="cta-block">
     <a class="cta-block__image-wrapper" href="<?= $href; ?>">
-      <? createImage($img, $desc, $height, $width); ?>
+      <?= createImage($img, $desc, $height, $width); ?>
       <? if (isset($icon)) : ?>
         <span class="<?= $icon; ?> cta-block__icon"></span>
       <? endif; ?>
@@ -35,7 +35,6 @@ function createCtaBlock($title, $props, $ratio)
   </div>
 <?php
   $output = ob_get_clean();
-  ob_flush();
-  echo $output;
+  return $output;
 }
 ?>

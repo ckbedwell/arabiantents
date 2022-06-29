@@ -7,7 +7,7 @@
   ?>
     <div>
       <a href="<?= get_term_link($idea); ?>">
-        <? createImage($image); ?>
+        <?= createImage($image); ?>
       </a>
       <div><?= $title; ?></div>
     </div>

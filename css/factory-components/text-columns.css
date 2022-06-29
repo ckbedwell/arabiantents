@@ -1,7 +1,16 @@
 .text-columns {
+
   @media(--aboveTabletLarge) {
-    column-count: 2;
+    column-count: var(--columnsCount);
     column-gap: 4rem;
     column-fill: balance;
+  }
+
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-size: 3rem;
   }
 }

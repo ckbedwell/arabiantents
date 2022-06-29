@@ -1,5 +1,5 @@
 <?php
-function createHeaderImage($imageData, $title = null, $links = [])
+function createHeaderImage($imageData, $title = null, $links = [], $headerPosition = null)
 {
   $src = $imageData['src'];
   $height = $imageData['height'];
@@ -10,7 +10,7 @@ function createHeaderImage($imageData, $title = null, $links = [])
   <div class="header-image wrapper">
     <?= createImage($src, $alt, $height, $width); ?>
     <? if (isset($title) || !empty($links)) : ?>
-      <div class="radial">
+      <div class="radial <?= $headerPosition; ?>">
         <div class="width-contain">
           <h1><?= $title; ?></h1>
           <? if (!empty($links)) : ?>
@@ -18,9 +18,9 @@ function createHeaderImage($imageData, $title = null, $links = [])
               <div class="flex gap-2 gap-1-m">
                 <?
                 $i = 0;
-                foreach ($links as $key => $link) :
+                foreach ($links as $link) :
                 ?>
-                  <a href="<?= $link; ?>"><?= $key; ?></a>
+                  <a class="<?= $link['link_class']; ?>" href="<?= $link['link']; ?>"><?= $link['link_label']; ?></a>
                   <? if ($i !== count($links) - 1) : ?>
                     <span class="divider"></span>
                   <?php endif; ?>
@@ -36,6 +36,6 @@ function createHeaderImage($imageData, $title = null, $links = [])
 <?php
   $output = ob_get_clean();
   ob_flush();
-  echo $output;
+  return $output;
 }
 ?>

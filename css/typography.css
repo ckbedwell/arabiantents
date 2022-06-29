@@ -72,6 +72,14 @@ a:hover {
 
 p {
   margin: 0 0 2rem 0;
+
+  a {
+    color: var(--gold);
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
 
 .small-h3 {
