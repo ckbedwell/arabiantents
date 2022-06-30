@@ -16,7 +16,7 @@
           <div class="breadcrumbs__breadcrumb">
             <?= ucwords(str_replace("-"," ", $crumb)); ?>
           </div>
-        <? else : $currentCrumb = $currentCrumb . '/' . $crumb; ?>
+        <? else : $currentCrumb = '/' . $crumb; ?>
           <a class="breadcrumbs__breadcrumb" href="<?= $currentCrumb; ?>">
             <?= ucwords(str_replace("-"," ", $crumb)); ?>
           </a>

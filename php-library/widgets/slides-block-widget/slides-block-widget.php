@@ -100,4 +100,5 @@ class digicrab_three_fifty_blocks_slide_widget extends WP_Widget
     <? }
 }
 
-add_action('widgets_init', create_function('', 'return register_widget("digicrab_three_fifty_blocks_slide_widget");'));
+add_action('widgets_init', function() { return register_widget("digicrab_three_fifty_blocks_slide_widget");
+});

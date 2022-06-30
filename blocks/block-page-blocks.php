@@ -10,9 +10,7 @@ function blockPageBlocks()
 
   return blockWrapper($container, $classes, $blockContent);
 }
-?>
 
-<?
 function createPageBlocks($items, $itemsPerRow, $ratio) {
   $ctaBlocks = archiveToBlocks($items);
   $blocks = '';

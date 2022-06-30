@@ -9,10 +9,7 @@ function blockImages()
 
   return blockWrapper($container, $classes, $blockContent);
 }
-?>
 
-
-<?
 function createImages($imagesPerRow, $ratio)
 {
   ob_start();

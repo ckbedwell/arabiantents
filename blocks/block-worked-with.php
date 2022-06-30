@@ -7,10 +7,7 @@ function blockWorkedWith()
 
   return blockWrapper($container, $classes, $blockContent);
 }
-?>
 
-
-<?
 function createWorkedWith()
 {
   ob_start();

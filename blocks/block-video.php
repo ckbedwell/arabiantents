@@ -8,9 +8,7 @@ function blockVideo()
 
   return blockWrapper($container, $classes, $blockContent);
 }
-?>
 
-<?
 function createVideo($content)
 {
   ob_start();

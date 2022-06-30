@@ -2,11 +2,11 @@
 function createCtaBlock($title, $props, $ratio)
 {
   ob_start();
-  $desc = $props['desc'];
+  $desc = isset($props['desc']) ? $props['desc'] : '';
   $img = $props['img'];
   $href = $props['href'];
-  $cta = $props['cta'];
-  $icon = $props['icon'];
+  $cta = isset($props['cta']) ? $props['cta'] : '';
+  $icon = isset($props['icon']) ? $props['icon'] : '';
   $width = $ratio[0];
   $height = $ratio[1];
 ?>
@@ -16,13 +16,15 @@ function createCtaBlock($title, $props, $ratio)
       <? if (isset($icon)) : ?>
         <span class="<?= $icon; ?> cta-block__icon"></span>
       <? endif; ?>
-      <div class="cta_block__content">
-        <div>
-          <h3 class="secondary">
-            <?= $title; ?>
-          </h3>
+      <? if ($title) : ?>
+        <div class="cta_block__content">
+          <div>
+            <h3 class="secondary">
+              <?= $title; ?>
+            </h3>
+          </div>
         </div>
-      </div>
+      <? endif; ?>
     </a>
     <? if ($desc) : ?>
       <div>

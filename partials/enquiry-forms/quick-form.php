@@ -254,10 +254,12 @@ function createInputField($props)
 {
   $id = $props['id'];
   $label = $props['label'];
-  $placeholder = $props['placeholder'];
+  $placeholder = isset($props['placeholder']) ? $props['placeholder'] : '';
+
   $type = $props['type'];
-  $tooltip = $props['tooltip'];
-  $error = $props['error'];
+  $tooltip = isset($props['tooltip']) ? $props['tooltip'] : '';
+  $error = isset($props['error']) ? $props['error'] : '';
+
   ob_start();
 ?>
   <div class="input-field <?= $id; ?>">
@@ -282,9 +284,9 @@ function createTextArea($props)
 {
   $id = $props['id'];
   $label = $props['label'];
-  $placeholder = $props['placeholder'];
-  $tooltip = $props['tooltip'];
-  $error = $props['error'];
+  $placeholder = isset($props['placeholder']) ? $props['placeholder'] : '';
+  $tooltip = isset($props['tooltip']) ? $props['tooltip'] : '';
+  $error = isset($props['error']) ? $props['error'] : '';
   ob_start();
 ?>
   <div class="input-field <?= $id; ?>">

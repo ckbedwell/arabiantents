@@ -10,11 +10,15 @@ $headerOptions = get_field('header_options');
 $title = $headerOptions['header_title'];
 $links = $headerOptions['links'];
 $headerPosition = $headerOptions['header_position'];
+$showBreadcrumbs = $headerOptions['show_breadcrumbs'];
 ?>
 
 <main <? post_class('site-main home-page'); ?> role="main">
   <section class="sectioned">
     <?= createHeaderImage(postFeaturedImage($post), $title, $links, $headerPosition); ?>
+    <? if ($showBreadcrumbs) {
+      include(locate_template('/scaffold/breadcrumbs.php'));
+    } ?>
   </section>
 
   <? if(have_rows('blocks')) : ?>
@@ -31,6 +35,7 @@ $headerPosition = $headerOptions['header_position'];
         if ($block_type === 'testimonials') echo blockTestimonials();
         if ($block_type === 'image_gallery') echo blockImageGallery();
         if ($block_type === 'page_blocks') echo blockPageBlocks();
+        if ($block_type === 'idea_blocks') echo blockIdeaBlocks();
         if ($block_type === 'event_management') get_template_part('partials/events-sub');
         if ($block_type === 'contact_form') get_template_part('partials/enquiry-forms/quick-form');
       ?>

@@ -10,4 +10,5 @@
   include(locate_template('blocks/block-testimonials.php'));
   include(locate_template('blocks/block-image-gallery.php'));
   include(locate_template('blocks/block-page-blocks.php'));
+  include(locate_template('blocks/block-idea-blocks.php'));
 ?>

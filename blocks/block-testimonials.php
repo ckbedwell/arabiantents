@@ -8,9 +8,7 @@ function blockTestimonials()
 
   return blockWrapper($container, $classes, $blockContent);
 }
-?>
 
-<?
 function createTestimonials($testimonials)
 {
   ob_start();
@@ -50,9 +48,7 @@ function createTestimonials($testimonials)
   ob_flush();
   return $output;
 }
-?>
 
-<?php
   function createBlockTestimonialSlide($testimonial) {
     ob_start();
 ?>

@@ -11,9 +11,7 @@ function blockHeading()
 
   return blockWrapper($container, $classes, $blockContent);
 }
-?>
 
-<?
 function createHeading($content, $tag, $headingClasses, $textAlignment)
 {
   ob_start();

@@ -4,7 +4,7 @@ include(locate_template('factories/index.php'));
 include(locate_template('adaptors/index.php'));
 include(locate_template('blocks/index.php'));
 
-session_start();
+// session_start();
 //  show_admin_bar(false);
 /* Stop a bunch of notice errors by using this helper method to get the current post ID */
 function post_id()

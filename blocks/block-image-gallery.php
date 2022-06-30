@@ -8,9 +8,7 @@ function blockImageGallery()
 
   return blockWrapper($container, $classes, $blockContent);
 }
-?>
 
-<?
 function createImageGallery($images)
 {
   ob_start();
