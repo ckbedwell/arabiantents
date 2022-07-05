@@ -22,11 +22,13 @@ foreach ($tags as $tag) {
   $acfImgURL = get_field('term_image', $taxonomy . '_' . $term_id);
   $title = $tag->name;
 
-  $ctaBlocks[$title] = array(
-    // 'desc' => $desc,
-    'href' => $tagURL,
-    'img' => $acfImgURL['url'],
-  );
+  if ($acfImgURL) {
+    $ctaBlocks[$title] = array(
+      // 'desc' => $desc,
+      'href' => $tagURL,
+      'img' => $acfImgURL['url'],
+    );
+  }
 }
 
 ?>

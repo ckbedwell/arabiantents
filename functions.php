@@ -348,7 +348,7 @@ add_action('init', 'modify_jquery');
  */
 function digicrab_scripts()
 {
-  wp_enqueue_style('minified-styles', get_template_directory_uri() . '/compiled/css/main.css', array(), '1.0.6');
+  wp_enqueue_style('minified-styles', get_template_directory_uri() . '/compiled/css/main.css', array(), '1.0.8');
   wp_enqueue_script('digicrab-js', get_template_directory_uri() . '/js/digicrab.js', array(), '1.5.2', true);
   wp_enqueue_script('plugins', get_template_directory_uri() . '/js/plugins.js', array(), '1.1', false);
 }

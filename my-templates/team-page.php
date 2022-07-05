@@ -14,7 +14,7 @@ get_header(); ?>
     <div class="grid-3 grid-2-t gap-3">
       <?
       $args = array(
-        'exclude' => array(1, 5, 15, 16, 22), // 1 = ckbedwell, 5 = Arabian Tents Editor, 15 = James Hubbard, 16 = Anita Constaintine, 22 = Artemis Marketing
+        'exclude' => array(1, 5, 15, 16, 22, 23, 25), // 1 = ckbedwell, 5 = Arabian Tents Editor, 15 = James Hubbard, 16 = Anita Constaintine, 22 = Artemis Marketing
         'order' => 'ASC',
         'meta_key' => 'order_number',
         'orderby' => 'meta_value_num',
@@ -37,7 +37,7 @@ get_header(); ?>
         ?>
         <div class="team-member">
           <?= createImage($src, $name, 1.61, 1); ?>
-          <h2 class="text-center">
+          <h2 class="page-title text-center">
             <?= $name ?>
           </h2>
           <h3 class="text-center">

@@ -206,10 +206,10 @@ wp_reset_query(); ?>
         <div class="grid-4 grid-2-m gap-3">
           <? while ($query->have_posts()) : $query->the_post(); ?>
             <? $featuredImage = get_the_featured_image($post->ID); ?>
-            <div id="post-<? the_ID(); ?>">
-              <div class="featured-image" data-bg="<?= $featuredImage['full_url']; ?>"></div>
+            <a href="<? the_permalink(); ?>" id="post-<? the_ID(); ?>">
+              <?= createImage($featuredImage['full_url']); ?>
               <h3><? the_title(); ?></h3>
-            </div>
+            </a>
           <? endwhile; ?>
         </div>
       </div>

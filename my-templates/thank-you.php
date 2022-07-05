@@ -253,7 +253,7 @@ function smtpmailer_to_customer($to, $from, $from_name, $subject, $body) {
     <p>We have sent a confirmation of your message to the email you have provided (<?= $field_email; ?>).</p>
     <p>We will be in touch shortly.</p>
     <button class="action-button didnt-receive">What if you didn't receive a confirmation email?</button>
-    <?= inc('/partials/overlays/didnt-receive-email.php'); ?>
+    <?= inc('/partials/overlays/didnt-receive-email.php', ['email'=> $field_email]); ?>
   </section>
   <style>
     .didnt-receive {
@@ -284,7 +284,7 @@ function smtpmailer_to_customer($to, $from, $from_name, $subject, $body) {
       // js-enabled added from js/digicrab.js to try and stop spam bots which have JavaScript disabled
       // disable form submissions that don't originate from  $_SEVER[HTTP_HOST] // e.g. arabiantents.com
 
-      if ($field_email && $field_name && $_POST["js-enabled"] && strpos($page_url, $_SERVER[HTTP_HOST]) !== false) {
+      if ($field_email && $field_name && $_POST["js-enabled"] && strpos($page_url, $_SERVER["HTTP_HOST"]) !== false) {
         mail($mail_to, $subject, $body_message, $headers);
         mail($field_email, 'Thank you for your enquiry', $body_message, $headers_customer);
 

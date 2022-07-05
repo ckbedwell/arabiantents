@@ -5,7 +5,8 @@
 
   .breadcrumbs__wrapper {
     display: flex;
-    overflow: hidden;
+    overflow-y: hidden;
+    overflow-x: auto
   }
 
   a.breadcrumbs__breadcrumb:hover {
@@ -17,6 +18,7 @@
     color: white;
     padding: 1rem 1rem 1rem 3rem;
     position: relative;
+    white-space: nowrap;
 
     &:nth-child(2) {
       --bgColor: var(--gold);

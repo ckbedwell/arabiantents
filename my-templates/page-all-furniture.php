@@ -12,16 +12,17 @@ get_header();
   <?= createHeaderImage(postFeaturedImage($post), get_the_title()); ?>
   <? include(locate_template('/scaffold/breadcrumbs.php')); ?>
 
-  <section class="width-contain-960 sectioned">
-    <h2 class="section-header"><?= $section1Title; ?></h2>
-    <?= createTextColumns(get_the_content()); ?>
-  </section>
 
   <section class="width-contain sectioned">
     <h2 class="section-header">Download our furniture pricelist</h2>
-    <a href="https://arabiantents.com/wp-content/themes/arabiantents/resources/HoH-Price-List-05.18-HoH.pdf" target="_blank" class="image-link download-link text-center material-card">
-      <img src="https://arabiantents.com/wp-content/uploads/2019/09/Screenshot-2019-09-20-at-15.25.04.png" src="https://arabiantents.com/wp-content/uploads/2019/09/Screenshot-2019-09-20-at-15.25.04.png" class="lazy-loaded">
+    <a href="https://arabiantents.com/wp-content/themes/arabiantents/resources/HoH - Price list 2021-2.pdf" target="_blank" class="image-link download-link text-center material-card">
+      <img src="https://arabiantents.com/wp-content/uploads/2019/09/Screenshot-2019-09-20-at-15.25.04.png" class="lazy-loaded">
     </a>
+  </section>
+
+  <section class="width-contain-960 sectioned">
+    <h2 class="section-header"><?= $section1Title; ?></h2>
+    <?= createTextColumns(get_the_content()); ?>
   </section>
 </main>
 

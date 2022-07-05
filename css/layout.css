@@ -211,6 +211,14 @@
   }
 }
 
+.sectioned-both {
+  margin: 8rem 0;
+
+  @media(--mobileLarge) {
+    margin: 6rem 0;
+  }
+}
+
 /* SLOWLY DEPRECATE THE BELOW */
 
 [class*="width-contain"] {

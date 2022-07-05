@@ -7,7 +7,7 @@
 <? get_header(); ?>
 
 <main class="site-main contact-page" role="main">
-  <?= createHeaderImage(postFeaturedImage($post)); ?>
+  <? get_template_part('partials/enquiry-forms/quick-form'); ?>
   <? include(locate_template('/scaffold/breadcrumbs.php')); ?>
 
   <section class="width-contain sectioned">
@@ -26,8 +26,7 @@
       <what3words-address words="beauty.emphasis.continues" />
     </div>
   </section>
-
-  <? get_template_part('partials/enquiry-forms/quick-form'); ?>
+  <?= createHeaderImage(postFeaturedImage($post)); ?>
 </main>
 <style>
   .header-image .image {

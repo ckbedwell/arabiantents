@@ -25,11 +25,10 @@ if ($count == 1) {
       <?= createTextColumns($description); ?>
     </div>
   <?php endif; ?>
-
   <?= inc('/partials/cta-blocks.php', [
             'args' => queryToBlocks([
               'post_type' => 'tent',
-              'tent_type' => $term->slug
+              'tent_type' => $term
             ]),
             'ratio' => [1.5, 1]
           ]); ?>

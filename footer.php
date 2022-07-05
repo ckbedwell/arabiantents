@@ -13,12 +13,12 @@
 <div class="awards-section">
   <div class="width-contain">
     <div class="flex gap-5 awards">
-      <img src="wp-content/themes/arabiantents/images/footer/award-1.jpg">
+      <img src="wp-content/themes/arabiantents/images/footer/award-1-colour.jpg">
       <a href="https://www.youtube.com/watch?v=eAq0liEcCV8" target="_blank">
-        <img src="wp-content/themes/arabiantents/images/footer/award-2.png">
+        <img src="wp-content/themes/arabiantents/images/footer/award-2-colour.png">
       </a>
-      <img src="wp-content/themes/arabiantents/images/footer/award-3.png">
-      <img src="wp-content/themes/arabiantents/images/footer/award-4.png">
+      <img src="wp-content/themes/arabiantents/images/footer/award-3-colour.png">
+      <img src="wp-content/themes/arabiantents/images/footer/award-4-colour.png">
     </div>
   </div>
 </div>

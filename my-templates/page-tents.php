@@ -21,11 +21,6 @@ get_header();
         <a class="" href="<?= get_term_link($term->term_id); ?>">
           <h2 class="section-header"><?= $term->name; ?></h2>
         </a>
-        <? if (!empty($term->description)) : ?>
-          <div class="width-contain-1000 sectioned">
-            <?= createTextColumns($term->description); ?>
-          </div>
-        <? endif; ?>
         <div>
           <?= inc('/partials/cta-blocks.php', [
             'args' => queryToBlocks([

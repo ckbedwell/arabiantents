@@ -91,7 +91,7 @@ $section3 = array_shift($sections);
   <? if ($partners) : ?>
     <section class="width-contain-960 sectioned">
       <h2 class="section-header">Our <?= ucfirst($desc); ?> Partners</h2>
-      <? inc('/partials/partners-gallery.php', ['partners' => $partners]); ?>
+      <?= inc("/partials/partners-gallery.php", ['partners' => $partners]); ?>
     </section>
   <? endif; ?>
 

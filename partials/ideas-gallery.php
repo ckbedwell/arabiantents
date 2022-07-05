@@ -4,6 +4,8 @@
     foreach ($ideas as $idea) :
     $image = get_field('term_image', 'post_tag' . '_' . get_term($idea)->term_id)['url'];
     $title = get_term($idea)->name;
+
+    if ($image) :
   ?>
     <div>
       <a href="<?= get_term_link($idea); ?>">
@@ -11,5 +13,5 @@
       </a>
       <div><?= $title; ?></div>
     </div>
-  <?php endforeach; ?>
+  <?php endif; endforeach; ?>
 </div>
