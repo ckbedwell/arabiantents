@@ -16,5 +16,6 @@ get_header(); ?>
     <h2 class="section-header"><?= $section1Title; ?></h2>
     <?= do_shortcode(wpautop(get_the_content())); ?>
   </section>
+  <? get_template_part('partials/enquiry-forms/quick-form'); ?>
 </main>
 <? get_footer(); ?>

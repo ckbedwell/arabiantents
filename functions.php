@@ -1,4 +1,4 @@
-<?
+<?php
 
 include(locate_template('factories/index.php'));
 include(locate_template('adaptors/index.php'));

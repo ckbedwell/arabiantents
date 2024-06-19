@@ -4,6 +4,7 @@
   array_pop($crumbs);
   $i = 0;
   $count = count($crumbs);
+  $currentCrumb = '';
 ?>
 
 <div class="breadcrumbs">

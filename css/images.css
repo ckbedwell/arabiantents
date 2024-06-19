@@ -56,3 +56,8 @@
 .darkened-reader-radial + * {
   z-index: 1;
 }
+
+div[id^="attachment_"] {
+  /* stylelint-disable-next-line declaration-no-important */
+  width: auto !important;
+}
