@@ -1,0 +1,5 @@
+.App {
+  .nested {
+    color: red;
+  }
+}
