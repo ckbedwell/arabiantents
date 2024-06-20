@@ -12,12 +12,5 @@ export default defineConfig({
   server: {
     open: true,
   },
-  build: {
-    lib: {
-      entry: path.resolve(__dirname, `src/main.tsx`),
-      name: `furnitureApp`,
-      fileName: (format) => `furniture-app.${format}.js`,
-    },
-  },
   plugins: [react()],
 })
