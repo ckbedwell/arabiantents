@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './FurnitureItems.module.css'
+import styles from './furnitureItems.module.css'
 import { FurnitureItem } from '~/Components/FurnitureItem'
 import { TFurnitureItem } from '~/types'
 

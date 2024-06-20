@@ -1,3 +1,10 @@
+.item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
 .container {
   position: relative;
 }
@@ -21,8 +28,18 @@
   border: 0;
 }
 
+.content {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
 .enquirePrice {
   font-style: italic;
+}
+
+.price {
+  font-weight: bold;
 }
 
 .photoSelector {
@@ -40,7 +57,8 @@
 .photoButton {
   width: 1.6rem;
   height: 1.6rem;
-  border: 1px solid black;
+  color: white;
+  border: 1px solid currentColor;
   border-radius: 50%;
   position: relative;
 
@@ -59,6 +77,6 @@
 
 .active {
   &:after {
-    background-color: black;
+    background-color: currentColor;
   }
 }

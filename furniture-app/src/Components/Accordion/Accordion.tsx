@@ -1,5 +1,6 @@
 import React, { ReactNode, useState } from 'react'
-import styles from './Accordion.module.css'
+import classNames from 'classnames'
+import styles from './accordion.module.css'
 
 interface AccordionProps {
   children: ReactNode
@@ -21,7 +22,13 @@ export const Accordion = ({
         onClick={() => setOpen(v => !v)}
       >
         {label}
-        <span className={open ? `icon-arrow-right2` : `icon-arrow-down`} />
+        <span
+          className={classNames({
+            [styles.icon]: true,
+            'icon-arrow-right2': !open,
+            'icon-arrow-down': open,
+          })}
+        />
       </button>
       {open && <div>
         {children}

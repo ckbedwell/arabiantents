@@ -2,22 +2,24 @@ const mediaSizes = require(`./mediaSizes.json`)
 
 module.exports = {
   plugins: {
-    'postcss-nested': {},
-    'postcss-preset-env': {
+    "postcss-nested": {},
+    "postcss-preset-env": {
       autoprefixer: {
         grid: true,
       },
       browsers: `last 2 versions`,
       features: {
-        'custom-media-queries': {},
-        'custom-properties': {
+        "custom-media-queries": {},
+        "custom-properties": {
           disableDeprecationNotice: true,
           preserve: true,
         },
       },
-      importFrom: [{
-        customMedia: prefixProperties(mediaSizes),
-      }],
+      importFrom: [
+        {
+          customMedia: prefixProperties(mediaSizes),
+        },
+      ],
     },
   },
 }

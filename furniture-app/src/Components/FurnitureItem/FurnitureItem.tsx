@@ -1,7 +1,8 @@
 import React, { useState } from "react"
-import styles from "./FurnitureItem.module.css"
+import styles from "./furnitureItem.module.css"
 import { TFurnitureItem } from "~/types"
 import { decodeHtml } from "~/App.utils"
+import { QuantitySelector } from "../QuantitySelector/QuantitySelector"
 
 interface FurnitureItemProps {
   item: TFurnitureItem;
@@ -9,13 +10,18 @@ interface FurnitureItemProps {
 
 export const FurnitureItem = ({ item }: FurnitureItemProps) => {
   return (
-    <div>
-      <Image item={item} />
-      <div className={styles.content}>
+    <div
+      className={styles.item}
+    >
+      <div>
+        <Image item={item} />
         <div>
           {decodeHtml(item.title)}
         </div>
+      </div>
+      <div className={styles.content}>
         <Price item={item} />
+        <QuantitySelector />
       </div>
     </div>
   )
@@ -68,7 +74,7 @@ const Price = ({ item }: FurnitureItemProps) => {
   }
 
   return (
-    <div>
+    <div className={styles.price}>
       {item.from_prefix === `1` && `From `}
       {`£${item.price}`}
     </div>
