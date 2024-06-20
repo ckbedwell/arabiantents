@@ -1,0 +1,1 @@
+export { FurnitureItem } from './FurnitureItem'

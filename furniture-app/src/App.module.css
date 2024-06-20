@@ -1,5 +1,16 @@
-.App {
-  .nested {
-    color: red;
-  }
+.grid {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 2rem;
+}
+
+.topBar {
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.stack {
+  display: flex;
+  gap: 1rem;
 }
