@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react'
 import { Container } from '~/Components/Container'
 
-import styles from './app.module.css'
+import styles from './App.module.css'
 import { FurnitureItems } from './Components/FurnitureItems/FurnitureItems'
 import { TFurnitureItem } from '~/types'
 import { Filters } from '~/Components/Filters'

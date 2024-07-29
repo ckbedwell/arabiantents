@@ -5,14 +5,15 @@ import { TFilters } from "./types"
 const options = { replace: true, preventScrollReset: true }
 
 export function useURLSearchParams() {
-  const [params, setParams] = useSearchParams()
-  const existingParams = Object.fromEntries(params)
+  const [_, setParams] = useSearchParams()
 
   return (
     actionType: `add` | `remove` | `replace`,
     value: string,
     type: string
   ) => {
+    const params = new URLSearchParams(window.location.search)
+    const existingParams = Object.fromEntries(params)
     const currentValues = existingParams[type]
       ? existingParams[type].split(`,`)
       : []

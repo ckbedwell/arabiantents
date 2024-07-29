@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import styles from "./furnitureItem.module.css"
+import styles from "./FurnitureItem.module.css"
 import { TFurnitureItem } from "~/types"
 import { decodeHtml } from "~/App.utils"
 import { QuantitySelector } from "../QuantitySelector/QuantitySelector"

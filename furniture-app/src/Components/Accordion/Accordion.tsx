@@ -1,6 +1,6 @@
 import React, { ReactNode, useState } from 'react'
 import classNames from 'classnames'
-import styles from './accordion.module.css'
+import styles from './Accordion.module.css'
 
 interface AccordionProps {
   children: ReactNode
