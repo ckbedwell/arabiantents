@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { Container } from '~/Components/Container'
 
 import styles from './App.module.css'
@@ -7,6 +7,9 @@ import { TFurnitureItem } from '~/types'
 import { Filters } from '~/Components/Filters'
 import { useFilters, useURLSearchParams } from './App.hooks'
 import { SORT_OPTIONS, SortValue, filterItems, sortItems } from './App.utils'
+import { Provider } from 'react-redux'
+import { store } from './Store/store'
+import { Basket } from './Components/Basket'
 
 declare global {
   // eslint-disable-next-line no-unused-vars
@@ -24,36 +27,60 @@ export const App = () => {
     updateSearchParams(actionType, value, type)
   }, [])
 
+  const handleSortChange = useCallback((option: SortValue) => {
+    setSortOption(option)
+    updateSearchParams(`replace`, option, `sort`)
+  }, [])
+
   const items = filterItems(FURNITURE_ITEMS, filters)
   const sortedItems = sortItems(items, sortOption)
 
   return (
-    <Container>
-      <TopBar
-        items={sortedItems}
-        onSort={(option) => {
-          setSortOption(option)
-          updateSearchParams(`replace`, option, `sort`)
-        }}
-      />
-      <div className={styles.grid}>
-        <Filters
-          filters={filters}
-          onChange={handleFilterChange}
+    <Provider store={store}>
+      <Container>
+        <TopBar
+          items={sortedItems}
         />
-        <FurnitureItems items={sortedItems} />
-      </div>
-    </Container>
+        <div className={styles.grid}>
+          <Filters
+            filters={filters}
+            onChange={handleFilterChange}
+            onSortChange={handleSortChange}
+          />
+          <FurnitureItems items={sortedItems} />
+        </div>
+      </Container>
+    </Provider>
   )
 }
 
 const TopBar = ({
   items,
-  onSort,
-}: { items: TFurnitureItem[]; onSort: (option: SortValue) => void }) => {
-  return (
+}: { items: TFurnitureItem[] }) => {
+  const [headerHeight, setHeaderHeight] = useState(getHeader()?.clientHeight || 84);
 
-    <div className={styles.topBar}>
+  useEffect(() => {
+    const headerElement = document.querySelector('.site-header');
+
+    if (headerElement) {
+      const resizeObserver = new ResizeObserver((entries) => {
+        for (let entry of entries) {
+          if (entry.target === headerElement) {
+            setHeaderHeight(headerElement.clientHeight);
+          }
+        }
+      });
+
+      resizeObserver.observe(headerElement);
+
+      return () => {
+        resizeObserver.unobserve(headerElement);
+      };
+    }
+  }, []);
+
+  return (
+    <div className={styles.topBar} style={{ top: headerHeight }}>
       <div>
         Showing
         {` `}
@@ -68,18 +95,13 @@ const TopBar = ({
         items
       </div>
       <div className={styles.stack}>
-        Sort by:
-        <select onChange={(e) => onSort(e.target.value as SortValue)}>
-          {SORT_OPTIONS.map((option) => (
-            <option
-              key={option.value}
-              value={option.value}
-            >
-              {option.label}
-            </option>
-          ))}
-        </select>
+
+        <Basket />
       </div>
     </div>
   )
+}
+
+function getHeader() {
+  return document.querySelector('.site-header')
 }

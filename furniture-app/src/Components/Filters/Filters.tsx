@@ -2,15 +2,19 @@ import React, { useMemo } from 'react'
 import { Filter } from '../Filter/Filter'
 import { Accordion } from '../Accordion'
 import { TFilters } from '~/types'
+import { SortBy } from '../SortBy'
+import { SortValue } from '~/App.utils'
 
 interface FiltersProps {
   filters: TFilters
   onChange: (type: string, value: string, checked: boolean) => void
+  onSortChange: (value: SortValue) => void
 }
 
 export const Filters = ({
   filters,
   onChange,
+  onSortChange,
 }: FiltersProps) => {
   const {
     price,
@@ -23,6 +27,7 @@ export const Filters = ({
 
   return (
     <div>
+      <SortBy onChange={onSortChange} />
       <Accordion label="Type">
         {orderedFurnitureType.map((value) => {
           return (

@@ -42,6 +42,7 @@ if ($query->have_posts()) {
       'from_prefix' => $from_prefix,
       'description' => get_the_content(),
       'photos' => $photos_urls,
+      'quantity' => 0,
       // Add more fields as needed
     );
   }

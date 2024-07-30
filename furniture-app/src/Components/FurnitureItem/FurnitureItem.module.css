@@ -53,6 +53,9 @@
   bottom: 1rem;
   left: 50%;
   transform: translate(-50%);
+  flex-wrap: wrap;
+  width: 90%;
+  justify-content: center;
 }
 
 .photoButton {
@@ -102,6 +105,11 @@
 
 .dialog {
   border: 0;
+  max-width: 90vw;
+
+  img {
+    max-height: 80vh;
+  }
 }
 
 .button {
@@ -127,4 +135,8 @@
 .enlarge {
   top: 15px;
   right: 15px;
+}
+
+.clickable {
+  cursor: pointer;
 }

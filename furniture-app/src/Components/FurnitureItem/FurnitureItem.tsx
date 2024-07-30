@@ -4,6 +4,7 @@ import classNames from "classnames"
 import { TFurnitureItem } from "~/types"
 import { decodeHtml } from "~/App.utils"
 import { QuantitySelector } from "../QuantitySelector/QuantitySelector"
+import { Icon } from "../Icon"
 
 interface FurnitureItemProps {
   item: TFurnitureItem;
@@ -18,31 +19,41 @@ export const FurnitureItem = ({ item }: FurnitureItemProps) => {
       className={styles.item}
     >
       <div>
-        <Image item={item} onPhotoSelect={setImageIndex} type={`div`} />
+        <Image item={item} onClick={() => setLightboxOpen(true)} onPhotoSelect={setImageIndex} type={`div`} />
         <div>
           {decodeHtml(item.title)}
         </div>
       </div>
       <div className={styles.content}>
         <Price item={item} />
-        <QuantitySelector />
+        <QuantitySelector item={item} />
       </div>
 
       <Lightbox isOpen={lightboxOpen} onDismiss={() => setLightboxOpen(false)}>
         <Image item={item} initialIndex={imageIndex} type={`img`} />
+        <div>
+          {decodeHtml(item.title)}
+        </div>
+        <div className={styles.content}>
+          <Price item={item} />
+          <QuantitySelector item={item} />
+        </div>
       </Lightbox>
-      <button className={classNames(styles.enlarge, styles.button)} onClick={() => setLightboxOpen(true)}>+</button>
+      <button className={classNames(styles.enlarge, styles.button)} onClick={() => setLightboxOpen(true)}>
+        <Icon icon="search" />
+      </button>
     </div>
   )
 }
 
 type ImageProps = FurnitureItemProps & {
   initialIndex?: number;
+  onClick?: () => void;
   onPhotoSelect?: (index: number) => void;
   type: 'div' | 'img';
 }
 
-const Image = ({ item, initialIndex = 0, onPhotoSelect, type }: ImageProps) => {
+const Image = ({ item, initialIndex = 0, onClick, onPhotoSelect, type }: ImageProps) => {
   const [imageIndex, setImageIndex] = useState(initialIndex)
   const photos = [...Array.from(new Set([
     item.featured_image,
@@ -60,7 +71,10 @@ const Image = ({ item, initialIndex = 0, onPhotoSelect, type }: ImageProps) => {
 
     <div
       aria-label={item.title}
-      className={styles.image}
+      className={classNames(styles.image, {
+        [styles.clickable]: Boolean(onClick),
+      })}
+      onClick={onClick}
       role="img"
       style={{ backgroundImage: `url(${photos[imageIndex]}` }}
     >
@@ -145,7 +159,9 @@ const Lightbox = ({ children, isOpen, onDismiss }: { children: ReactNode, isOpen
       <div className={styles.backdrop} onClick={onDismiss} />
       <dialog aria-modal="true" className={styles.dialog} open={isOpen}>
         <div>
-          <button className={classNames(styles.close, styles.button)} onClick={onDismiss}>X</button>
+          <button autoFocus className={classNames(styles.close, styles.button)} onClick={onDismiss}>
+            <Icon icon="cross" />
+          </button>
           {children}
         </div>
       </dialog>

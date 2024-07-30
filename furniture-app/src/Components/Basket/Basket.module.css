@@ -1,0 +1,90 @@
+.button {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  background: var(--goldMedium);
+  color: white;
+  border-radius: 10px;
+  padding: 0.5rem 1rem;
+}
+
+.price {
+  font-size: 2rem;
+}
+
+.anchor {
+  position: relative;
+}
+
+.basket {
+  position: absolute;
+  right: 0;
+  top: 1rem;
+}
+
+.basketItemsContainer {
+  border: 1px solid #dfdfdf;
+  min-width: 30vw;
+  width: 500px;
+  min-height: 200px;
+  max-height: 80vh;
+  background-color: white;
+  overflow: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+
+  thead {
+    border-bottom: 1px solid #dfdfdf;
+
+    th {
+      padding: 1rem;
+    }
+  }
+
+  td, th {
+    padding: 0.75rem 1rem;
+  }
+
+  tr:nth-of-type(even) {
+    background-color: #f9f9f9;
+  }
+
+  tfoot {
+    border-top: 1px solid #dfdfdf;
+  }
+}
+
+.basketImage {
+  width: 60px;
+}
+
+.total {
+  text-align: right;
+  font-weight: 700;
+}
+
+.empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.disclaimer {
+  padding: 1rem;
+  font-size: 1.4rem;
+  font-style: italic;
+}
+
+.stack {
+  display: flex;
+  gap: 1rem;
+  font-size: 1.4rem;
+}
+
+.clear {
+  color: red;
+}

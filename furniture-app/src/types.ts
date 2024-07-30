@@ -13,4 +13,5 @@ export type TFurnitureItem = {
   title: string
   description: string
   photos: string[]
+  quantity: number
 }

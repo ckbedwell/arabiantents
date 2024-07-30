@@ -5,9 +5,12 @@
 }
 
 .topBar {
-  margin-bottom: 2rem;
+  position: sticky;
+  padding: 2rem 0;
   display: flex;
   justify-content: space-between;
+  background-color: white;
+  z-index: 1;
 }
 
 .stack {
