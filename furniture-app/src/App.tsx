@@ -1,15 +1,19 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import { Container } from '~/Components/Container'
 
 import styles from './App.module.css'
 import { FurnitureItems } from './Components/FurnitureItems/FurnitureItems'
 import { TFurnitureItem } from '~/types'
-import { Filters } from '~/Components/Filters'
+import { DesktopFilters, TabletFilters } from '~/Components/Filters'
 import { useFilters, useURLSearchParams } from './App.hooks'
 import { SORT_OPTIONS, SortValue, filterItems, sortItems } from './App.utils'
 import { Provider } from 'react-redux'
 import { store } from './Store/store'
 import { Basket } from './Components/Basket'
+import { useSiteHeaderHeight } from './hooks/useSiteHeaderHeight'
+import { ItemCount } from './Components/ItemCount'
+import { Desktop } from './Components/Responsive/Responsive'
+import { FiltersProps } from './Components/Filters/Filters'
 
 declare global {
   // eslint-disable-next-line no-unused-vars
@@ -35,73 +39,45 @@ export const App = () => {
   const items = filterItems(FURNITURE_ITEMS, filters)
   const sortedItems = sortItems(items, sortOption)
 
+  const filterProps = {
+    filters,
+    onChange: handleFilterChange,
+    onSortChange: handleSortChange,
+    items,
+  }
+
   return (
     <Provider store={store}>
+      <TopBar {...filterProps}
+      />
       <Container>
-        <TopBar
-          items={sortedItems}
-        />
         <div className={styles.grid}>
-          <Filters
-            filters={filters}
-            onChange={handleFilterChange}
-            onSortChange={handleSortChange}
-          />
-          <FurnitureItems items={sortedItems} />
+          <DesktopFilters {...filterProps} />
+          <div>
+            <FurnitureItems items={sortedItems} />
+          </div>
         </div>
       </Container>
     </Provider>
   )
 }
 
-const TopBar = ({
-  items,
-}: { items: TFurnitureItem[] }) => {
-  const [headerHeight, setHeaderHeight] = useState(getHeader()?.clientHeight || 84);
-
-  useEffect(() => {
-    const headerElement = document.querySelector('.site-header');
-
-    if (headerElement) {
-      const resizeObserver = new ResizeObserver((entries) => {
-        for (let entry of entries) {
-          if (entry.target === headerElement) {
-            setHeaderHeight(headerElement.clientHeight);
-          }
-        }
-      });
-
-      resizeObserver.observe(headerElement);
-
-      return () => {
-        resizeObserver.unobserve(headerElement);
-      };
-    }
-  }, []);
+const TopBar = (props: FiltersProps) => {
+  const headerHeight = useSiteHeaderHeight()
 
   return (
     <div className={styles.topBar} style={{ top: headerHeight }}>
-      <div>
-        Showing
-        {` `}
-        <strong>
-          {items.length}
-        </strong>
-        {` `}
-        out of
-        {` `}
-        {FURNITURE_ITEMS.length}
-        {` `}
-        items
-      </div>
-      <div className={styles.stack}>
-
-        <Basket />
-      </div>
+      <Container>
+        <div className={styles.topBarInner}>
+          <TabletFilters {...props} />
+          <Desktop>
+            <ItemCount items={props.items} />
+          </Desktop>
+          <div className={styles.stack}>
+            <Basket />
+          </div>
+        </div>
+      </Container>
     </div>
   )
-}
-
-function getHeader() {
-  return document.querySelector('.site-header')
 }

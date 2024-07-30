@@ -1,1 +1,1 @@
-export { Filters } from "./Filters";
+export { DesktopFilters, TabletFilters } from "./Filters";

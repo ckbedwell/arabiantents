@@ -1,17 +1,61 @@
-import React, { useMemo } from 'react'
+import React, { useCallback, useMemo, useState } from 'react'
 import { Filter } from '../Filter/Filter'
 import { Accordion } from '../Accordion'
-import { TFilters } from '~/types'
+import { TFilters, TFurnitureItem } from '~/types'
 import { SortBy } from '../SortBy'
 import { SortValue } from '~/App.utils'
+import { Sidebar } from '../Sidebar'
+import { Desktop, Tablet } from '../Responsive/Responsive'
+import styles from './Filters.module.css'
+import { ItemCount } from '../ItemCount'
 
-interface FiltersProps {
+export interface FiltersProps {
   filters: TFilters
   onChange: (type: string, value: string, checked: boolean) => void
   onSortChange: (value: SortValue) => void
+  items: TFurnitureItem[]
 }
 
-export const Filters = ({
+export const TabletFilters = (props: FiltersProps) => {
+  const [open, setOpen] = useState(false)
+
+  const handleOpen = useCallback(() => {
+    requestAnimationFrame(() => {
+      setOpen(true)
+    })
+  }, [])
+
+  const handleClose = useCallback(() => {
+    requestAnimationFrame(() => {
+      setOpen(false)
+    })
+  }, [])
+
+  return (
+    <Tablet>
+      <button className={styles.button} onClick={handleOpen}>Open filters</button>
+      {open && <Sidebar onDismiss={handleClose}>
+        <div className={styles.sidebarContent}>
+          <div>
+            <ItemCount items={props.items} />
+            <FiltersContent {...props} />
+          </div>
+          <button className={styles.closeFilters} onClick={handleClose}>Close filters</button>
+        </div>
+      </Sidebar>}
+    </Tablet>
+  )
+}
+
+export const DesktopFilters = (props: FiltersProps) => {
+  return (
+    <Desktop>
+      <FiltersContent {...props} />
+    </Desktop>
+  )
+}
+
+const FiltersContent = ({
   filters,
   onChange,
   onSortChange,

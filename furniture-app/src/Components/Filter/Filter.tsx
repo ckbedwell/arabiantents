@@ -22,6 +22,7 @@ export const Filter = ({
         key={checked ? `checked` : `unchecked`}
         onChange={(e) => {
           e.preventDefault()
+          e.stopPropagation()
           onChange(e.target.checked)
         }}
         type="checkbox"

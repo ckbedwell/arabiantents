@@ -5,6 +5,7 @@ import { TFurnitureItem } from "~/types"
 import { decodeHtml } from "~/App.utils"
 import { QuantitySelector } from "../QuantitySelector/QuantitySelector"
 import { Icon } from "../Icon"
+import { useDisableBodyScroll } from "~/hooks/useDisableBodyScroll"
 
 interface FurnitureItemProps {
   item: TFurnitureItem;
@@ -132,23 +133,7 @@ const Price = ({ item }: FurnitureItemProps) => {
 }
 
 const Lightbox = ({ children, isOpen, onDismiss }: { children: ReactNode, isOpen: boolean; onDismiss: () => void }) => {
-  useEffect(() => {
-    const closeOnEscape = (event: KeyboardEvent) => {
-      if (event.key === `Escape`) {
-        onDismiss()
-      }
-    }
-
-    if (isOpen) {
-      document.querySelector(`body`).style.overflow = `hidden`
-      document.addEventListener(`keydown`, closeOnEscape)
-    }
-
-    return () => {
-      document.querySelector(`body`).style.overflow = `auto`
-      document.removeEventListener(`keydown`, closeOnEscape)
-    }
-  }, [isOpen])
+  useDisableBodyScroll(isOpen, onDismiss)
 
   if (!isOpen) {
     return null

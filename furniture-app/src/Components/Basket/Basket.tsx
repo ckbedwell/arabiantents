@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import classNames from 'classnames'
 import { Icon } from '~/Components/Icon'
@@ -7,44 +7,22 @@ import styles from './Basket.module.css'
 import { TFurnitureItem } from '~/types'
 import { QuantitySelector } from '../QuantitySelector'
 import { clearAll } from '~/Store/cartSlice'
+import { useOnClickOutside } from '~/hooks/useOnClickOutside'
 
 export const Basket = () => {
   const [isOpen, setIsOpen] = useState(false)
-  const basketRef = useRef<HTMLDivElement>(null)
   const cartItems = useSelector((state: RootState) => state.cart.items)
   const itemsWithQuantity = cartItems.filter((item) => item.quantity > 0)
   const price = itemsWithQuantity.reduce((acc, item) => {
     const price = Number(item.price) || 0
     return acc + price * item.quantity
   }, 0)
+  const basketRef = useOnClickOutside<HTMLDivElement>(() => setIsOpen(false))
 
   const handleClick = useCallback(() => {
     setIsOpen(v => !v)
   }, [])
 
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      const isHTMLElement = e.target instanceof HTMLElement
-
-      if (isHTMLElement && basketRef.current && !basketRef.current.contains(e.target)) {
-        setIsOpen(false)
-      }
-    }
-
-    const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        setIsOpen(false)
-      }
-    }
-
-    document.addEventListener('click', handleClickOutside)
-    document.addEventListener('keydown', handleEscape)
-
-    return () => {
-      document.removeEventListener('click', handleClickOutside)
-      document.removeEventListener('keydown', handleEscape)
-    }
-  }, [isOpen])
 
   return (
     <div className={styles.container} ref={basketRef}>

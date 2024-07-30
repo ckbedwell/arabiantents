@@ -1,14 +1,16 @@
 .grid {
   display: grid;
-  grid-template-columns: 280px 1fr;
+  grid-template-columns: 240px 1fr;
   gap: 2rem;
+  margin-bottom: 12rem;
+
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr;
+  }
 }
 
 .topBar {
   position: sticky;
-  padding: 2rem 0;
-  display: flex;
-  justify-content: space-between;
   background-color: white;
   z-index: 1;
 }
@@ -16,4 +18,11 @@
 .stack {
   display: flex;
   gap: 1rem;
+}
+
+.topBarInner {
+  padding: 2rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

@@ -1,0 +1,20 @@
+.container {
+  position: fixed;
+  top: var(--offset);
+  left: 0;
+  width: 100%;
+  height: calc(100% - var(--offset));
+  z-index: 1;
+  grid-template-columns: 7fr 3fr;
+  display: grid;
+}
+
+.content {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.overlay {
+  background-color: rgba(0,0,0,0.5);
+}
