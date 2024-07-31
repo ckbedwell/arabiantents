@@ -1,14 +1,21 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react'
 import classNames from 'classnames'
 import styles from './CopiedForm.module.css'
+import { TFurnitureItem } from '~/types'
 
-export const CopiedForm = () => {
+interface CopiedFormProps {
+  items: TFurnitureItem[]
+  totalPrice: string
+}
+
+// copied form because it is a 'copy' of the php enquiry form
+export const CopiedForm = (props: CopiedFormProps) => {
   return (
     <div className="contact-form">
       <div className={styles.widthContain}>
         <div className="grid">
           <Info />
-          <Form />
+          <Form {...props} />
         </div>
       </div>
     </div>
@@ -57,7 +64,10 @@ const initialErrorState = {
   field_message: false,
 }
 
-const Form = () => {
+const Form = ({
+  items,
+  totalPrice,
+}: CopiedFormProps) => {
   const [formData, setFormData] = useState({
     field_name: ``,
     field_email: ``,
@@ -351,6 +361,16 @@ const Form = () => {
         name="page-url"
         type="hidden"
         value={window.location.origin + window.location.pathname}
+      />
+      <input
+        name="furniture_items"
+        type="hidden"
+        value={JSON.stringify(items)}
+      />
+      <input
+        name="total_price"
+        type="hidden"
+        value={totalPrice}
       />
       <input
         className="action-button"

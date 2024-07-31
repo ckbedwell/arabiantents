@@ -34,6 +34,8 @@ export const Basket = () => {
     setIsOpen(v => !v)
   }, [])
 
+  const totalPrice = getPrice(String(price), numberOfItems > 0)
+
   return (
     <div
       className={styles.container}
@@ -46,7 +48,7 @@ export const Basket = () => {
       >
         <div className={styles.price}>
           <span>
-            {getPrice(String(price), numberOfItems > 0)}
+            {totalPrice}
           </span>
           {numberOfItems > 0 &&
             <span>
@@ -62,6 +64,7 @@ export const Basket = () => {
             <BasketItems
               items={itemsWithQuantity}
               onClear={handleClose}
+              totalPrice={totalPrice}
             />
           </div>
         )}
@@ -71,7 +74,7 @@ export const Basket = () => {
 }
 
 function getPrice(price: string, hasItems: boolean) {
-  if (price === `0` && hasItems) {
+  if ([`0`, ``].includes(price) && hasItems) {
     return `POA`
   }
 
@@ -81,11 +84,13 @@ function getPrice(price: string, hasItems: boolean) {
 interface BasketItemsProps {
   items: TFurnitureItem[]
   onClear: () => void
+  totalPrice: string
 }
 
 const BasketItems = ({
   items,
   onClear,
+  totalPrice,
 }: BasketItemsProps) => {
   const [openEnquiry, setOpenEnquiry] = useState(false)
 
@@ -157,7 +162,10 @@ const BasketItems = ({
         isOpen={openEnquiry}
         onDismiss={() => setOpenEnquiry(false)}
       >
-        <CopiedForm />
+        <CopiedForm
+          items={items}
+          totalPrice={totalPrice}
+        />
       </Modal>
     </div>
   )
