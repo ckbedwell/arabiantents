@@ -59,8 +59,8 @@ wp_reset_postdata();
   <? include(locate_template('/scaffold/breadcrumbs.php')); ?>
 
   <div id="root"></div>
-  <link rel="stylesheet" href="<?= get_template_directory_uri(); ?>/furniture-app/dist/furnitureApp.css?v=1.0.0">
-  <script src="<?= get_template_directory_uri(); ?>/furniture-app/dist/furnitureApp.js?v=1.0.0"></script>
+  <link rel="stylesheet" href="<?= get_template_directory_uri(); ?>/furniture-app/dist/furnitureApp.css?v=1.0.2">
+  <script src="<?= get_template_directory_uri(); ?>/furniture-app/dist/furnitureApp.js?v=1.0.3"></script>
 </main>
 
 <? get_footer(); ?>

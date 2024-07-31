@@ -55,25 +55,12 @@ $body_message .= '<strong>From:</strong> ' . $field_name . '<br/>';
 $body_message .= '<strong>E-mail:</strong> ' . $field_email . '<br/><br/>';
 $body_message .= '<strong>Telephone:</strong> ' . $field_telephone . '<br/><br/>';
 
-if ($_FILES['field_file']['name']) {
-  $body_message .= '<strong>Venue Image:</strong><br/><img width="100%" src=' . wp_upload_dir()['baseurl'] . '/customer-uploads/' . $now . $_FILES[$image_fieldname]['name'] . '><br/><br/><br/>';
-}
-
-if ($field_width || $field_length || $field_height) {
-  $body_message .= '<strong>Measurements: </strong> <ul><li>Width: ' . $field_width . '</li><li>Length: ' . $field_length . '</li><li>Height: ' . $field_height . '</li></ul><br/><br/>';
-}
-
 if ($field_event) {
   $body_message .= '<strong>Type of event:</strong> ' . $field_event . '<br/>';
 }
 
-if ($field_total_guests) {
-  $body_message .= '<strong>Total Guests:</strong> ' . $field_total_guests . '<br/>';
-  $body_message .= '<strong>Dining Guests:</strong> ' . $field_dining_guests . '<br/>';
-}
-
-if ($date_types || $field_date) {
-  $body_message .= '<strong>Date:</strong> ' . $field_date . ' (' . $date_types . ')<br/><br/>';
+if ($field_date) {
+  $body_message .= '<strong>Date:</strong> ' . $field_date . '<br/><br/>';
 }
 
 if ($field_postcode) {
@@ -83,21 +70,26 @@ if ($field_postcode) {
 $body_message .= '<strong>Message:</strong> ' . $field_message . '<br/><br/>';
 
 if ($furniture_items) {
-  $body_message .= '<table style="float: left; text-align:center; border-collapse: collapse;" width="49%" border="1" cellspacing="0" cellpadding="10">
-            <thead>
-                <tr>
-                    <th>Furniture Item</th>
-                </tr>
-            </thead>
-            <tbody>' . $furniture_items . '</tobdy></table>';
-
-  $body_message .= '<table style="float: left; text-align:center; border-collapse: collapse; border-left: none;" width="49%" border="1" cellspacing="0" cellpadding="10">
-            <thead>
-                <tr>
-                    <th>Quantity</th>
-                </tr>
-            </thead>
-            <tbody>' . $furniture_quantities . '</tobdy></table>';
+  $body_message .= '
+  <table style="float: left; text-align:center; border-collapse: collapse;" width="100%" border="1" cellspacing="0" cellpadding="10">
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>Furniture Item</th>
+            <th>Quantity</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>'
+    . $furniture_items . '
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="3">Total</td>
+        <td>' . $total_price . '</td>
+      </tr>
+    </tfoot>
+  </table>';
 }
 $body_message .= '
 
