@@ -12,7 +12,7 @@ import { store } from './Store/store'
 import { Basket } from './Components/Basket'
 import { useSiteHeaderHeight } from './hooks/useSiteHeaderHeight'
 import { ItemCount } from './Components/ItemCount'
-import { Desktop } from './Components/Responsive/Responsive'
+import { Desktop, Tablet } from './Components/Responsive/Responsive'
 import { FiltersProps } from './Components/Filters/Filters'
 import { useSearchParams } from 'react-router-dom'
 
@@ -71,22 +71,29 @@ const TopBar = (props: FiltersProps) => {
   const headerHeight = useSiteHeaderHeight()
 
   return (
-    <div
-      className={styles.topBar}
-      style={{ top: headerHeight }}
-    >
-      <Container>
-        <div className={styles.topBarInner}>
-          <TabletFilters {...props} />
-          <Desktop>
-            <ItemCount items={props.items} />
-          </Desktop>
-          <div className={styles.stack}>
-            <Basket />
-          </div>
+    <>
+      <Tablet>
+        <div className={styles.tabletItemCountWrapper}>
+          <ItemCount items={props.items} />
         </div>
-      </Container>
-    </div>
+      </Tablet>
+      <div
+        className={styles.topBar}
+        style={{ top: headerHeight }}
+      >
+        <Container>
+          <div className={styles.topBarInner}>
+            <TabletFilters {...props} />
+            <Desktop>
+              <ItemCount items={props.items} />
+            </Desktop>
+            <div className={styles.stack}>
+              <Basket />
+            </div>
+          </div>
+        </Container>
+      </div>
+    </>
   )
 }
 

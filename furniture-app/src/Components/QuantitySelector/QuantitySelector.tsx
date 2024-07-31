@@ -16,6 +16,7 @@ export const QuantitySelector = ({ item }: QuantitySelectorProps) => {
   const cartItemQuantity = cartItem?.quantity || 0
   const dispatch = useDispatch()
   const hasFocus = useRef(null)
+  const pendingValue = useRef(null)
 
   const handleSyncState = useCallback((value: string) => {
     setInternalValue(value)
@@ -64,10 +65,16 @@ export const QuantitySelector = ({ item }: QuantitySelectorProps) => {
         className={styles.input}
         onBlur={() => {
           hasFocus.current = false
-          handleSyncState(String(cartItemQuantity))
+          if (![``, null].includes(pendingValue.current)) {
+            handleChange(pendingValue.current)
+            pendingValue.current = null
+          } else {
+            handleSyncState(String(cartItemQuantity))
+          }
         }}
         onChange={(e) => {
-          handleChange(e.target.value)
+          pendingValue.current = e.target.value
+          setInternalValue(e.target.value)
         }}
         onFocus={() => {
           hasFocus.current = true

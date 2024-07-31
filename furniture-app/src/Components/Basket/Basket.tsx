@@ -78,7 +78,7 @@ function getPrice(price: string, hasItems: boolean) {
     return `POA`
   }
 
-  return `£${Number(price)}.00`
+  return `£${Number(price)}`
 }
 
 interface BasketItemsProps {
@@ -143,7 +143,6 @@ const BasketItems = ({
             <td className={styles.alignEnd}>
               £
               {items.reduce((acc, item) => acc + Number(item.price) * item.quantity, 0)}
-              .00
             </td>
           </tr>
         </tfoot>
@@ -197,6 +196,7 @@ const ClearBasket = ({ onClear }: ClearBasketProps) => {
           Are you sure?
         </div>
         <button
+          autoFocus
           className={styles.clear}
           onClick={handleClear}
         >

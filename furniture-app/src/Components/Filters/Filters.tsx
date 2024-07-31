@@ -68,7 +68,7 @@ function getLabel(selectedFilters: TFilters) {
     return `Open Filters`
   }
 
-  return `Filters (${totalCount})`
+  return `Open Filters (${totalCount})`
 }
 
 export const DesktopFilters = (props: FiltersProps) => {

@@ -1,9 +1,9 @@
 .container {
   position: fixed;
-  top: var(--offset);
+  top: 0;
   left: 0;
   width: 100%;
-  height: calc(100% - var(--offset));
+  height: 100%;
   z-index: 1;
   grid-template-columns: 7fr 3fr;
   display: grid;
