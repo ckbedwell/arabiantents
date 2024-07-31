@@ -1,4 +1,4 @@
-import React, { forwardRef, useCallback } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import styles from './quantitySelector.module.css'
 import { TFurnitureItem } from '~/types'
 import { useDispatch, useSelector } from 'react-redux'
@@ -10,26 +10,46 @@ interface QuantitySelectorProps {
 }
 
 export const QuantitySelector = ({ item }: QuantitySelectorProps) => {
+  const [internalValue, setInternalValue] = useState(`0`)
   const cartItems = useSelector((state: RootState) => state.cart.items)
-  const cartItem = cartItems.find((cartItem) => cartItem.id === item.id)
+  const cartItem = cartItems.find((c) => c.id === item.id)
   const cartItemQuantity = cartItem?.quantity || 0
   const dispatch = useDispatch()
+  const hasFocus = useRef(null)
 
-  const handleDecrement = () => {
-    requestAnimationFrame(() => {
-      const newvalue = cartItemQuantity - 1
+  const handleSyncState = useCallback((value: string) => {
+    setInternalValue(value)
+  }, [])
 
-      if (newvalue >= 0) {
-        dispatch(setQuantity({ itemId: item.id, quantity: newvalue }))
-      }
-    })
+  useEffect(() => {
+    if (!hasFocus.current) {
+      handleSyncState(String(cartItemQuantity))
+    }
+  }, [cartItemQuantity])
+
+  const handleChange = (value: string) => {
+    setInternalValue(value)
+    const parsed = parseInt(value)
+
+    if (typeof parsed === `number`) {
+      dispatch(setQuantity({ itemId: item.id, quantity: parsed }))
+    }
   }
 
-  const handleIncrement = () => {
-    requestAnimationFrame(() => {
-      const newValue = cartItemQuantity + 1
-      dispatch(setQuantity({ itemId: item.id, quantity: newValue }))
-    })
+  const handleDecrement = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault()
+    e.stopPropagation()
+    const newValue: number = cartItemQuantity - 1
+
+    if (newValue >= 0) {
+      handleChange(String(newValue))
+    }
+  }
+
+  const handleIncrement = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault()
+    e.stopPropagation()
+    handleChange(String(cartItemQuantity + 1))
   }
 
   return (
@@ -42,16 +62,17 @@ export const QuantitySelector = ({ item }: QuantitySelectorProps) => {
       </button>
       <input
         className={styles.input}
-        onChange={(e) => {
-          const value = Number(e.target.value)
-
-          if (value >= 0) {
-            requestAnimationFrame(() => {
-              dispatch(setQuantity({ itemId: item.id, quantity: Number(e.target.value) }))
-            })
-          }
+        onBlur={() => {
+          hasFocus.current = false
+          handleSyncState(String(cartItemQuantity))
         }}
-        value={cartItemQuantity}
+        onChange={(e) => {
+          handleChange(e.target.value)
+        }}
+        onFocus={() => {
+          hasFocus.current = true
+        }}
+        value={internalValue}
       />
       <button
         className={styles.button}

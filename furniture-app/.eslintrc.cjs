@@ -51,6 +51,7 @@ module.exports = {
         items: 1,
       },
     ],
+    "react/no-unescaped-entities": [0],
     "react/display-name": [0],
     "react/jsx-uses-react": [2],
     "react/jsx-wrap-multilines": [
@@ -84,4 +85,4 @@ module.exports = {
       },
     ],
   },
-};
+}

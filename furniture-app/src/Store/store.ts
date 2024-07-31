@@ -8,8 +8,8 @@ export const store = configureStore({
 })
 
 store.subscribe(() => {
-  localStorage.setItem('cartItems', JSON.stringify(store.getState().cart.items));
-});
+  localStorage.setItem(`cartItems`, JSON.stringify(store.getState().cart.items))
+})
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>

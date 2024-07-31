@@ -8,34 +8,61 @@ import { TFurnitureItem } from '~/types'
 import { QuantitySelector } from '../QuantitySelector'
 import { clearAll } from '~/Store/cartSlice'
 import { useOnClickOutside } from '~/hooks/useOnClickOutside'
+import { Modal } from '../Modal'
+import { CopiedForm } from '../CopiedForm'
+import { useEscapeKey } from '~/hooks/useEscapeKey'
 
 export const Basket = () => {
   const [isOpen, setIsOpen] = useState(false)
   const cartItems = useSelector((state: RootState) => state.cart.items)
   const itemsWithQuantity = cartItems.filter((item) => item.quantity > 0)
   const price = itemsWithQuantity.reduce((acc, item) => {
-    const price = Number(item.price) || 0
-    return acc + price * item.quantity
+    const p = Number(item.price) || 0
+    return acc + p * item.quantity
   }, 0)
-  const basketRef = useOnClickOutside<HTMLDivElement>(() => setIsOpen(false))
+
+  const numberOfItems = itemsWithQuantity.reduce((acc, item) => acc + item.quantity, 0)
+
+  const handleClose = useCallback(() => {
+    setIsOpen(false)
+  }, [])
+
+  const basketRef = useOnClickOutside<HTMLDivElement>(isOpen, handleClose)
+  useEscapeKey(isOpen, handleClose)
 
   const handleClick = useCallback(() => {
     setIsOpen(v => !v)
   }, [])
 
-
   return (
-    <div className={styles.container} ref={basketRef}>
-      <button aria-label="Show all items" className={styles.button} onClick={handleClick}>
+    <div
+      className={styles.container}
+      ref={basketRef}
+    >
+      <button
+        aria-label="Show all items"
+        className={styles.button}
+        onClick={handleClick}
+      >
         <div className={styles.price}>
-          £{price}.00
+          <span>
+            {getPrice(String(price), numberOfItems > 0)}
+          </span>
+          {numberOfItems > 0 &&
+            <span>
+              {`(${numberOfItems})`}
+            </span>
+          }
         </div>
         <Icon icon="basket" />
       </button>
       <div className={styles.anchor}>
         {isOpen && (
           <div className={styles.basket}>
-            <BasketItems items={itemsWithQuantity} />
+            <BasketItems
+              items={itemsWithQuantity}
+              onClear={handleClose}
+            />
           </div>
         )}
       </div>
@@ -43,7 +70,25 @@ export const Basket = () => {
   )
 }
 
-const BasketItems = ({ items }: { items: TFurnitureItem[] }) => {
+function getPrice(price: string, hasItems: boolean) {
+  if (price === `0` && hasItems) {
+    return `POA`
+  }
+
+  return `£${Number(price)}.00`
+}
+
+interface BasketItemsProps {
+  items: TFurnitureItem[]
+  onClear: () => void
+}
+
+const BasketItems = ({
+  items,
+  onClear,
+}: BasketItemsProps) => {
+  const [openEnquiry, setOpenEnquiry] = useState(false)
+
   if (!items.length) {
     return (
       <div className={classNames(styles.basketItemsContainer, styles.empty)}>
@@ -57,48 +102,85 @@ const BasketItems = ({ items }: { items: TFurnitureItem[] }) => {
       <table className={styles.table}>
         <thead>
           <tr>
-            <th>Image</th>
-            <th>Item</th>
-            <th>Quantity</th>
-            <th>Price</th>
+            <th className={styles.alignStart}>Image</th>
+            <th className={styles.alignStart}>Item</th>
+            <th className={styles.alignEnd}>Quantity</th>
+            <th className={styles.alignEnd}>Price</th>
           </tr>
         </thead>
         <tbody>
           {items.map((item) => (
             <tr key={item.id}>
-              <td><img className={styles.basketImage} src={item.featured_image} /></td>
-              <td>{item.title}</td>
-              <td><QuantitySelector item={item} /></td>
-              <td>{getPrice(item.price)}</td>
+              <td className={styles.alignStart}>
+                <img
+                  className={styles.basketImage}
+                  src={item.featured_image}
+                />
+              </td>
+              <td className={styles.alignStart}>
+                {item.title}
+              </td>
+              <td className={styles.alignEnd}>
+                <QuantitySelector item={item} />
+              </td>
+              <td className={styles.alignEnd}>
+                {getPrice(item.price, true)}
+              </td>
             </tr>
           ))}
         </tbody>
         <tfoot>
           <tr>
             <td colSpan={2}>
-              < ClearBasket />
+              <ClearBasket onClear={onClear} />
             </td>
             <td className={styles.total}>Total</td>
-            <td>£{items.reduce((acc, item) => acc + Number(item.price) * item.quantity, 0)}.00</td>
+            <td className={styles.alignEnd}>
+              £
+              {items.reduce((acc, item) => acc + Number(item.price) * item.quantity, 0)}
+              .00
+            </td>
           </tr>
         </tfoot>
       </table>
+      <button
+        className={styles.enquire}
+        onClick={() => setOpenEnquiry(true)}
+      >
+        Send enquiry
+      </button>
       <div className={styles.disclaimer}>
         The total price shown is an estimate and may vary from the final price. Price may be affected by availability, delivery location, and other factors. We will confirm the final price once we have received your enquiry.
       </div>
+      <Modal
+        closeOnOverlayClick={false}
+        isOpen={openEnquiry}
+        onDismiss={() => setOpenEnquiry(false)}
+      >
+        <CopiedForm />
+      </Modal>
     </div>
   )
 }
 
-const ClearBasket = () => {
+interface ClearBasketProps {
+  onClear: () => void
+}
+
+const ClearBasket = ({ onClear }: ClearBasketProps) => {
   const [showConfirm, setShowConfirm] = useState(false)
   const dispatch = useDispatch()
 
-  const handleClick = (value: boolean) => {
-    requestAnimationFrame(() => {
-      setShowConfirm(value)
-    })
-  }
+  const handleClick = useCallback((e, value: boolean) => {
+    e.preventDefault()
+    e.stopPropagation()
+    setShowConfirm(value)
+  }, [])
+
+  const handleClear = useCallback(() => {
+    dispatch(clearAll())
+    onClear()
+  }, [])
 
   if (showConfirm) {
     return (
@@ -106,10 +188,13 @@ const ClearBasket = () => {
         <div>
           Are you sure?
         </div>
-        <button className={styles.clear} onClick={() => dispatch(clearAll())}>
+        <button
+          className={styles.clear}
+          onClick={handleClear}
+        >
           Confirm
         </button>
-        <button onClick={() => handleClick(false)}>
+        <button onClick={(e) => handleClick(e, false)}>
           Cancel
         </button>
       </div>
@@ -117,16 +202,11 @@ const ClearBasket = () => {
   }
 
   return (
-    <button className={styles.clear} onClick={() => handleClick(true)}>
+    <button
+      className={styles.clear}
+      onClick={(e) => handleClick(e, true)}
+    >
       Clear basket
     </button>
   )
-}
-
-function getPrice(price?: string) {
-  if (!price) {
-    return `POA`
-  }
-
-  return `£${Number(price)}.00`
 }

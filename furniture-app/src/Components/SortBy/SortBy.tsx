@@ -1,16 +1,24 @@
 import React from 'react'
 import { SORT_OPTIONS, SortValue } from '~/App.utils'
 import styles from './SortBy.module.css'
-import { Accordion } from '../Accordion';
+import { Accordion } from '../Accordion'
 
 interface SortByProps {
   onChange: (value: SortValue) => void;
+  value: SortValue
 }
 
-export const SortBy = ({ onChange }: SortByProps) => {
+export const SortBy = ({
+  onChange,
+  value,
+}: SortByProps) => {
   return (
     <Accordion label="Sort by">
-      <select className={styles.sortBy} onChange={(e) => onChange(e.target.value as SortValue)}>
+      <select
+        className={styles.sortBy}
+        onChange={(e) => onChange(e.target.value as SortValue)}
+        value={value}
+      >
         {SORT_OPTIONS.map((option) => (
           <option
             key={option.value}

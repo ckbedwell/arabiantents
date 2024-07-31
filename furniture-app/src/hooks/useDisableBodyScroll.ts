@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 
-export function useDisableBodyScroll(shouldDisable: boolean, callback: () => void) {
+export function useDisableBodyScroll(enabled: boolean, callback: () => void) {
   useEffect(() => {
     const closeOnEscape = (event: KeyboardEvent) => {
       if (event.key === `Escape`) {
@@ -8,14 +8,28 @@ export function useDisableBodyScroll(shouldDisable: boolean, callback: () => voi
       }
     }
 
-    if (shouldDisable) {
+    if (enabled) {
+      const header = document.querySelector(`.site-header`)
+
+      if (header instanceof HTMLElement) {
+        header.style.zIndex = `1`
+      }
+
       document.querySelector(`body`).style.overflow = `hidden`
       document.addEventListener(`keydown`, closeOnEscape)
     }
 
     return () => {
-      document.querySelector(`body`).style.overflow = `auto`
-      document.removeEventListener(`keydown`, closeOnEscape)
+      if (enabled) {
+        const header = document.querySelector(`.site-header`)
+
+        if (header instanceof HTMLElement) {
+          header.style.zIndex = `2`
+        }
+
+        document.querySelector(`body`).style.overflow = `auto`
+        document.removeEventListener(`keydown`, closeOnEscape)
+      }
     }
-  }, [shouldDisable])
+  }, [enabled])
 }

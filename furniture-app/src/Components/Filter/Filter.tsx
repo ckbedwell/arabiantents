@@ -1,5 +1,6 @@
 import React, { useId } from 'react'
 import { decodeHtml } from '~/App.utils'
+import styles from './Filter.module.css'
 
 interface FilterProps {
   checked: boolean
@@ -12,10 +13,11 @@ export const Filter = ({
   label,
   onChange,
 }: FilterProps) => {
-  const id = useId().replace(/:/, `_`)
+  const regEx = /:/g
+  const id = useId().replace(regEx, `_`)
 
   return (
-    <div>
+    <div className={styles.container}>
       <input
         checked={checked}
         id={id}

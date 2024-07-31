@@ -9,6 +9,8 @@
 }
 
 .price {
+  display: flex;
+  gap: 0.5rem;
   font-size: 2rem;
 }
 
@@ -91,4 +93,23 @@
 
 .clear {
   color: red;
+}
+
+.enquire {
+  display: block;
+  padding: 1rem;
+  background: var(--goldMedium);
+  color: white;
+  margin-left: auto;
+  margin-top: 1rem;
+  margin-right: 1rem;
+  border-radius: 10px;
+}
+
+.alignStart {
+  text-align: left;
+}
+
+.alignEnd {
+  text-align: right;
 }

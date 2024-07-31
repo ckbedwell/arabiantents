@@ -5,7 +5,7 @@ import { TFilters } from "./types"
 const options = { replace: true, preventScrollReset: true }
 
 export function useURLSearchParams() {
-  const [_, setParams] = useSearchParams()
+  const [, setParams] = useSearchParams()
 
   return (
     actionType: `add` | `remove` | `replace`,

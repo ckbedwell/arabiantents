@@ -11,12 +11,12 @@ const initialState: CartState = {
 }
 
 interface Payload {
-  itemId: TFurnitureItem['id'];
+  itemId: TFurnitureItem[`id`];
   quantity: number;
 }
 
 export const cartSlice = createSlice({
-  name: 'cart',
+  name: `cart`,
   initialState,
   reducers: {
     clearAll(state) {
@@ -34,7 +34,7 @@ export const cartSlice = createSlice({
 
       if (existsInCart) {
         existsInCart.quantity = action.payload.quantity
-        return 
+        return
       }
 
       const newItem = FURNITURE_ITEMS.find((item) => item.id === action.payload.itemId)
@@ -44,21 +44,21 @@ export const cartSlice = createSlice({
           ...newItem,
           quantity: action.payload.quantity,
         })
-
-        return
       }
     },
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { clearAll, setQuantity } = cartSlice.actions
+export const {
+  clearAll,
+  setQuantity,
+} = cartSlice.actions
 
 export const cartReducer = cartSlice.reducer
 
 function getInitialItems() {
-  const existingCart = localStorage.getItem('cartItems')
-
+  const existingCart = localStorage.getItem(`cartItems`)
 
   if (!existingCart) {
     return []

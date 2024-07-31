@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import { Filter } from '../Filter/Filter'
 import { Accordion } from '../Accordion'
 import { TFilters, TFurnitureItem } from '~/types'
@@ -11,8 +11,10 @@ import { ItemCount } from '../ItemCount'
 
 export interface FiltersProps {
   filters: TFilters
+  selectedFilters: TFilters
   onChange: (type: string, value: string, checked: boolean) => void
   onSortChange: (value: SortValue) => void
+  sortOption: SortValue
   items: TFurnitureItem[]
 }
 
@@ -33,18 +35,40 @@ export const TabletFilters = (props: FiltersProps) => {
 
   return (
     <Tablet>
-      <button className={styles.button} onClick={handleOpen}>Open filters</button>
+      <button
+        className={styles.button}
+        onClick={handleOpen}
+      >
+        {getLabel(props.selectedFilters)}
+      </button>
       {open && <Sidebar onDismiss={handleClose}>
         <div className={styles.sidebarContent}>
           <div>
             <ItemCount items={props.items} />
             <FiltersContent {...props} />
           </div>
-          <button className={styles.closeFilters} onClick={handleClose}>Close filters</button>
+          <button
+            className={styles.closeFilters}
+            onClick={handleClose}
+          >
+            Close filters
+          </button>
         </div>
       </Sidebar>}
     </Tablet>
   )
+}
+
+function getLabel(selectedFilters: TFilters) {
+  const furnitureTypeCount = selectedFilters.furniture_type.length
+  const colorCount = selectedFilters.color.length
+  const totalCount = furnitureTypeCount + colorCount
+
+  if (!totalCount) {
+    return `Open Filters`
+  }
+
+  return `Filters (${totalCount})`
 }
 
 export const DesktopFilters = (props: FiltersProps) => {
@@ -57,26 +81,25 @@ export const DesktopFilters = (props: FiltersProps) => {
 
 const FiltersContent = ({
   filters,
+  selectedFilters,
   onChange,
   onSortChange,
+  sortOption,
 }: FiltersProps) => {
-  const {
-    price,
-    color,
-    furniture_type,
-  } = useMemo(() => constructFilters(), [])
-
-  const orderedFurnitureType = furniture_type.sort()
-  const orderedColor = color.sort()
+  const furnitureTypeCount = selectedFilters.furniture_type.length
+  const colorCount = selectedFilters.color.length
 
   return (
     <div>
-      <SortBy onChange={onSortChange} />
-      <Accordion label="Type">
-        {orderedFurnitureType.map((value) => {
+      <SortBy
+        onChange={onSortChange}
+        value={sortOption}
+      />
+      <Accordion label={constructLabel(`Type`, furnitureTypeCount)}>
+        {filters.furniture_type.map((value) => {
           return (
             <Filter
-              checked={filters.furniture_type.includes(value)}
+              checked={selectedFilters.furniture_type.includes(value)}
               key={value}
               label={value}
               onChange={(checked) => onChange(`furniture_type`, value, checked)}
@@ -84,11 +107,11 @@ const FiltersContent = ({
           )
         })}
       </Accordion>
-      <Accordion label="Color">
-        {orderedColor.map((value) => {
+      <Accordion label={constructLabel(`Color`, colorCount)}>
+        {filters.color.map((value) => {
           return (
             <Filter
-              checked={filters.color.includes(value)}
+              checked={selectedFilters.color.includes(value)}
               key={value}
               label={value}
               onChange={(checked) => onChange(`color`, value, checked)}
@@ -100,34 +123,10 @@ const FiltersContent = ({
   )
 }
 
-function constructFilters() {
-  return FURNITURE_ITEMS.reduce((acc, item) => {
-    const {
-      price,
-      color,
-      furniture_type,
-    } = item
+function constructLabel(label, count) {
+  if (!count) {
+    return label
+  }
 
-    if (!acc.price.includes(price)) {
-      acc.price.push(price)
-    }
-
-    color.forEach((c) => {
-      if (!acc.color.includes(c)) {
-        acc.color.push(c)
-      }
-    })
-
-    furniture_type.forEach((f) => {
-      if (!acc.furniture_type.includes(f)) {
-        acc.furniture_type.push(f)
-      }
-    })
-
-    return acc
-  }, {
-    price: [],
-    color: [],
-    furniture_type: [],
-  })
+  return `${label} (${count})`
 }

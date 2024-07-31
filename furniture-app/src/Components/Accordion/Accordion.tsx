@@ -22,7 +22,7 @@ export const Accordion = ({
         onClick={() => setOpen(v => !v)}
       >
         {label}
-        <Icon icon={open ? "arrow-down" : "arrow-right2"} />
+        <Icon icon={open ? `arrow-down` : `arrow-right2`} />
       </button>
       {open && <div>
         {children}

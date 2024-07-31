@@ -1,4 +1,5 @@
+/* eslint-disable quotes */
 declare module '*.module.css' {
-  const classes: { [key: string]: string };
-  export default classes;
+  const classes: { [key: string]: string }
+  export default classes
 }

@@ -5,7 +5,9 @@
     "baseUrl": ".",
     // Relative to "baseUrl"
     "paths": {
-      "~/*": ["./*"]
+      "~/*": [
+        "./*"
+      ]
     },
     "jsx": "react",
     "esModuleInterop": true

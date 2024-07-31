@@ -1,6 +1,6 @@
 .container {
   --size: 4rem;
-  display: flex;
+  display: inline-flex;
 }
 
 .button {

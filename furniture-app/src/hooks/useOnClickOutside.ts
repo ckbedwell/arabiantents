@@ -1,31 +1,28 @@
 import { useEffect, useRef } from "react"
 
-export function useOnClickOutside<T extends HTMLElement>(callback: () => void) {
+export function useOnClickOutside<T extends HTMLElement>(enabled: boolean, callback: () => void) {
   const ref = useRef<T>(null)
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       const isHTMLElement = e.target instanceof HTMLElement
+      const isElementInDocumentStill = document.contains(e.target as Node)
 
-      if (isHTMLElement && ref.current && !ref.current.contains(e.target)) {
+      if (isElementInDocumentStill && isHTMLElement && ref.current && !ref.current.contains(e.target)) {
         callback()
       }
     }
 
-    const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        callback()
-      }
+    if (enabled) {
+      document.addEventListener(`click`, handleClickOutside)
     }
-
-    document.addEventListener('click', handleClickOutside)
-    document.addEventListener('keydown', handleEscape)
 
     return () => {
-      document.removeEventListener('click', handleClickOutside)
-      document.removeEventListener('keydown', handleEscape)
+      if (enabled) {
+        document.removeEventListener(`click`, handleClickOutside)
+      }
     }
-  }, [callback])
+  }, [callback, enabled])
 
   return ref
 }

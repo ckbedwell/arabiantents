@@ -9,15 +9,24 @@ interface SidebarProps {
   onDismiss: () => void
 }
 
-export const Sidebar = ({ children, onDismiss }: SidebarProps) => {
-  const sidebarRef = useOnClickOutside<HTMLDivElement>(onDismiss)
+export const Sidebar = ({
+  children,
+  onDismiss,
+}: SidebarProps) => {
+  const sidebarRef = useOnClickOutside<HTMLDivElement>(true, onDismiss)
   useDisableBodyScroll(true, onDismiss)
   const headerHeight = useSiteHeaderHeight()
 
   return (
-    // @ts-expect-error
-    <div className={styles.container} style={{ '--offset': `${headerHeight}px` }}>
-      <div className={styles.content} ref={sidebarRef}>
+    <div
+      className={styles.container}
+      // @ts-expect-error
+      style={{ '--offset': `${headerHeight}px` }}
+    >
+      <div
+        className={styles.content}
+        ref={sidebarRef}
+      >
         {children}
       </div>
       <div className={styles.overlay} />
