@@ -38,6 +38,12 @@ export const App = () => {
     updateSearchParams(`replace`, option, `sort`)
   }, [])
 
+  const handleClear = useCallback(() => {
+    dispatch({ type: `clear` })
+    updateSearchParams(`replace`, ``, `color`)
+    updateSearchParams(`replace`, ``, `furniture_type`)
+  }, [])
+
   const items = filterItems(FURNITURE_ITEMS, selectedFilters)
   const sortedItems = sortItems(items, sortOption)
 
@@ -47,6 +53,7 @@ export const App = () => {
     filters,
     selectedFilters,
     onChange: handleFilterChange,
+    onClear: handleClear,
     onSortChange: handleSortChange,
     sortOption,
     items,

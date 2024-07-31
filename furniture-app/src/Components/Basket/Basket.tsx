@@ -34,7 +34,7 @@ export const Basket = () => {
     setIsOpen(v => !v)
   }, [])
 
-  const totalPrice = getPrice(String(price), numberOfItems > 0)
+  const totalPrice = getPrice(String(price), 1, numberOfItems > 0)
 
   return (
     <div
@@ -73,12 +73,12 @@ export const Basket = () => {
   )
 }
 
-function getPrice(price: string, hasItems: boolean) {
+function getPrice(price: string, quantity: number, hasItems: boolean) {
   if ([`0`, ``].includes(price) && hasItems) {
     return `POA`
   }
 
-  return `£${Number(price)}`
+  return `£${(Number(price) * quantity)}`
 }
 
 interface BasketItemsProps {
@@ -129,7 +129,7 @@ const BasketItems = ({
                 <QuantitySelector item={item} />
               </td>
               <td className={styles.alignEnd}>
-                {getPrice(item.price, true)}
+                {getPrice(item.price, item.quantity, true)}
               </td>
             </tr>
           ))}

@@ -23,3 +23,16 @@
   border: 1px solid black;
   border-radius: 10px;
 }
+
+.clear {
+  padding: 0.5rem 1rem;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.tabletTopBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}

@@ -67,13 +67,19 @@ export function useFilters() {
   return useReducer(reducer, initial)
 }
 
-interface TAction {
+interface UpdateAction {
   type: `add` | `remove`
   payload: {
     type: string
     value: string[]
   }
 }
+
+interface TClearAction {
+  type: `clear`
+}
+
+type TAction = UpdateAction | TClearAction
 
 function reducer(state: TFilters, action: TAction) {
   if (action.type === `add`) {
@@ -99,6 +105,13 @@ function reducer(state: TFilters, action: TAction) {
     return {
       ...state,
       [action.payload.type]: uniq,
+    }
+  }
+
+  if (action.type === `clear`) {
+    return {
+      color: [],
+      furniture_type: [],
     }
   }
 

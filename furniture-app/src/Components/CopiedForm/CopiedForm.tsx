@@ -161,7 +161,7 @@ const Form = ({
 
   return (
     <form
-      action="thank-you-test"
+      action="thank-you"
       method="post"
       onSubmit={handleSubmit}
     >

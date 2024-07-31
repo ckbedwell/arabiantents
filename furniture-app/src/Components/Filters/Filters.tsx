@@ -13,6 +13,7 @@ export interface FiltersProps {
   filters: TFilters
   selectedFilters: TFilters
   onChange: (type: string, value: string, checked: boolean) => void
+  onClear: () => void
   onSortChange: (value: SortValue) => void
   sortOption: SortValue
   items: TFurnitureItem[]
@@ -44,14 +45,21 @@ export const TabletFilters = (props: FiltersProps) => {
       {open && <Sidebar onDismiss={handleClose}>
         <div className={styles.sidebarContent}>
           <div>
-            <ItemCount items={props.items} />
+            <div className={styles.tabletTopBar}>
+              <ItemCount items={props.items} />
+              <ClearFilters
+                hasCount={props.selectedFilters.furniture_type.length + props.selectedFilters.color.length > 0}
+                label="Clear"
+                onClear={props.onClear}
+              />
+            </div>
             <FiltersContent {...props} />
           </div>
           <button
             className={styles.closeFilters}
             onClick={handleClose}
           >
-            Close filters
+            Close
           </button>
         </div>
       </Sidebar>}
@@ -72,9 +80,16 @@ function getLabel(selectedFilters: TFilters) {
 }
 
 export const DesktopFilters = (props: FiltersProps) => {
+  const hasCount = props.selectedFilters.furniture_type.length + props.selectedFilters.color.length > 0
+
   return (
     <Desktop>
       <FiltersContent {...props} />
+      <ClearFilters
+        hasCount={hasCount}
+        label={`Clear all filters`}
+        onClear={props.onClear}
+      />
     </Desktop>
   )
 }
@@ -121,6 +136,31 @@ const FiltersContent = ({
       </Accordion>
     </div>
   )
+}
+
+interface ClearFiltersProps {
+  hasCount: boolean
+  label: string
+  onClear: () => void
+}
+
+const ClearFilters = ({
+  hasCount,
+  label,
+  onClear,
+}: ClearFiltersProps) => {
+  if (hasCount) {
+    return (
+      <button
+        className={styles.clear}
+        onClick={onClear}
+      >
+        {label}
+      </button>
+    )
+  }
+
+  return null
 }
 
 function constructLabel(label, count) {
