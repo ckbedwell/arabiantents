@@ -67,13 +67,8 @@ if ($field_event) {
   $body_message .= '<strong>Type of event:</strong> ' . $field_event . '<br/>';
 }
 
-if ($field_total_guests) {
-  $body_message .= '<strong>Total Guests:</strong> ' . $field_total_guests . '<br/>';
-  $body_message .= '<strong>Dining Guests:</strong> ' . $field_dining_guests . '<br/>';
-}
-
-if ($date_types || $field_date) {
-  $body_message .= '<strong>Date:</strong> ' . $field_date . ' (' . $date_types . ')<br/><br/>';
+if ($field_date) {
+  $body_message .= '<strong>Date:</strong> ' . $field_date . '<br/><br/>';
 }
 
 if ($field_postcode) {
@@ -89,7 +84,7 @@ if ($furniture_items) {
                     <th>Furniture Item</th>
                 </tr>
             </thead>
-            <tbody>' . $furniture_items . '</tobdy></table>';
+            <tbody>' . $furniture_items . '</tbody></table>';
 
   $body_message .= '<table style="float: left; text-align:center; border-collapse: collapse; border-left: none;" width="49%" border="1" cellspacing="0" cellpadding="10">
             <thead>
@@ -97,7 +92,7 @@ if ($furniture_items) {
                     <th>Quantity</th>
                 </tr>
             </thead>
-            <tbody>' . $furniture_quantities . '</tobdy></table>';
+            <tbody>' . $furniture_quantities . '</tbody></table>';
 }
 $body_message .= '
 
