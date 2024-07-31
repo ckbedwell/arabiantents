@@ -1,4 +1,5 @@
 import React, { useCallback, useState } from 'react'
+import classNames from 'classnames'
 import { Filter } from '../Filter/Filter'
 import { Accordion } from '../Accordion'
 import { TFilters, TFurnitureItem } from '~/types'
@@ -86,6 +87,7 @@ export const DesktopFilters = (props: FiltersProps) => {
     <Desktop>
       <FiltersContent {...props} />
       <ClearFilters
+        className={styles.desktopClear}
         hasCount={hasCount}
         label={`Clear all filters`}
         onClear={props.onClear}
@@ -139,12 +141,14 @@ const FiltersContent = ({
 }
 
 interface ClearFiltersProps {
+  className?: string
   hasCount: boolean
   label: string
   onClear: () => void
 }
 
 const ClearFilters = ({
+  className,
   hasCount,
   label,
   onClear,
@@ -152,7 +156,7 @@ const ClearFilters = ({
   if (hasCount) {
     return (
       <button
-        className={styles.clear}
+        className={classNames(styles.clear, className)}
         onClick={onClear}
       >
         {label}
